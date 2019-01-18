@@ -44,7 +44,7 @@
         <thymeleaf-layout-dialect.version>2.1.0</thymeleaf-layout-dialect.version>
         <project.build.version>1.0</project.build.version> <!-- 项目版本-->
         <shiro.cas.version>1.2.3</shiro.cas.version>
-        <project.name>nncloud</project.name>
+        <project.name>ck</project.name>
         <docker.host>http://172.16.0.181:2375</docker.host>
     </properties>
     <repositories>
@@ -517,7 +517,7 @@
     </dependencies>
 
     <build>
-        <finalName>nncloud</finalName>
+        <finalName>ck</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
