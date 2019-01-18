@@ -30,10 +30,10 @@
         <h4 style="color: red;">${tips!}</h4>
         <form class="m-t" role="form" action="${ctxPath}/login" method="post">
             <div class="form-group">
-                <input type="text" name="username" class="form-control" placeholder="用户名" required="">
+                <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required="">
             </div>
             <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="密码" required="">
+                <input type="password" id="password" name="password" class="form-control" placeholder="密码" required="">
             </div>
             @if(kaptcha.getKaptchaOnOff() == true){
             <div class="form-group" style="float: left;">
@@ -63,7 +63,19 @@
         $("#kaptcha").on('click', function () {
             $("#kaptcha").attr('src', '${ctxPath}/kaptcha?' + Math.floor(Math.random() * 100)).fadeIn();
         });
+        window.addEventListener('message',function(e){
+
+            var ajax = new $ax(Feng.ctxPath + "/login", function (data) {
+            }, function (data) {
+                Feng.error(data.responseJSON.message + "!");
+            });
+            ajax.set("questionId",this.seItem.id);
+            ajax.start();
+
+            },false);
     });
+
+
 </script>
 
 </body>

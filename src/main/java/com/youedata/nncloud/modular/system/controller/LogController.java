@@ -1,5 +1,6 @@
 package com.youedata.nncloud.modular.system.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.SqlRunner;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.youedata.nncloud.core.base.controller.BaseController;
@@ -8,16 +9,19 @@ import com.youedata.nncloud.core.common.annotion.Permission;
 import com.youedata.nncloud.core.common.constant.Const;
 import com.youedata.nncloud.core.common.constant.factory.PageFactory;
 import com.youedata.nncloud.core.common.constant.state.BizLogType;
+import com.youedata.nncloud.core.constant.Constant;
 import com.youedata.nncloud.core.support.BeanKit;
+import com.youedata.nncloud.core.util.JsonUtil;
+import com.youedata.nncloud.core.util.RecordLogUtil;
 import com.youedata.nncloud.modular.system.model.OperationLog;
 import com.youedata.nncloud.modular.system.service.IOperationLogService;
 import com.youedata.nncloud.modular.system.warpper.LogWarpper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -30,6 +34,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/log")
+@Api(value = "operationLog-controller", description = "操作日志")
 public class LogController extends BaseController {
 
     private static String PREFIX = "/system/log/";
@@ -80,5 +85,39 @@ public class LogController extends BaseController {
     public Object delLog() {
         SqlRunner.db().delete("delete from sys_operation_log");
         return SUCCESS_TIP;
+    }
+
+    /**
+     * 获取操作日志列表
+     * @param userInfoName
+     * @param beginTime
+     * @param endTime
+     * @param size
+     * @param curPage
+     * @return
+     */
+    @PostMapping("/getLogList")
+    @ResponseBody
+    @ApiOperation("获取操作日志列表")
+    public Object getLogList(@ApiParam("账号名称(非必填)") @RequestParam(value = "userInfoName", required = false) String userInfoName,
+                             @ApiParam("开始时间(非必填)") @RequestParam(value = "beginTime", required = false) String beginTime,
+                             @ApiParam("结束时间(非必填)") @RequestParam(value = "endTime", required = false) String endTime,
+                             @ApiParam("当前页条数(非必填)") @RequestParam(value = "size", required = false, defaultValue = "20") int size,
+                             @ApiParam("页数(非必填)") @RequestParam(value = "curPage", required = false, defaultValue = "0") int curPage){
+
+        JSONObject jsonResult = JsonUtil.createOkJson();
+        Page page = null;
+        try {
+
+            boolean tempIsAsc = Boolean.valueOf("asc");
+            page = operationLogService.getLogList(userInfoName, beginTime, endTime,null, tempIsAsc, size, curPage);
+            jsonResult.put("page", page);
+        } catch (Exception e) {
+            RecordLogUtil.error(Constant.ERROR_MGS, e);
+            jsonResult = JsonUtil.createFailJson();
+            return jsonResult;
+        }
+
+        return jsonResult;
     }
 }

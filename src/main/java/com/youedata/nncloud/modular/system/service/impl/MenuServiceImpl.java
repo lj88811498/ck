@@ -40,7 +40,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     public void delMenuContainSubMenus(Long menuId) {
 
         Menu menu = menuMapper.selectById(menuId);
-
         //删除当前菜单
         delMenu(menuId);
 
@@ -85,6 +84,19 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
     @Override
     public List<MenuNode> getMenusByRoleIds(List<Integer> roleIds) {
-        return this.baseMapper.getMenusByRoleIds(roleIds);
+        return  menuMapper.getMenusByRoleIds(roleIds);
+    }
+
+    /**
+     * 查询所有菜单
+     *
+     * @return java.util.List<com.youedata.nncloud.core.node.MenuNode>
+     * @author: Monkey
+     * @param: []
+     * @date: Created in  2018/9/19 11:24.
+     */
+    @Override
+    public List<MenuNode> selectAll() {
+        return menuMapper.selectAll();
     }
 }

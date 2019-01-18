@@ -1,5 +1,7 @@
 package com.youedata.nncloud.core.constant;
 
+import org.apache.tomcat.jni.File;
+
 /**
  * @Author: Monkey
  * @Param:
@@ -64,7 +66,19 @@ public class Constant {
     public static final String PROGRESS_NIGHT = "9";
     public static final String PROGRESS_TEN = "10";
     public static final String PROGRESS_ERROR_MSG = "问题当前状态不能进行审核！";
+    public static final String DEGREE_SERVICE_ID_ERROR_MSG = "评价的客服人员编号错误！";
     public static final String SIGN_ERROR_MSG = "###";
     public static final String SIGN_OFFICE = "$$$";
+    /**
+     * 自动回复，处理中
+     */
+    public static final String QUESTION_AUTO_ANSWER = "1";
+    public static final String QUESTION_PERSON_ANSWER = "0";
+
+    /**
+     * 图片地址分割符
+     */
+    public static final String FILE_SEPARATOR = "/";
+
 
 }

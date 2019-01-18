@@ -102,11 +102,18 @@ public class initSystem extends AbstractGeneratorConfig {
 //        String bizEnNames[] = {"normalProject", "normalExportConfig", "followProject", "proArea", "proCompany", "proConvention", "proHistory", "proTalk", "unitLiable","proAttachment"} ;
 //        String entityNames[] = {"NormalProject", "ExportConfig", "FollowProject", "ProArea", "ProCompany", "ProConvention", "ProHistory", "ProTalk", "UnitLiable","ProAttachment"};
         //中文名
-        String bizChNames[] = {"用户信息","角色信息","用户角色","部门信息","问题反馈","科室","收藏","附件","满意度"};
+//        String bizChNames[] = {"用户信息","角色信息","用户角色","部门信息","问题反馈","科室","收藏","附件","满意度"};
+//        //数据表英文名
+//        String bizEnNames[] = {"userInfo","role","userRole","dept","question","office","collet","attachment","degree"} ;
+//        //驼峰式表名
+//        String entityNames[] = {"UserInfo","Role","UserRole","Dept","Question","Office","Collet","Attachment","Degree"};
+
+        String bizChNames[] = {"职称评审"};
         //数据表英文名
-        String bizEnNames[] = {"userInfo","role","userRole","dept","question","office","collet","attachment","degree"} ;
+        String bizEnNames[] = {"titleEvaluation"} ;
         //驼峰式表名
-        String entityNames[] = {"UserInfo","Role","UserRole","Dept","Question","Office","Collet","Attachment","Degree"};
+        String entityNames[] = {"TitleEvaluation"};
+
 
         String projectPath = sysPath;
         String moduleName = "nanning";
@@ -146,10 +153,10 @@ public class initSystem extends AbstractGeneratorConfig {
 //        String sysPath = "D:\\YouE\\反邪教\\code\\fxplat";
         String sysPath = "D:\\YouE\\南宁云app\\code\\nncloud";
         //作者
-        String author = "monkey";
+        String author = "Monkey";
         //String数组针对后续添加表需要设置表名，不能为空，为空则表示全部导入
-        //first(sysPath, author, new String[]{});
-        //second(sysPath, author);
+//        first(sysPath, author, new String[]{"title_evaluation"});
+//        second(sysPath, author);
         //垃圾路径
         File file = new File(sysPath + "\\src\\main\\java\\TTT");
         deleteFile(file);

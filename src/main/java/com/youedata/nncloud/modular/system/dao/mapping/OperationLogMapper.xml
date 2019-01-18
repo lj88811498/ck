@@ -13,6 +13,7 @@
 		<result column="createtime" property="createtime" />
 		<result column="succeed" property="succeed" />
 		<result column="message" property="message" />
+		<result column="ip" property="ip" />
 	</resultMap>
 
 	<select id="getOperationLogs" resultType="map">
@@ -43,4 +44,29 @@
 		</choose>
 	</select>
 
+	<select id="getLogList" resultType="map">
+		select userid,message,ip,createtime from sys_operation_log where succeed ='成功'
+		<if test="userInfoId != null and userInfoId != ''">
+			and userid = #{userInfoId}
+		</if>
+		<if test="beginTime != null and beginTime != ''">
+			and date_format(createtime,'%Y-%m-%d')  <![CDATA[ >= ]]> #{beginTime}
+		</if>
+		<if test="endTime != null and endTime != ''">
+			and date_format(createtime,'%Y-%m-%d') <![CDATA[ <= ]]> (#{endTime} )
+		</if>
+		order by createtime desc
+		<choose>
+			<when test="orderByField != null and orderByField !=''">
+				<choose>
+					<when test="isAsc == true">
+						order by ${orderByField} ASC
+					</when>
+					<otherwise>
+						order by ${orderByField} DESC
+					</otherwise>
+				</choose>
+			</when>
+		</choose>
+	</select>
 </mapper>

@@ -17,6 +17,7 @@ package com.youedata.nncloud.core.shiro;
 
 import com.youedata.nncloud.core.common.constant.Const;
 import com.youedata.nncloud.core.common.constant.factory.ConstantFactory;
+import com.youedata.nncloud.core.support.HttpKit;
 import com.youedata.nncloud.core.util.ToolUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -60,7 +61,7 @@ public class ShiroKit {
 
     public static void main(String[] args) {
 
-        System.out.println(ShiroKit.md5("monkey1", "monkey1"));
+        System.out.println(ShiroKit.md5("111111", "mghmd"));
 
     }
     /**
@@ -87,10 +88,24 @@ public class ShiroKit {
      * @return ShiroUser
      */
     public static ShiroUser getUser() {
-        if (isGuest()) {
-            return null;
-        } else {
-            return (ShiroUser) getSubject().getPrincipals().getPrimaryPrincipal();
+        try {
+            if (isGuest()) {
+               try {
+                    ShiroUser user = (ShiroUser)HttpKit.getRequest().getSession().getAttribute("shiroUser");
+                    return user;
+                } catch (Exception e1) {
+                    return new ShiroUser();
+                }
+            } else {
+                return (ShiroUser) getSubject().getPrincipals().getPrimaryPrincipal();
+            }
+        } catch (Exception e) {
+            try {
+                ShiroUser user = (ShiroUser)HttpKit.getRequest().getSession().getAttribute("shiroUser");
+                return user;
+            } catch (Exception e1) {
+                return new ShiroUser();
+            }
         }
     }
 

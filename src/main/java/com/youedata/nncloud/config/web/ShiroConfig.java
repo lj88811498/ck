@@ -157,12 +157,30 @@ public class ShiroConfig {
          * 顺序从上到下,优先级依次降低
          *
          */
+        String[] filters = new String[]{
+                "/swagger-ui.html",
+                "/announcement",
+                "/app",
+                "/attachment",
+                "/attachmentRule",
+                "/business",
+                "/collet",
+                "/corporateScoreRanking",
+                "/declaration",
+                "/degree",
+                "/userDept",
+                "/district",
+                "/economics",
+                "/empInfo",
+                "/enterprise",
+        };
         Map<String, String> hashMap = new LinkedHashMap<>();
         hashMap.put("/static/**", "anon");
         hashMap.put("/login", "anon");
         hashMap.put("/global/sessionError", "anon");
         hashMap.put("/kaptcha", "anon");
-        hashMap.put("/**", "user");
+
+        hashMap.put("/**", "anon");
         shiroFilter.setFilterChainDefinitionMap(hashMap);
         return shiroFilter;
     }

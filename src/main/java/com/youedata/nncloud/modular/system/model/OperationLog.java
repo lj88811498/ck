@@ -58,7 +58,10 @@ public class OperationLog extends Model<OperationLog> {
      * 备注
      */
 	private String message;
-
+	/**
+	 * ip
+	 */
+	private String ip;
 
 	public Integer getId() {
 		return id;
@@ -132,6 +135,14 @@ public class OperationLog extends Model<OperationLog> {
 		this.message = message;
 	}
 
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
 	@Override
 	protected Serializable pkVal() {
 		return this.id;
@@ -149,6 +160,7 @@ public class OperationLog extends Model<OperationLog> {
 			", createtime=" + createtime +
 			", succeed=" + succeed +
 			", message=" + message +
+			", ip=" + ip +
 			"}";
 	}
 }

@@ -31,7 +31,7 @@ public class LogManager {
         executor.schedule(task, OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
     }
 
-    public void executeInsertSpiderInfo(TimerTask task) {
+    public void executeBatchInsert(TimerTask task) {
         executor.schedule(task, 1, TimeUnit.MILLISECONDS);
     }
 }

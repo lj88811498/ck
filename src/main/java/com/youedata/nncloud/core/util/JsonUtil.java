@@ -17,6 +17,7 @@ public class JsonUtil {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", "400");
         jsonObject.put("msg", msg);
+        jsonObject.put("page", "");
         return jsonObject;
     }
 
@@ -24,12 +25,14 @@ public class JsonUtil {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", "400");
         jsonObject.put("msg", "操作失败");
+        jsonObject.put("page", "");
         return jsonObject;
     }
     public static JSONObject createOkJson(String msg) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", "0");
         jsonObject.put("msg", msg);
+        jsonObject.put("page", "");
         return jsonObject;
     }
 
@@ -37,6 +40,7 @@ public class JsonUtil {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", "0");
         jsonObject.put("msg", "success");
+        jsonObject.put("page", "");
         return jsonObject;
     }
 
@@ -51,6 +55,22 @@ public class JsonUtil {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", "0");
         jsonObject.put("page", object);
+        return jsonObject;
+    }
+
+    public static JSONObject dataOSFailJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("msg", "User not logged in");
+        jsonObject.put("code", "530");
+        jsonObject.put("page", "");
+        return jsonObject;
+    }
+
+    public static JSONObject dataOSUserFailJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("msg", "Imperfect user information");
+        jsonObject.put("code", "531");
+        jsonObject.put("page", "");
         return jsonObject;
     }
 }

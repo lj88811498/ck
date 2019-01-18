@@ -2,6 +2,10 @@ package com.youedata.nncloud.core.log.factory;
 
 import com.youedata.nncloud.core.common.constant.state.LogSucceed;
 import com.youedata.nncloud.core.common.constant.state.LogType;
+import com.youedata.nncloud.core.util.RecordLogUtil;
+import com.youedata.nncloud.core.util.SpringContextHolder;
+//import com.youedata.nncloud.modular.nanning.model.Message;
+//import com.youedata.nncloud.modular.nanning.service.IMessageService;
 import com.youedata.nncloud.modular.system.dao.LoginLogMapper;
 import com.youedata.nncloud.modular.system.dao.OperationLogMapper;
 import com.youedata.nncloud.modular.system.model.LoginLog;
@@ -11,7 +15,9 @@ import com.youedata.nncloud.core.log.LogManager;
 import com.youedata.nncloud.core.util.ToolUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.ObjectUtils;
 
+import java.util.List;
 import java.util.TimerTask;
 
 /**
@@ -69,12 +75,12 @@ public class LogTaskFactory {
         };
     }
 
-    public static TimerTask bussinessLog(final Integer userId, final String bussinessName, final String clazzName, final String methodName, final String msg) {
+    public static TimerTask bussinessLog(final Integer userId, final String bussinessName, final String clazzName, final String methodName,final String ip, final String msg) {
         return new TimerTask() {
             @Override
             public void run() {
                 OperationLog operationLog = LogFactory.createOperationLog(
-                        LogType.BUSSINESS, userId, bussinessName, clazzName, methodName, msg, LogSucceed.SUCCESS);
+                        LogType.BUSSINESS, userId, bussinessName, clazzName, methodName,ip, msg, LogSucceed.SUCCESS);
                 try {
                     operationLogMapper.insert(operationLog);
                 } catch (Exception e) {
@@ -90,7 +96,7 @@ public class LogTaskFactory {
             public void run() {
                 String msg = ToolUtil.getExceptionMsg(exception);
                 OperationLog operationLog = LogFactory.createOperationLog(
-                        LogType.EXCEPTION, userId, "", null, null, msg, LogSucceed.FAIL);
+                        LogType.EXCEPTION, userId, "", null, null,null, msg, LogSucceed.FAIL);
                 try {
                     operationLogMapper.insert(operationLog);
                 } catch (Exception e) {
@@ -99,5 +105,25 @@ public class LogTaskFactory {
             }
         };
     }
+
+    /**
+     * 批量插入消息线程
+     * @author Monkey
+     * @param messages
+     * @return
+     */
+//    public static TimerTask batchInsertMessage(final List<Message> messages) {
+//        return new TimerTask() {
+//            @Override
+//            public void run() {
+//                RecordLogUtil.info("启动消息推送...start");
+//                if (!ObjectUtils.isEmpty(messages)) {
+//                    IMessageService messageService = SpringContextHolder.getBean(IMessageService.class);
+//                    messageService.insertBatch(messages);
+//                }
+//                RecordLogUtil.info("消息推送结束...end");
+//            }
+//        };
+//    }
 
 }

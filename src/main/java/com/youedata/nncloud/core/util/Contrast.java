@@ -185,13 +185,33 @@ public class Contrast {
         if (key.indexOf(",") != -1) {
             String[] keys = key.split(",");
             for (String item : keys) {
+//                if(item.equals("userInfoCode")||item.equals("userInfoIndex")){
+//
+//                }
                 String fieldWarpperMethodName = dictMap.getFieldWarpperMethodName(item);
                 String value = requests.get(item);
                 if (fieldWarpperMethodName != null) {
-                    Object valueWarpper = DictFieldWarpperFactory.createFieldWarpper(value, fieldWarpperMethodName);
-                    sb.append(dictMap.get(item) + "=" + valueWarpper + ",");
+                    //判断账号密码
+                    if (fieldWarpperMethodName.equals("getUserInfoNamePwd")) {
+                        String value1 = requests.get("userInfoNamePwdNew");
+                        Object valueWarpper = DictFieldWarpperFactory.createFieldWarpper1(value, value1, fieldWarpperMethodName);
+
+                        sb.append(dictMap.get(item) + valueWarpper + ",");
+                        //判断验证码
+                    } else if (fieldWarpperMethodName.equals("getUserInfoCode")) {
+                        String value1 = requests.get("userInfoIndex");
+                        Object valueWarpper = DictFieldWarpperFactory.createFieldWarpper2(value, value1, fieldWarpperMethodName);
+                        sb.append(dictMap.get(item)  + valueWarpper + ",");
+                    } else {
+                        Object valueWarpper = DictFieldWarpperFactory.createFieldWarpper(value, fieldWarpperMethodName);
+                        sb.append(dictMap.get(item)  + valueWarpper + ",");
+                    }
+
                 } else {
-                    sb.append(dictMap.get(item) + "=" + value + ",");
+                    if (!dictMap.get(item).equals("")) {
+
+                        sb.append(dictMap.get(item)  + value + ",");
+                    }
                 }
             }
             return StrKit.removeSuffix(sb.toString(), ",");
@@ -200,9 +220,9 @@ public class Contrast {
             String value = requests.get(key);
             if (fieldWarpperMethodName != null) {
                 Object valueWarpper = DictFieldWarpperFactory.createFieldWarpper(value, fieldWarpperMethodName);
-                sb.append(dictMap.get(key) + "=" + valueWarpper);
+                sb.append(dictMap.get(key) + valueWarpper);
             } else {
-                sb.append(dictMap.get(key) + "=" + value);
+                sb.append(dictMap.get(key) + value);
             }
             return sb.toString();
         }

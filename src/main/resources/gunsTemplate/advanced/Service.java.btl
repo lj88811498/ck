@@ -1,6 +1,6 @@
 package ${service.packageName};
 import com.baomidou.mybatisplus.service.IService;
-import com.youedata.nncloud.modular.fx.model.${context.entityName};
+import com.youedata.nncloud.modular.nanning.model.${context.entityName};
 /**
  * ${context.bizChName}Service
  *

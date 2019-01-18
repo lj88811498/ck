@@ -11,9 +11,12 @@ import com.youedata.nncloud.core.shiro.ShiroUser;
 import com.youedata.nncloud.core.util.ApiMenuFilter;
 import com.youedata.nncloud.core.util.KaptchaUtil;
 import com.youedata.nncloud.core.util.ToolUtil;
+import com.youedata.nncloud.modular.system.dao.SysRoleMapper;
 import com.youedata.nncloud.modular.system.model.User;
 import com.youedata.nncloud.modular.system.service.IMenuService;
+import com.youedata.nncloud.modular.system.service.IRoleService;
 import com.youedata.nncloud.modular.system.service.IUserService;
+import com.youedata.nncloud.modular.system.warpper.RoleWarpper;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.youedata.nncloud.core.support.HttpKit.getIp;
 
@@ -40,29 +44,41 @@ public class LoginController extends BaseController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private SysRoleMapper roleWarpper;
+
+//    @Autowired
+//    private UserInfoMapper userInfoMapper;
     /**
      * 跳转到主页
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
-        //获取菜单列表
-        List<Integer> roleList = ShiroKit.getUser().getRoleList();
-        if (roleList == null || roleList.size() == 0) {
-            ShiroKit.getSubject().logout();
-            model.addAttribute("tips", "该用户没有角色，无法登陆");
-            return "/login.html";
+        try {
+            List<Integer> roleList = roleWarpper.selectAllRoleIds();
+            //获取菜单列表
+//            List<Integer> roleList = ShiroKit.getUser().getRoleList();
+            if (roleList == null || roleList.size() == 0) {
+                ShiroKit.getSubject().logout();
+                model.addAttribute("tips", "该用户没有角色，无法登陆");
+                return "/login.html";
+            }
+            List<MenuNode> menus = menuService.getMenusByRoleIds(roleList);
+            List<MenuNode> titles = MenuNode.buildTitle(menus);
+            titles = ApiMenuFilter.build(titles);
+
+            model.addAttribute("titles", titles);
+
+            //获取用户头像
+            Integer id = ShiroKit.getUser().getId();
+            User user = userService.selectById(id);
+            String avatar = user.getAvatar();
+            model.addAttribute("avatar", avatar);
+//        userInfoMapper.updateAgeByCurrentTime();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        List<MenuNode> menus = menuService.getMenusByRoleIds(roleList);
-        List<MenuNode> titles = MenuNode.buildTitle(menus);
-        titles = ApiMenuFilter.build(titles);
-
-        model.addAttribute("titles", titles);
-
-        //获取用户头像
-        Integer id = ShiroKit.getUser().getId();
-        User user = userService.selectById(id);
-        String avatar = user.getAvatar();
-        model.addAttribute("avatar", avatar);
         return "/index.html";
     }
 

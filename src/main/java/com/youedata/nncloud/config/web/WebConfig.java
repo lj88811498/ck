@@ -7,6 +7,7 @@ import com.alibaba.druid.support.spring.stat.BeanTypeAutoProxyCreator;
 import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
+import com.youedata.nncloud.config.properties.DataOsProperties;
 import com.youedata.nncloud.config.properties.GunsProperties;
 import com.youedata.nncloud.core.listener.ConfigListener;
 import com.youedata.nncloud.core.xss.XssFilter;
@@ -20,6 +21,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.RequestContextListener;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -37,6 +39,27 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private GunsProperties gunsProperties;
+    @Autowired
+    private DataOsProperties dataOsProperties;
+//    @Bean
+//    DataOSLogin DataOSLogin() {
+//        return new DataOSLogin();
+//    }
+
+
+    /**
+     * 配置拦截器
+     * @author yuqingquan
+     * @param registry
+     */
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        if(dataOsProperties.getIsOpen()){
+//            registry.addInterceptor(DataOSLogin())
+//                    //放行特定路径请求;
+//                    .excludePathPatterns("/userInfo/session","/userInfo/loginDataOs");
+//        }
+////                .addPathPatterns("/**"); //拦截特定路径请求
+//    }
 
     /**
      * 增加swagger的支持
@@ -119,7 +142,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public FilterRegistrationBean xssFilterRegistration() {
         XssFilter xssFilter = new XssFilter();
-        xssFilter.setUrlExclusion(Arrays.asList("/notice/update", "/notice/add"));
+        xssFilter.setUrlExclusion(Arrays.asList("/notice/update", "/notice/add","/titleEvaluation/add","/titleEvaluation/update","/questionCommon/add","/questionCommon/update"));
         FilterRegistrationBean registration = new FilterRegistrationBean(xssFilter);
         registration.addUrlPatterns("/*");
         return registration;

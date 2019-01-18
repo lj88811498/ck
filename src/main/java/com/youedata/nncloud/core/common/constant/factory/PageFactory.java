@@ -43,7 +43,7 @@ public class PageFactory<T> {
     /**
      * size, curPage
      * @Author: Monkey
-     * @Param: [pageSize, offsetSize]
+     * @Param: [pageSize每页条数, offsetSize当前页]
      * @Date: Created in  2018/4/23 16:17.
      * @Returns com.baomidou.mybatisplus.plugins.Page<T>
      */

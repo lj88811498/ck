@@ -7,20 +7,60 @@ server:
   port: 8899
 
 ##########################################################
-###################  开发环境的profile  ###################
+###################  dataos环境的profile  ###################
 ##########################################################
 spring:
   profiles: pro
   datasource:
-    url: jdbc:mysql://172.16.0.181:3306/nncould?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://mysql:3306/nncloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
-    password: 1qaz@WSX
-    db-name: nncould
+    password: 123456
+    db-name: nncloud
     filters: log4j,wall,mergeStat
 
 guns:
   #文件上传目录(不配置的话为java.io.tmpdir目录),know-people-dir路径为文件上传目录+/know_people
-  file-upload-path: /var/www/html/fx/
-  file-upload-pathlib: /var/www/html/fx/
-  server-path: http://192.168.1.16/fx/
+  file-upload-path: /var/www/html/nanning/
+  file-upload-pathlib: /var/www/html/nanning/
+  server-path: http://192.168.1.16/fx
   map-server-path: http://192.168.1.16/
+  head-image-path: http://10.0.43.190:8899/kaptcha?index=
+
+
+shiro:
+  #服务器登录后缀
+  loginSuffix: /login
+  #服务器登出后缀
+  logoutSuffix: /logout
+  #服务器地址
+  casServerUrlPrefix: http://cdyoue.com.cn:18182/cas
+  #拦截规则
+  #casFilterUrlPattern: /shiro-cas
+  casFilterUrlPattern: /
+  #客户端地址
+  serverUrlprefix: http://cdyoue.com.cn:18199
+  #登录成功后台返回地址
+  #successUrl: /front/index.html
+  successUrl: /index
+  #登录成功前台返回地址
+  frontUrl: /index
+
+dataos:
+  #dataOS角色ID
+  dataOSRoleId: 36
+  #蓝鲸token拦截开关
+  isOpen: true
+  #默认账号
+  accountName: lijiang
+  #默认账号密码
+  accountPasswd: 111111
+  #服务器地址
+  serverPath: http://210.13.50.105:32404/
+  #登陆地址
+  loginPath: yyzhzx/api/v1/session
+  #账户列表信息查询
+  accounts: yyzhzx/api/v1/accounts
+  #token校验
+  checkAccessToken: yyzhzx/api/v1/session
+  #注册
+  register: yyzhzx/api/v1/accounts

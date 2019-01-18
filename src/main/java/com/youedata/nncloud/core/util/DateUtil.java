@@ -75,6 +75,24 @@ public class DateUtil {
 	}
 
 	/**
+	 * 获取YYYYMM格式
+	 *
+	 * @return
+	 */
+	public static String getMoth() {
+		return formatDate(new Date(), "yyyyMM");
+	}
+
+	/**
+	 * 获取YYYY-MM格式
+	 *
+	 * @return
+	 */
+	public static String getMoths() {
+		return formatDate(new Date(), "yyyy-MM");
+	}
+
+	/**
 	 * 获取YYYYMMDD格式
 	 *
 	 * @return

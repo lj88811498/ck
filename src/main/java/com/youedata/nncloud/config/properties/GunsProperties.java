@@ -24,10 +24,14 @@ public class GunsProperties {
     private Boolean kaptchaOpen = false;
 
     private Boolean swaggerOpen = false;
-
+    /**
+     * 本地挂载的图片服务器
+     */
     @Value("${guns.file-upload-path}")
     private String fileUploadPath;
-
+    /**
+     * 图片回显时的图片服务器
+     */
     @Value("${guns.server-path}")
     private String fileServerPath;
 
@@ -36,7 +40,11 @@ public class GunsProperties {
 
     @Value("${guns.map-server-path}")
     private String mapServerPath;
-
+    /**
+     * 验证码地址
+     */
+    @Value("${guns.head-image-path}")
+    private String headImagePath;
 
     private Boolean haveCreatePath = false;
 
@@ -157,5 +165,21 @@ public class GunsProperties {
 
     public void setMapServerPath(String mapServerPath) {
         this.mapServerPath = mapServerPath;
+    }
+
+    public String getHeadImagePath() {
+        return headImagePath;
+    }
+
+    public void setHeadImagePath(String headImagePath) {
+        this.headImagePath = headImagePath;
+    }
+
+    public Boolean getHaveCreatePath() {
+        return haveCreatePath;
+    }
+
+    public void setHaveCreatePath(Boolean haveCreatePath) {
+        this.haveCreatePath = haveCreatePath;
     }
 }

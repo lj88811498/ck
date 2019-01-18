@@ -43,4 +43,5 @@ public interface UserMapper extends BaseMapper<User> {
      */
     //User getByAccount(@Param("account") String account);
     User getByAccount(@Param("account") String account);
+
 }

@@ -1,10 +1,8 @@
 package com.youedata.nncloud.core.util;
 
 
-import java.beans.BeanInfo;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
+import net.sf.json.JSONObject;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,6 +26,35 @@ public class BeanUtil {
      * @Returns void
      */
     public static Object copyProperties(Map map, Object target) {
+        Class<?> targetClass = target.getClass();
+        Object o1 = null;
+        try {
+            o1 = targetClass.newInstance();
+            Field[] fields = targetClass.getDeclaredFields();
+            for (Field field : fields) {
+                Object o = map.get(field.getName());
+                if (o != null) {
+                    invokeMethod(targetClass, "set" + changeToUpper(field.getName()), o, o1);
+                }
+            }
+        } catch (Exception e) {
+            RecordLogUtil.error("映射异常！BeanUtil.copyProperties", e);
+        }
+        return o1;
+    }
+    /**
+     * 拷贝相同字段的值
+     *
+     * @Author: Monkey
+     * @Param: [map, target]
+     * @Date: Created in  2018/4/10 17:02.
+     * @Returns void
+     */
+    public static Object copyProperties2(Object map1, Object target) {
+        JSONObject map = null;
+        if (map1 instanceof JSONObject) {
+            map = (JSONObject)map1;
+        }
         Class<?> targetClass = target.getClass();
         Object o1 = null;
         try {
@@ -104,13 +131,6 @@ public class BeanUtil {
         Type[] parameterTypes = method.getGenericParameterTypes();
         boolean flag = false;
         for (Type paramType : parameterTypes) {
-//            if (paramType instanceof ParameterizedType)/**//* 如果是泛型类型 */ {
-//                Type[] types = ((ParameterizedType) paramType)
-//                        .getActualTypeArguments();// 泛型类型列表
-//                for (Type type : types) {
-//                    System.out.println("   " + type);
-//                }
-//            }
             if (paramType.getTypeName().equals("java.lang.Integer")) {
                 method.invoke(o1, Integer.parseInt(o.toString()));
                 flag = true;
@@ -152,60 +172,22 @@ public class BeanUtil {
         map.put("carTravelStartStation", "234");
         map.put("carTravelEndStation", "");
 
+        map.put("accountId", "asd123123123");
+        map.put("accountName", "考大神");
+        map.put("telephone", "133333332331");
+//        DataosUser user = new DataosUser();
 
-//        WarningIndex warningIndex = new WarningIndex();
-//        warningIndex = (WarningIndex) BeanUtil.copyProperties(map, warningIndex);
-//
-//        WarningCycle warningCycle = new WarningCycle();
-//        warningCycle = (WarningCycle) BeanUtil.copyProperties(map, warningCycle);
-//
-//        WarningTitle warningTitle = new WarningTitle();
-//        warningTitle = (WarningTitle) BeanUtil.copyProperties(map, warningTitle);
-//
-//        WarningKeyword warningKeyword = new WarningKeyword();
-//        warningKeyword = (WarningKeyword) BeanUtil.copyProperties(map, warningKeyword);
-
-//        System.out.println(warningIndex);
-//        System.out.println(warningCycle);
-//        System.out.println(warningTitle);
-//        System.out.println(warningKeyword);
-//
-//        CarTravel car = new CarTravel();
-//
-//        try {
-//            car = (CarTravel)BeanUtil.copyProperties(map, car, "信息不完整");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(car);
-
+        JSONObject map1 = new JSONObject();
+        map1.put("accountId", "asd123123123");
+        map1.put("accountName", "考大神");
+        map1.put("telephone", "133333332331");
+        map1.put("telephone2", "555555333112");
+        map1.put("telephone3", "6666666");
+//        user = (DataosUser)BeanUtil.copyProperties(map, user);
+//        DataosUser dataosUser = BeanKit.mapToBean(map, user.getClass());
+//        user = (DataosUser)BeanUtil.copyProperties(map1, user);
+//        System.out.println(user);
+//        System.out.println(dataosUser);
     }
-
-    /**
-     * java实体类转换为map
-     *
-     * @author vic
-     */
-    public static Map<String, Object> convertBeanToMap(Object bean) throws IntrospectionException, IllegalAccessException, InvocationTargetException {
-        Class type = bean.getClass();
-        Map<String, Object> returnMap = new HashMap<String, Object>();
-        BeanInfo beanInfo = Introspector.getBeanInfo(type);
-        PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
-        for (int i = 0; i < propertyDescriptors.length; i++) {
-            PropertyDescriptor descriptor = propertyDescriptors[i];
-            String propertyName = descriptor.getName();
-            if (!propertyName.equals("class")) {
-                Method readMethod = descriptor.getReadMethod();
-                Object result = readMethod.invoke(bean, new Object[0]);
-                if (result != null) {
-                    returnMap.put(propertyName, result);
-                } else {
-                    returnMap.put(propertyName, "");
-                }
-            }
-        }
-        return returnMap;
-    }
-
 
 }

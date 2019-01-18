@@ -77,4 +77,13 @@ public interface MenuMapper extends BaseMapper<Menu> {
      * @date 2017年2月19日 下午10:35:40
      */
     List<MenuNode> getMenusByRoleIds(List<Integer> roleIds);
+
+    /**
+     * 查询所有菜单
+     * @author: Monkey
+     * @param: []
+     * @date: Created in  2018/9/19 11:24.
+     * @return java.util.List<com.youedata.nncloud.core.node.MenuNode>
+     */
+    List<MenuNode> selectAll();
 }

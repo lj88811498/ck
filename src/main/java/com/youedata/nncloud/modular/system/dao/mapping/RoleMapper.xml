@@ -76,4 +76,10 @@
 		pId,
 		num ASC
 	</select>
+
+	<select id="selectAllRoleIds" resultType="Map">
+		select id from sys_role
+
+	</select>
+
 </mapper>

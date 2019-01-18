@@ -1,7 +1,5 @@
 package com.youedata.nncloud.core.aop;
 
-import com.youedata.nncloud.core.log.LogManager;
-import com.youedata.nncloud.core.log.factory.LogTaskFactory;
 import com.youedata.nncloud.core.shiro.ShiroKit;
 import com.youedata.nncloud.core.util.RecordLogUtil;
 import org.aspectj.lang.JoinPoint;

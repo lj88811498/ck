@@ -25,4 +25,11 @@ public class OperationLogServiceImpl extends ServiceImpl<OperationLogMapper, Ope
     public List<Map<String, Object>> getOperationLogs(Page<OperationLog> page, String beginTime, String endTime, String logName, String s, String orderByField, boolean asc) {
         return this.baseMapper.getOperationLogs(page, beginTime, endTime, logName, s, orderByField, asc);
     }
+
+    @Override
+    public Page getLogList(String userInfoName, String beginTime, String endTime, String orderByField, boolean isAsc, int size, int curPage) {
+        return null;
+    }
+
+
 }

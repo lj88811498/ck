@@ -24,7 +24,7 @@ public class ContextConfig {
 //    private String modelMapperPackageName = "com.youedata.nncloud.modular.system.dao";    //model的dao
     private String proPackage = "com.youedata.nncloud";
     private String coreBasePackage = "com.youedata.nncloud.core";
-    private String modelPackageName = "com.youedata.nncloud.modular.fx";        //model的包名
+    private String modelPackageName = "com.youedata.nncloud.modular.nanning";        //model的包名
     private String modelMapperPackageName = "com.youedata.nncloud.modular";    //model的dao
     private String entityName;              //实体的名称
 
@@ -45,7 +45,7 @@ public class ContextConfig {
         }
 //        modelPackageName = proPackage + "." + "modular.system.model";
 //        modelMapperPackageName = proPackage + "." + "modular.system.dao";
-        modelPackageName = proPackage + "." + "modular.fx.model";
+        modelPackageName = proPackage + "." + "modular.nanning.model";
         modelMapperPackageName = proPackage + "." + "modular.system.dao";
     }
 

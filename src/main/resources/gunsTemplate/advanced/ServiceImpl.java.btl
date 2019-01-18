@@ -3,9 +3,9 @@ package ${service.packageName}.impl;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
-import com.youedata.nncloud.modular.fx.model.${context.entityName};
+import com.youedata.nncloud.modular.nanning.model.${context.entityName};
 import org.springframework.stereotype.Service;
-import com.youedata.nncloud.modular.fx.service.I${context.entityName}Service;
+import com.youedata.nncloud.modular.nanning.service.I${context.entityName}Service;
 
 
 /**

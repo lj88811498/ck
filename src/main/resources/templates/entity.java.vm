@@ -1,8 +1,7 @@
 package ${package.Entity};
 
 #if(${activeRecord})
-import java.io.Serializable;
-
+import io.swagger.annotations.ApiModel;
 #end
 #foreach($pkg in ${table.importPackages})
 import ${pkg};

@@ -39,6 +39,974 @@
                                     </td>
                                 </tr>
                             </table>
+
+                            <table class="table table-hover table-bordered" border="border">
+                            <tr>
+                                <td>Question对象解释</td>
+                                <td>字段解释，部分字段此次版本不需要关注</td>
+                            </tr>
+
+                            <tr>
+                                <td>questionId</td>
+                                <td>问题id</td>
+                            </tr>
+                            <tr>
+                                <td>questionPid</td>
+                                <td>父类id（当存在父id,相当于是留言）</td>
+                            </tr>
+
+                            <tr>
+                                <td>questionCode</td>
+                                <td>问题业务编号，需要随机生成一个唯一码</td>
+                            </tr>
+
+                            <tr>
+                                <td>questionOfficeId</td>
+                                <td>科室id，关联科室表</td>
+                            </tr>
+                            <tr>
+                                <td>questionTitle</td>
+                                <td>问题标题</td>
+                            </tr>
+                            <tr>
+                                <td>questionContent</td>
+                                <td>内容</td>
+                            </tr>
+                            <tr>
+                                <td>questionType</td>
+                                <td>类型:1咨询,2投诉,3建议</td>
+                            </tr>
+                            <tr>
+                                <td>questionPrivilege</td>
+                                <td>隐私设置:1公开该问题,2仅自己可见</td>
+                            </tr>
+                            <tr>
+                                <td>questionProgress</td>
+                                <td>进度：0待审核,1等待受理，2已受理，3已转交相关部门，4自行解答，5等待用户确认,6等待用户评价,7已评价,8已关闭,9审核未通过，10删除</td>
+                            </tr>
+                            <tr>
+                                <td>questionView</td>
+                                <td>浏览量（本次版本不需要关注）</td>
+                            </tr>
+                            <tr>
+                                <td>questionErrorMsg</td>
+                                <td>审核失败信息</td>
+                            </tr>
+
+                            <tr>
+                                <td>childList(Question)</td>
+                                <td>问题的子集，结构还是问题对象</td>
+                            </tr>
+                            <tr>
+                                <td>attachmentList(Attachment)</td>
+                                <td>附件集合，结构如下附件，和当前层级的问题绑定</td>
+                            </tr>
+                            <tr>
+                                <td>questionStatus</td>
+                                <td>回复状态:0主动回复，1自动回复</td>
+                            </tr>
+                            <tr>
+                                <td>questionUserUrl</td>
+                                <td>用户头像（只有在详情查询的时候，才有此参数，其他时候不会有，切记切记！）</td>
+                            </tr>
+                            <tr>
+                                <td>questionAuth</td>
+                                <td>用户操作权限：0无，1有</td>
+                            </tr>
+                        </table>
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Attachment对象解释</td>
+                                    <td>附件</td>
+                                </tr>
+
+                                <tr>
+                                    <td>attachmentId</td>
+                                    <td>附件id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>attachmentQuestionId</td>
+                                    <td>附件关联的问题id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>attachmentName</td>
+                                    <td>附件名</td>
+                                </tr>
+                                <tr>
+                                    <td>attachmentUrl</td>
+                                    <td>附件地址</td>
+                                </tr>
+
+                            </table>
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Office对象解释</td>
+                                    <td>科室</td>
+                                </tr>
+
+                                <tr>
+                                    <td>officeId</td>
+                                    <td>科室id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>officeName</td>
+                                    <td>科室名称</td>
+                                </tr>
+
+                            </table>
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Degree对象解释</td>
+                                    <td>满意度统计</td>
+                                </tr>
+
+                                <tr>
+                                    <td>monthCount</td>
+                                    <td>当月问题数</td>
+                                </tr>
+
+                                <tr>
+                                    <td>monthSolveCount</td>
+                                    <td>当月问题解决数</td>
+                                </tr>
+                                <tr>
+                                    <td>mainAvg</td>
+                                    <td>整体满意度</td>
+                                </tr>
+                                <tr>
+                                    <td>answerAvg</td>
+                                    <td>客服回复满意度</td>
+                                </tr>
+                                <tr>
+                                    <td>workAvg</td>
+                                    <td>客服工作态度满意度</td>
+                                </tr>
+                                <tr>
+                                    <td>officeAvg</td>
+                                    <td>委办局答复满意度</td>
+                                </tr>
+                                <tr>
+                                    <td>solveDayAvg</td>
+                                    <td>问题解决平均天数</td>
+                                </tr>
+                                <tr>
+                                    <td>sortList</td>
+                                    <td>委办局解决问题排序</td>
+                                </tr>
+
+                                <tr>
+                                    <td>statisList</td>
+                                    <td>折线图数组</td>
+                                </tr>
+
+                                <tr>
+                                    <td>new</td>
+                                    <td>当月新增问题</td>
+                                </tr>
+                                <tr>
+                                    <td>solve</td>
+                                    <td>当月解决问题</td>
+                                </tr>
+
+                            </table>
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Resume对象解释</td>
+                                    <td>个人求职字段说明</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeUserId</td>
+                                    <td>user_id</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeName</td>
+                                    <td>姓名</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeBirthday</td>
+                                    <td>生日 (格式:2018-11-23)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeMarriage</td>
+                                    <td>婚姻状况(0:已婚，1:未婚，2:其他)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeHeight</td>
+                                    <td>身高</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeBodyWeight</td>
+                                    <td>体重</td>
+                                </tr>
+                                <tr>
+                                    <td>resumePlace</td>
+                                    <td>居住地</td>
+                                </tr>
+                                <tr>
+                                    <td>resumePhone</td>
+                                    <td>联系手机</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeEmail</td>
+                                    <td>电子邮件</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeEducation</td>
+                                    <td>学历(0:初中，1:高中，2:中专，3:大专，4:本科，5:硕士，6:博士)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeSchool</td>
+                                    <td>毕业院校</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeProfession</td>
+                                    <td>专业</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeWorkNature</td>
+                                    <td>工作性质(0:不限，1:全职，2:兼职，3:实习)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeWorkExperience</td>
+                                    <td>工作经验(0:1年以下，1:1年以上，2:2年以上，3:3年以上…，20:20年以上)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeIndustryIntention</td>
+                                    <td>行业意向(0:不限，1:机械装备制造，2:电子信息，3:铝深加工，4:食品加工，5:生物制药，6:清洁能源，7:其他行业)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeJobIntention</td>
+                                    <td>职位意向(0:不限，1:经营管理类，2:行政/人事/后勤类，3:财务/税务/审计类，4:生产制造/工工管理类，5:市场/销售类，6:客服/计算机服务类，7:计算机/互联网类，8:科研/咨询类，9:证券/金融/投资类，10:其他类)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeProfessionalSkill</td>
+                                    <td>专业技能</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeSalary</td>
+                                    <td>期望薪资</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeJobStatus</td>
+                                    <td>求职状态(0:目前正在找工作,1:观望有好机会会考虑,2:目前不想换工作)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeIntroduction</td>
+                                    <td>自我介绍（500字以内）</td>
+                                </tr>
+
+                            </table>
+                            
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Resume对象解释</td>
+                                    <td>个人求职字段说明</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeUserId</td>
+                                    <td>user_id</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeName</td>
+                                    <td>姓名</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeSex</td>
+                                    <td>性别(0:男，1:女)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeBirthday</td>
+                                    <td>生日 (格式:2018-11-23)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeMarriage</td>
+                                    <td>婚姻状况(0:已婚，1:未婚，2:其他)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeHeight</td>
+                                    <td>身高</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeBodyWeight</td>
+                                    <td>体重</td>
+                                </tr>
+                                <tr>
+                                    <td>resumePlace</td>
+                                    <td>居住地</td>
+                                </tr>
+                                <tr>
+                                    <td>resumePhone</td>
+                                    <td>联系手机</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeEmail</td>
+                                    <td>电子邮件</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeEducation</td>
+                                    <td>学历(0:初中，1:高中，2:中专，3:大专，4:本科，5:硕士，6:博士)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeSchool</td>
+                                    <td>毕业院校</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeProfession</td>
+                                    <td>专业</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeWorkNature</td>
+                                    <td>工作性质(0:不限，1:全职，2:兼职，3:实习)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeWorkExperience</td>
+                                    <td>工作经验(0:1年以下，1:1年以上，2:2年以上，3:3年以上…，20:20年以上)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeIndustryIntention</td>
+                                    <td>行业意向(0:不限，1:机械装备制造，2:电子信息，3:铝深加工，4:食品加工，5:生物制药，6:清洁能源，7:其他行业)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeJobIntention</td>
+                                    <td>职位意向(0:不限，1:经营管理类，2:行政/人事/后勤类，3:财务/税务/审计类，4:生产制造/工工管理类，5:市场/销售类，6:客服/计算机服务类，7:计算机/互联网类，8:科研/咨询类，9:证券/金融/投资类，10:其他类)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeProfessionalSkill</td>
+                                    <td>专业技能</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeSalary</td>
+                                    <td>期望薪资</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeJobStatus</td>
+                                    <td>求职状态(0:目前正在找工作,1:观望有好机会会考虑,2:目前不想换工作)</td>
+                                </tr>
+                                <tr>
+                                    <td>resumeIntroduction</td>
+                                    <td>自我介绍（500字以内）</td>
+                                </tr>
+
+                            </table>
+                            
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Attachment对象解释</td>
+                                    <td>附件</td>
+                                </tr>
+
+                                <tr>
+                                    <td>attachmentId</td>
+                                    <td>附件id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>attachmentQuestionId</td>
+                                    <td>附件关联的问题id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>attachmentName</td>
+                                    <td>附件名</td>
+                                </tr>
+                                <tr>
+                                    <td>attachmentUrl</td>
+                                    <td>附件地址</td>
+                                </tr>
+
+                            </table>
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Office对象解释</td>
+                                    <td>科室</td>
+                                </tr>
+
+                                <tr>
+                                    <td>officeId</td>
+                                    <td>科室id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>officeName</td>
+                                    <td>科室名称</td>
+                                </tr>
+
+                            </table>
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>industry对象解释</td>
+                                    <td>工业报表</td>
+                                </tr>
+
+                                <tr>
+                                    <td>industryId</td>
+                                    <td>主键id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>industryUserId</td>
+                                    <td>用户id</td>
+                                </tr>
+                                <tr>
+                                    <td>industryName</td>
+                                    <td>工业名称</td>
+                                </tr>
+                                <tr>
+                                    <td>industryYear</td>
+                                    <td>年月时间</td>
+                                </tr>
+                                <tr>
+                                    <td>industryCompany</td>
+                                    <td>单位负责人</td>
+                                </tr>
+                                <tr>
+                                    <td>industryStatistics</td>
+                                    <td>统计负责人</td>
+                                </tr>
+                                <tr>
+                                    <td>industryApplicant</td>
+                                    <td>填报人</td>
+                                </tr>
+                                <tr>
+                                    <td>industryPhone</td>
+                                    <td>手机号码</td>
+                                </tr>
+
+                                <tr>
+                                    <td>industryExplain</td>
+                                    <td>填报情况描述</td>
+                                </tr>
+
+                                <tr>
+                                    <td>industryStatus</td>
+                                    <td>状态 0:待提交 1:待审核 2:已审核</td>
+                                </tr>
+                                <tr>
+                                    <td>industryTime</td>
+                                    <td>创建时间</td>
+                                </tr>
+
+                            </table>
+                            
+                            
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>IndustryDetails对象解释</td>
+                                    <td>工业报表详情表</td>
+                                </tr>
+
+                                <tr>
+                                    <td>industryDetailsId</td>
+                                    <td>主键id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>industryDetailsYear1</td>
+                                    <td>年月时间(如:2018年4月)</td>
+                                </tr>
+                                <tr>
+                                    <td>industryDetailsYear2</td>
+                                    <td>年月时间(如:2017年4月)</td>
+                                </tr>
+                                <tr>
+                                    <td>industryDetailsIncreasingNumber</td>
+                                    <td>本月增数</td>
+                                </tr>
+                                <tr>
+                                    <td>industryDetailsAccumulate1</td>
+                                    <td>年月时间累积(如:2018年1-4月累积)</td>
+                                </tr>
+                                <tr>
+                                    <td>industryDetailsAccumulate2</td>
+                                    <td>年月时间累积(如:2017年1-4月累积)</td>
+                                </tr>
+                                <tr>
+                                    <td>industryDetailsCumulativeIncrease</td>
+                                    <td>累积增数</td>
+                                </tr>
+                                <tr>
+                                    <td>industryDetailsEstimate</td>
+                                    <td>年月时间预计(如:2017年1-4月预计)</td>
+                                </tr>
+
+                                <tr>
+                                    <td>industryDetailsIndustryId</td>
+                                    <td>关联工业报表id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>industryDetailsType</td>
+                                    <td>类型:如(1:工业总产值(当年价格) 2: 工业总产值(当年价格)按工业行业小分类)3:主要工业产品产量 4:补充资料</td>
+                                </tr>
+                                <tr>
+                                    <td>industryDetailsTime</td>
+                                    <td>创建时间</td>
+                                </tr>
+
+                            </table>
+                            
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Finance对象解释</td>
+                                    <td>财务报表</td>
+                                </tr>
+
+                                <tr>
+                                    <td>financeId</td>
+                                    <td>主键id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>financeUserId</td>
+                                    <td>用户id</td>
+                                </tr>
+                                <tr>
+                                    <td>financeName</td>
+                                    <td>财务名称</td>
+                                </tr>
+                                <tr>
+                                    <td>financeYear</td>
+                                    <td>财务状况(年月日期)</td>
+                                </tr>
+                                <tr>
+                                    <td>financeCompany</td>
+                                    <td>单位负责人</td>
+                                </tr>
+                                <tr>
+                                    <td>financeStatistics</td>
+                                    <td>统计负责人</td>
+                                </tr>
+                                <tr>
+                                    <td>financeApplicant</td>
+                                    <td>填报人</td>
+                                </tr>
+                                <tr>
+                                    <td>financePhone</td>
+                                    <td>手机号码</td>
+                                </tr>
+
+                                <tr>
+                                    <td>financeExplain</td>
+                                    <td>填报情况描述</td>
+                                </tr>
+
+                                <tr>
+                                    <td>financeStatus</td>
+                                    <td>状态 0:待提交 1:待审核 2:已审核</td>
+                                </tr>
+                                <tr>
+                                    <td>financeTime</td>
+                                    <td>创建时间</td>
+                                </tr>
+
+                            </table>
+                            
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>FinanceDetails对象解释</td>
+                                    <td>工业报表详情表</td>
+                                </tr>
+
+                                <tr>
+                                    <td>financeDetailsId</td>
+                                    <td>主键id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>financeDetailsName</td>
+                                    <td>小标题名</td>
+                                </tr>
+                                <tr>
+                                    <td>financeDetailsAccumulate1</td>
+                                    <td>年月时间累积(如:2018年1-4月累积)</td>
+                                </tr>
+                                <tr>
+                                    <td>financeDetailsAccumulate2</td>
+                                    <td>年月时间累积(如:2017年1-4月累积)</td>
+                                </tr>
+                                <tr>
+                                    <td>financeDetailsCumulativeIncrease</td>
+                                    <td>累积增数</td>
+                                </tr>
+                                <tr>
+                                    <td>financeDetailsEstimate</td>
+                                    <td>年月时间预计(如:2017年1-4月预计)</td>
+                                </tr>
+                                <tr>
+                                    <td>financeDetailsFinanceId</td>
+                                    <td>关联财务报表id</td>
+                                </tr>
+                                <tr>
+                                    <td>financeDetailsType</td>
+                                    <td>类型:如(1:年初存货 2:期末资产负债 3:损益及分配 4:应交增值税 5:平均用工人数)</td>
+                                </tr>
+
+                                <tr>
+                                    <td>financeDetailsTime</td>
+                                    <td>创建时间</td>
+                                </tr>
+                            </table>
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>ReportConfiguration对象解释</td>
+                                    <td>填报配置</td>
+                                </tr>
+
+                                <tr>
+                                    <td>reportConfigurationId</td>
+                                    <td>主键id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>reportConfigurationName</td>
+                                    <td>报表名称</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationStatus</td>
+                                    <td>状态（0：禁用，1：启用）</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationStartTime</td>
+                                    <td>开始时间</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationEndTime</td>
+                                    <td>结束时间</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationStartDay</td>
+                                    <td>每月开始填报日期</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationExceptMonth</td>
+                                    <td>例外月份</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationRemindMode</td>
+                                    <td>提醒方式:1.催报，2.短信</td>
+                                </tr>
+
+                                <tr>
+                                    <td>reportConfigurationType</td>
+                                    <td>填报类型（1：工业填报配置 2：财务填报配置）</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationCreateTime</td>
+                                    <td>创建时间</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationUpdateTime</td>
+                                    <td>更新时间</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationCreateBy</td>
+                                    <td>创建人</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationUpdateBy</td>
+                                    <td>更新人</td>
+                                </tr>
+                                <tr>
+                                    <td>reportConfigurationDelFlag</td>
+                                    <td>删除标识（0：未删除 ，1：已删除）</td>
+                                </tr>
+                                <tr>
+                                    <td>explian</td>
+                                    <td>填报阶段</td>
+                                </tr>
+                            </table>
+
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>ProjectDeclaration对象解释</td>
+                                    <td>项目申报类型</td>
+                                </tr>
+
+                                <tr>
+                                    <td>projectDeclarationId</td>
+                                    <td>主键id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>projectDeclarationTitle</td>
+                                    <td>申报标题</td>
+                                </tr>
+                                <tr>
+                                    <td>projectDeclarationLevel</td>
+                                    <td>级别(如:国家级,省级)</td>
+                                </tr>
+                                <tr>
+                                    <td>projectDeclarationStartTime</td>
+                                    <td>起始时间</td>
+                                </tr>
+                                <tr>
+                                    <td>projectDeclarationEndTime</td>
+                                    <td>终止时间</td>
+                                </tr>
+                                <tr>
+                                    <td>projectDeclarationDept</td>
+                                    <td>科室</td>
+                                </tr>
+                                <tr>
+                                    <td>projectDeclarationProcessType</td>
+                                    <td>流程类型</td>
+                                </tr>
+                                <tr>
+                                    <td>projectDeclarationModule</td>
+                                    <td>申报模块</td>
+                                </tr>
+
+                                <tr>
+                                    <td>projectDeclarationIndustry</td>
+                                    <td>所属行业</td>
+                                </tr>
+                                <tr>
+                                    <td>projectDeclarationBz</td>
+                                    <td>备注</td>
+                                </tr>
+                                <tr>
+                                    <td>projectDeclarationTime</td>
+                                    <td>创建时间</td>
+                                </tr>
+                            </table>
+
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Declaration对象解释</td>
+                                    <td>项目申报表</td>
+                                </tr>
+
+                                <tr>
+                                    <td>declarationId</td>
+                                    <td>主键id</td>
+                                </tr>
+
+                                <tr>
+                                    <td>declarationName</td>
+                                    <td>项目名称</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationUserId</td>
+                                    <td>用户id(与用户id关联)</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationStartTime</td>
+                                    <td>项目起始时间</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationEndTime</td>
+                                    <td>项目终止时间</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationInvestment</td>
+                                    <td>项目总投资</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationAddress</td>
+                                    <td>项目建设地点</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationTime</td>
+                                    <td>申报日期</td>
+                                </tr>
+
+                                <tr>
+                                    <td>declarationIndustry</td>
+                                    <td>所属行业</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationDept</td>
+                                    <td>所属科室</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationStatus</td>
+                                    <td>状态 (如 1: 提交项目申报 2: 项目审批 3: 上报立项材料 4:审批立项材料)</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationSupportFund</td>
+                                    <td>申请扶助资金（万元）</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationOwnFund</td>
+                                    <td>自有资金（万元）</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationNewTaxes</td>
+                                    <td>新增税金（万元）</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationSalesRevenue</td>
+                                    <td>新增销售收入（万元）</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationProfit</td>
+                                    <td>新增利润（万元）</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationEnterprise</td>
+                                    <td>企业名称</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationPerson</td>
+                                    <td>负责人</td>
+                                </tr>
+                                <tr>
+                                    <td>declarationPhone</td>
+                                    <td>联系电话</td>
+                                </tr>
+                            </table>
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>WebMessage对象解释</td>
+                                    <td>web端系統通知</td>
+                                </tr>
+                                <tr>
+                                    <td>webMessageId</td>
+                                    <td>主键id</td>
+                                </tr>
+                                <tr>
+                                    <td>webMessageUserId</td>
+                                    <td>user_id</td>
+                                </tr>
+                                <tr>
+                                    <td>webMessageContext</td>
+                                    <td>消息内容</td>
+                                </tr>
+                                <tr>
+                                    <td>webMessageSendTime</td>
+                                    <td>发送时间</td>
+                                </tr>
+                                <tr>
+                                    <td>webMessageUserKind</td>
+                                    <td>用户类型(0：未认证，1：认证企业，2：认证个人，3：政府用户)多个选项以英文逗号分隔</td>
+                                </tr>
+                                <tr>
+                                    <td>webMessageState</td>
+                                    <td>状态(0：草稿，1：发布)</td>
+                                </tr>
+                                <tr>
+                                    <td>webMessageUpdateTime</td>
+                                    <td>修改时间</td>
+                                </tr>
+                                <tr>
+                                    <td>userInfoName</td>
+                                    <td>操作账号(注：只有列表查询接口会有此字段)</td>
+                                </tr>
+                                <tr>
+                                    <td>webMessageStates</td>
+                                    <td>状态(0:草稿,1:未发送,2:已发送)(注：只有列表查询接口会有此字段)</td>
+                                </tr>
+
+                            </table>
+
+
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Message对象解释</td>
+                                    <td>APP端消息通知</td>
+                                </tr>
+                                <tr>
+                                    <td>messageId</td>
+                                    <td>主键id</td>
+                                </tr>
+                                <tr>
+                                    <td>messageQuestionId</td>
+                                    <td>消息来源表主键id</td>
+                                </tr>
+                                <tr>
+                                    <td>messageUserId</td>
+                                    <td>用户id</td>
+                                </tr>
+                                <tr>
+                                    <td>messageContent</td>
+                                    <td>消息内容</td>
+                                </tr>
+                                <tr>
+                                    <td>messageType</td>
+                                    <td>消息类型(1.问题反馈，2.催报通知，3.系统通知，4.认证通知)</td>
+                                </tr>
+                                <tr>
+                                    <td>messageCreateTime</td>
+                                    <td>创建时间</td>
+                                </tr>
+                                <tr>
+                                    <td>messageReadFlag</td>
+                                    <td>阅读标记：0.未阅读，1.已阅读</td>
+                                </tr>
+                            </table>
+                            
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>Economics对象解释</td>
+                                    <td>工业经济运行动态表</td>
+                                </tr>
+                                <tr>
+                                    <td>economicsId</td>
+                                    <td>主键id</td>
+                                </tr>
+                                <tr>
+                                    <td>economicsIncome</td>
+                                    <td>主营业务收入</td>
+                                </tr>
+                                <tr>
+                                    <td>economicsProfit</td>
+                                    <td>利润</td>
+                                </tr>
+                                <tr>
+                                    <td>economicsDistrictId</td>
+                                    <td>区县 </td>
+                                </tr>
+                                <tr>
+                                    <td>economicsTime</td>
+                                    <td>某年某月</td>
+                                </tr>
+                                <tr>
+                                    <td>economicsEnterpriseId</td>
+                                    <td>企业信息id</td>
+                                </tr>
+                                <tr>
+                                    <td>economicsCreateTime</td>
+                                    <td>创建时间</td>
+                                </tr>
+                                <tr>
+                                    <td>yearOnIncome</td>
+                                    <td>同比收入</td>
+                                </tr>
+                                <tr>
+                                    <td>yearOnProfit</td>
+                                    <td>同比利润</td>
+                                </tr>
+                                <tr>
+                                    <td>chainRatioProfit</td>
+                                    <td>环比利润</td>
+                                </tr>
+                                <tr>
+                                    <td>chainRatioIncome</td>
+                                    <td>环比收入</td>
+                                </tr>
+                                 <tr>
+                                    <td>districtName</td>
+                                    <td>区县名</td>
+                                </tr>
+                                 <tr>
+                                    <td>month</td>
+                                    <td>月份</td>
+                                </tr>
+                            </table>
+                            
+
                         </div>
                     </div>
                 </div>

@@ -25,17 +25,13 @@ public class DruidDBConfig {
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource(){
         DruidDataSource datasource = new DruidDataSource();
-
         List<Filter> filters = new ArrayList<>();
         filters.add(wallFilter);
         datasource.setProxyFilters(filters);
-
         return datasource;
     }
-
     @Autowired
     WallFilter wallFilter;
-
 
     @Bean(name = "wallConfig")
     WallConfig wallFilterConfig(){

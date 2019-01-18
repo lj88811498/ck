@@ -71,6 +71,7 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
 
 
+
 logging:
   level.root: info
   level.com.stylefeng: debug
