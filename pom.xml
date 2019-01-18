@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.youedata.nncloud</groupId>
-    <artifactId>nncloud</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>ck</artifactId>
+    <version>2.0</version>
     <packaging>jar</packaging>
 
-    <name>nncloud</name>
-    <description>nncloud</description>
+    <name>ck</name>
+    <description>ck</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -43,6 +43,9 @@
         <thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.1.0</thymeleaf-layout-dialect.version>
         <project.build.version>1.0</project.build.version> <!-- 项目版本-->
+        <shiro.cas.version>1.2.3</shiro.cas.version>
+        <project.name>nncloud</project.name>
+        <docker.host>http://172.16.0.181:2375</docker.host>
     </properties>
     <repositories>
         <repository>
@@ -109,6 +112,35 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- apache shiro 相关jar -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-aspectj</artifactId>
+            <version>${shiro.cas.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.cas.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-cas</artifactId>
+            <version>${shiro.cas.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--end apache shiro 相关jar  -->
+
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -470,6 +502,18 @@
             <version>1.1.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+        <!-- 时间转换  -->
+        <dependency>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>2.9.9</version>
+		</dependency>
+        
     </dependencies>
 
     <build>
@@ -487,6 +531,38 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
+
+            <!-- 添加docker打包 -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <imageName>${project.name}:${project.version}</imageName>
+                    <!--
+                    <baseImage>java</baseImage>
+                    <entryPoint>["java","-Dspring.profiles.active=test","-jar","/${project.build.finalName}.jar}"]</entryPoint>
+                    -->
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <dockerHost>${docker.host}</dockerHost>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpclient</artifactId>
+                        <version>4.4</version>
+                    </dependency>
+                </dependencies>
+
+            </plugin>
+
         </plugins>
         <resources>
             <resource>
