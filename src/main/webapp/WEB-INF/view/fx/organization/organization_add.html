@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input type="hidden" id="organizationPid">
+            <input type="hidden" id="organizationStatus" value="1">
+            <div class="row" id="organizeInfoForm">
+                <div class="col-sm-12">
+                    <#input id="organizationPname" name="上级机构" readonly="readonly"
+                            clickFun="OrganizationInfoDlg.showDeptSelectTree(); return false;"
+                            style="background-color: #ffffff !important;"/>
+                    <!--<#input id="organizationPid"  name="上级机构"/>-->
+                    <#input id="organizationName"  name="机构名称" underline="true"/>
+                </div>
+
+                <!-- 父级部门的选择框 -->
+                <div id="parentOrgMenu" class="menuContent"
+                     style="display: none; position: absolute; z-index: 200;">
+                    <ul id="parentOrgMenuTree" class="ztree tree-box" style="width: 280px !important;"></ul>
+                </div>
+
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="OrganizationInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="OrganizationInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/organization/organization_info.js"></script>
+<script>
+    $("#organizationPname").val(window.parent.UserOrg.parentOrganizationName);
+    $("#organizationPid").val(window.parent.UserOrg.parentOrganizationPid);
+</script>
+@}

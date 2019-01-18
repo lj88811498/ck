@@ -1,0 +1,55 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>数据管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <#TimeToTime bId="beginTime" eId="endTime" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="dataType" name="数据类型">
+                                    <!--<option value="">全部</option>-->
+                                    <option value="人社局-医保">人社局-医保</option>
+                                    <option value="水务局数据">水务局</option>
+                                    <option value="能源办数据">能源办</option>
+                                    <option value="卫计局-门诊">卫计局-门诊</option>
+                                    <option value="卫计局-医院">卫计局-医院</option>
+                                    <option value="交通局-公交">交通局-公交</option>
+                                    <option value="交通局-客运中心-柜台">交通局-客运中心-柜台</option>
+                                    <option value="交通局-客运中心-网站">交通局-客运中心-网站</option>
+                                    <option value="不动产登记中心">不动产登记中心</option>
+                                    <option value="市场监管局">市场监管局</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="dataName" name="数据名称" />
+                            </div>
+                            <div class="col-sm-1">
+                                <#button name="查询" icon="fa-search" clickFun="DataManagement.search()"/>
+                                <!--<#button name="导出" icon="fa-search" clickFun="DataManagement.export()"/>-->
+                                <!--<#button name="导入" icon="fa-search" clickFun="DataManagement.import()"/>-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <#button name="数据导入" icon="" clickFun="DataManagement.openImport()"/>
+                            </div>
+                            <div class="col-sm-1">
+                                <#button name="模板下载" icon="" clickFun="DataManagement.openExcleDemo()"/>
+                            </div>
+                        </div>
+                        <#table id="DataManagementTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/dataManagement/dataManagement.js"></script>
+@}

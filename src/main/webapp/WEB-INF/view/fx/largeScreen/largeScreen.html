@@ -1,0 +1,218 @@
+@layout("/common/_container.html"){
+<link rel="stylesheet" href="${ctxPath}/static/css/largeScreen.css">
+<div>
+    <!--大标题-->
+    <div class="top">
+        <h1 class="text-center">南宁工业大数据应用服务平台</h1>
+    </div>
+    <!--主体内容-->
+    <div class="row">
+        <!--左边-->
+        <div class="col-lg-3">
+            <!--反邪工作流程图-->
+            <div class="row work-image">
+                <img class="bg" src="../../../../static/largeScreen/left-top.png" alt="">
+                <p class="text-center work-image-title">平台管理</p>
+                <div class="work-image-content">
+                    <ul id="platformPlay">
+                        <li class="active">组织管理系统</li>
+                        <li>邪教人员系统</li>
+                        <li>防控管理系统</li>
+                        <li>数据分析系统</li>
+                        <li>应急处置系统</li>
+                        <li>涉网信息系统</li>
+                        <li>宣传教育系统</li>
+                        <li>帮教转化系统</li>
+                    </ul>
+                   <!-- <img class="work-images1" src="../../../../static/largeScreen/icon1.png" alt="">
+                    <p  class="desc desc1">日常巡查</p>
+                    <img class="work-images5" src="../../../../static/largeScreen/icon13.png" alt="">
+                    <img class="work-images2" src="../../../../static/largeScreen/icon2.png" alt="">
+                    <p class="desc desc2">及时上报</p>
+                    <img class="work-images3" src="../../../../static/largeScreen/icon3.png" alt="">
+                    <p class="desc desc3">实时评估</p>
+                    <img class="work-images6" src="../../../../static/largeScreen/icon13.png" alt="">
+                    <img class="work-images4" src="../../../../static/largeScreen/icon4.png" alt="">
+                    <p class="desc desc4">存档分析</p>
+                    <img class="work-images7" src="../../../../static/largeScreen/icon_shuju.png" alt="">
+                    <p class="desc desc5">数据交互</p>-->
+                </div>
+            </div>
+            <!--邪教人员标签系列-->
+            <div class="row man-label">
+                <img class="man-label-bg" src="../../../../static/largeScreen/left-bottom.png" alt="">
+                <p class="text-center man-label-title">系统简介</p>
+                <!--<img class="man-images man-images1" src="../../../../static/largeScreen/icon9.png" alt="">-->
+                <!--<p class="man-desc1 man-desc">邪教人员</p>-->
+
+                <div class="man-label-content">
+                    <ul id="label-content">
+                       <!-- <li>
+                            <p>1</p>
+                            <p>通过以四级领导小组的组织架构形式，
+                                展示反邪工作领导的全面性、多维性</p>
+                        </li>
+                        <li>
+                            <p>1</p>
+                            <p>通过以四级领导小组的组织架构形式，
+                                展示反邪工作领导的全面性、多维性</p>
+                        </li>-->
+                    </ul>
+                  <!--  <img class="man-images man-images2" src="../../../../static/largeScreen/icon11.png" alt="">
+                    &lt;!&ndash;邪教类别&ndash;&gt;
+                    <img class="man-images man-images3" src="../../../../static/largeScreen/icon10.png" alt="">
+                    <img class="man-images man-images-word1" src="../../../../static/largeScreen/icon_left1.png" alt="">
+                    <img class="man-images man-images-after1" src="../../../../static/largeScreen/icon12.png" alt="">
+                    <p class="man-desc man-desc-category1">全能神</p>
+                    <p class="man-desc man-desc-category2">法轮功</p>
+                    <p class="man-desc man-desc-category3">门徒会</p>
+                    <p class="man-desc man-desc-category4">中功</p>
+                    <p class="man-desc man-desc-category5">心灵法门</p>
+
+                    &lt;!&ndash;监控级别&ndash;&gt;
+                    <img class="man-images man-images4" src="../../../../static/largeScreen/icon10.png" alt="">
+                    <img class="man-images man-images-word2" src="../../../../static/largeScreen/icon_left2.png" alt="">
+                    <img class="man-images man-images-after2" src="../../../../static/largeScreen/icon12_01.png" alt="">
+                    <p class="man-desc man-desc-monitor1">解脱人</p>
+                    <p class="man-desc man-desc-monitor2">重点人员</p>
+                    <p class="man-desc man-desc-monitor3">三级人员</p>
+                    <p class="man-desc man-desc-monitor4">不放心人</p>
+                    <p class="man-desc man-desc-monitor5">一般人员</p>
+                    &lt;!&ndash;涉外情况&ndash;&gt;
+                    <img class="man-images man-images5" src="../../../../static/largeScreen/icon10.png" alt="">
+                    <img class="man-images man-images-word3" src="../../../../static/largeScreen/icon_left3.png" alt="">
+                    <img class="man-images man-images-after3" src="../../../../static/largeScreen/icon12_02.png" alt="">
+                    <p class="man-desc man-desc-out1">近亲在境外</p>
+                    <p class="man-desc man-desc-out2">边控</p>
+                    <p class="man-desc man-desc-out3">境外</p>
+
+                    &lt;!&ndash;转化情况&ndash;&gt;
+                    <img class="man-images man-images6" src="../../../../static/largeScreen/icon10.png" alt="">
+                    <img class="man-images man-images-word4" src="../../../../static/largeScreen/icon_left4.png" alt="">
+                    <img class="man-images man-images-after4" src="../../../../static/largeScreen/icon12_03.png" alt="">
+                    <p class="man-desc man-desc-change1">已解脱</p>
+                    <p class="man-desc man-desc-change2">待解脱</p>
+                    <p class="man-desc man-desc-change3">需重点巩固</p>
+                    <p class="man-desc man-desc-change4">需攻坚</p>
+
+                    &lt;!&ndash;受打击处理&ndash;&gt;
+                    <img class="man-images man-images7" src="../../../../static/largeScreen/icon10.png" alt="">
+                    <img class="man-images man-images-word5" src="../../../../static/largeScreen/icon_left5.png" alt="">
+                    <img class="man-images man-images-after5" src="../../../../static/largeScreen/icon12_04.png" alt="">
+                    <p class="man-desc man-desc-deal1">被判刑</p>
+                    <p class="man-desc man-desc-deal2">刑事拘留</p>
+                    <p class="man-desc man-desc-deal3">行政拘留</p>
+                    <p class="man-desc man-desc-deal4">劳教</p>-->
+                </div>
+            </div>
+        </div>
+
+
+        <!--中间-->
+        <div class="col-lg-6">
+            <!--邪教大数据总览-->
+            <div class="row all-view">
+                <img class="all-view-bg" src="../../../../static/largeScreen/middle.png" alt="">
+                <p class="text-center all-view-title">邪教大数据总览</p>
+                <div class="all-view-content">
+                    <ul>
+                        <li class="all-view-subtitle">邪教人员总数</li>
+                        <li class="all-view-count"><span id="userCount"></span></li>
+                        <li class="all-view-subtitle">今年新增</li>
+                        <li class="all-view-increment"><span id="newUserThisYear"></span></li>
+                    </ul>
+                    <ul>
+                        <li class="all-view-subtitle">网格人员总量</li>
+                        <li class="all-view-count"><span id="gridmanCount"></span></li>
+                        <li class="all-view-subtitle">今年新增</li>
+                        <li class="all-view-increment"><span id="newGridmanThisYear"></span></li>
+                    </ul>
+                    <ul>
+                        <li class="all-view-subtitle">案件处理总量</li>
+                        <li class="all-view-count"><span id="caseCount"></span></li>
+                        <li class="all-view-subtitle">本月新增</li>
+                        <li class="all-view-increment"><span id="newCaseThisMonth"></span></li>
+                    </ul>
+                    <ul>
+                        <li class="all-view-subtitle">帮教信息总量</li>
+                        <li class="all-view-count"><span id="userHereticsRecordCount"></span></li>
+                        <li class="all-view-subtitle">本周新增</li>
+                        <li class="all-view-increment"><span id="newCaseThisWeek"></span></li>
+                    </ul>
+                </div>
+            </div>
+            <!--邪教人员区域热力图-->
+            <div class="row area-image">
+                <p class="text-center area-image-title">邪教人员区域热力图</p>
+                <div class="area-box" id="main">
+                </div>
+            </div>
+        </div>
+
+
+        <!--右边-->
+        <div class="col-lg-3">
+            <!--重点关注人员动态-->
+            <div class="row man-action">
+                <img class="man-action-bg" src="../../../../static/largeScreen/right.png" alt="">
+                <p class="text-center man-action-title">重点关注人员动态</p>
+                <!--人员动态折线图-->
+                <div class="man-label-chart">
+                    <p class="man-label-btn1 active" onclick="largeScreen.tabClick(1)">帮教信息</p>
+                    <p class="man-label-btn2" onclick="largeScreen.tabClick(2)">案件信息</p>
+                    <div class="userHeretics-wrap">
+                        <div id="userHeretics"></div>
+                        <div id="caseInfo"></div>
+                    </div>
+                </div>
+                <!--人员动态下部卡片-->
+                <div class="man-action-card txtMarquee-top">
+                    <div class="bd">
+                        <ul style="padding-left: 0" class="manCard-wrap">
+                            <li class="manCard">
+                                <div class="manCard-box">
+                                    <div class="manCard-left">
+                                        <div class="text-center manCard-left-word"><p>风险度</p></div>
+                                        <div class="text-center manCard-left-num"><p>89</p></div>
+                                    </div>
+                                    <div class="manCard-right">
+                                        <div class="base-content">
+                                            <span>张三</span>
+                                            <span>男</span>
+                                            <span >48岁</span>
+                                        </div>
+                                        <div class="base-content">
+                                            <span >所属邪教组织：全能神</span>
+                                        </div>
+                                        <div class="base-content">
+                                            <span >身份证：全能神</span>
+                                        </div>
+                                        <div class="base-content">
+                                            <span >负责网格员：全能神</span>
+                                            <span >网格员电话：18380448468</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="manCard-tag-list">
+                                    <ul>
+                                        <li>重点关注对象</li>
+                                        <li>需攻坚</li>
+                                        <li>被判刑</li>
+                                        <li>失控</li>
+                                        <li>近亲有邪教人员</li>
+                                        <li>负案在逃</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<ul id="users" style="padding-left: 0"></ul>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--<script src="${ctxPath}/static/modular/fx/largeScreen/jquery.liMarquee.js"></script>-->
+<script src="${ctxPath}/static/modular/fx/largeScreen/largeScreen.js"></script>
+@}

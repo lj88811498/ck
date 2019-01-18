@@ -1,0 +1,134 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <!--<div class="ibox-title">
+                <h5>预警周期管理</h5>
+            </div>-->
+            <div class="ibox-content monitor">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 monitorYear">
+                                <!--<div class="col-sm-8">-->
+                                    <div class="sub-title sub-title-bg clearfix ">
+                                        <div class="sub-title-line"></div>
+                                        <div class="sub-title-name">邪教人员社会活动趋势</div>
+                                        <div class="monitorSearch">
+                                            <#DivTimeCon id="year"  name="activity" chartType="barWithLine" url="/monitor/activity" type="year" clickFun="Monitor.selectTime($('#year'),$('#month'))" />
+                                             <!--<select id="year">-->
+                                                 <!--<option value="2018">2018</option>-->
+                                             <!--</select>-->
+                                            <select id="month" name="activity" onchange="Monitor.selectTime($('#year'),$('#month'))">
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                <div id="activity"></div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="sub-title sub-title-bg clearfix ">
+                                        <div class="sub-title-line"></div>
+                                        <div class="sub-title-name">邪教人员占比分布</div>
+                                    </div>
+                                    <p class="total">总量：<span id="totalPerson"></span></p>
+                                    <div id="distribution">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="sub-title sub-title-bg clearfix ">
+                                        <div class="sub-title-line"></div>
+                                        <div class="sub-title-name">邪教人员区域分布</div>
+                                    </div>
+                                    <div id="area">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 monitorYear">
+                                <div class="col-sm-6">
+                                    <div class="sub-title sub-title-bg clearfix ">
+                                        <div class="sub-title-line"></div>
+                                        <div class="sub-title-name">受打击处理情况</div>
+                                        <div class="monitorSearch">
+                                            <#DivTimeCon id="hitYear"  name="hit" chartType="hit" url="/monitor/hit" type="year" clickFun="Monitor.selectTime($('#hitYear'),$('#hitMonth'))" />
+                                            <!--<select id="year">-->
+                                            <!--<option value="2018">2018</option>-->
+                                            <!--</select>-->
+                                            <select id="hitMonth" name="hit" onchange="Monitor.selectTime($('#hitYear'),$('#hitMonth'))">
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p class="total">总量：<span id="hitTotal"></span></p>
+                                    <div id="hit">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="sub-title sub-title-bg clearfix ">
+                                        <div class="sub-title-line"></div>
+                                        <div class="sub-title-name">邪教组织分布</div>
+                                    </div>
+                                    <p class="total">总量：<span id="totalOrganize"></span></p>
+                                    <div id="organize">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="sub-title sub-title-bg clearfix ">
+                                        <div class="sub-title-line"></div>
+                                        <div class="sub-title-name">邪教人员思想转化度</div>
+                                    </div>
+                                    <!--<p class="total">总量：<span id=""></span></p>-->
+                                    <div id="transformation">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="sub-title sub-title-bg clearfix ">
+                                        <div class="sub-title-line"></div>
+                                        <div class="sub-title-name">转化情况分析</div>
+                                    </div>
+                                    <p class="total">总量：<span id="totalAnalysis"></span></p>
+                                    <div id="transformationAnalysis">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/monitor/monitor.js"></script>
+@}

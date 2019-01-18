@@ -1,0 +1,143 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="sub-title clearfix">
+        <!--    <div class="sub-title-line"></div>
+            <div class="sub-title-name">预警推送</div>-->
+        </div>
+        <ul class="tab-menu clearfix"></ul>
+        <div class="form-horizontal">
+            <input type="hidden" id="carTravelUserId">
+            <div class="col-sm-12">
+                <ul class="info_card_list">
+
+                </ul>
+
+              <!--  <div class="info_card_edit">
+                    <#button btnCss="primary" name="编辑信息" id="ensure" icon="fa-edit" clickFun="CarTravel.openCarTravelDetail()"/>
+                </div>-->
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">私家车信息</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <#button name="新增" icon="fa-plus" clickFun="CarTravel.openAddPrivateCar()"/>
+                                </div>
+                            </div>
+                            <#table id="PrivateCar"/>
+                            <!--  <ul class="info_card_list_ul involving_info_card clearfix">
+                                  <li>
+                                      <span class="info_name">车牌号</span>
+                                      <span class="info_info" id="involvingEvilType"></span>
+                                  </li>
+                                  <li>
+                                      <span class="info_name">汽车品牌</span>
+                                      <span class="info_info" id="involvingEvilStartTime"></span>
+                                  </li>
+                                  <li>
+                                      <span class="info_name">车系</span>
+                                      <span class="info_info" id="involvingEvilWork"></span>
+                                  </li>
+                                  <li>
+                                      <span class="info_name">车型</span>
+                                      <span class="info_info" id="involvingEvilWork"></span>
+                                  </li>
+                                  <li>
+                                      <span class="info_name">颜色</span>
+                                      <span class="info_info" id="involvingEvilNoticedTime"></span>
+                                  </li>
+                              </ul>-->
+                        </li>
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">公交出行</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTimeBus" eId="endTimeBus" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="BusTravel.search()"/>
+                                </div>
+                            </div>
+                            <#table id="BusTravelTable"/>
+                        </li>
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">汽车出行</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTime" eId="endTime" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="CarTravel.search()"/>
+                                </div>
+                            </div>
+                            <#table id="CarTravelTable"/>
+                        </li>
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">火车出行</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTime1" eId="endTime1" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="TrainTravel.search()"/>
+                                    <#button name="新增" icon="fa-plus" clickFun="CarTravel.trainAdd()"/>
+                                </div>
+                            </div>
+                            <#table id="TrainTravelId"/>
+                        </li>
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">飞机出行</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTime2" eId="endTime2" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="PlainTravel.search()"/>
+                                </div>
+                            </div>
+                            <#table id="PlaneTravelId"/>
+                        </li>
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">轮船出行</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTime3" eId="endTime3" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="ShipTravel.search()"/>
+                                </div>
+                            </div>
+                            <#table id="ShipTravelId"/>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/carTravel/carTravel.js"></script>
+<script src="${ctxPath}/static/modular/fx/privateCar/privateCar.js"></script>
+@}

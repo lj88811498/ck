@@ -1,0 +1,32 @@
+@layout("/common/_container.html"){
+
+<!--<link rel="stylesheet" type="text/css" href="http://172.16.0.181/fx/baiduMap/css/map.css"/>-->
+<!--<script type="text/javascript" src="../jquery.js"></script>-->
+<!--<script type="text/javascript" src="../layer/layer.js"></script>-->
+<div class="row">
+    <div class="col-sm-12">
+        <!--<div class="ibox float-e-margins">-->
+        <!--<div class="ibox-content">-->
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <#table id="trackDetailTable"/>
+            </div>
+            <div class="col-sm-12">
+                <div  style="width: 100%;height: 550px;margin-top: 15px;">
+                    <div id="track_map" style="width: 100%;height: 550px;"></div>
+                </div>
+
+            </div>
+        </div>
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<script>
+    document.write('<link rel="stylesheet" type="text/css" href="'+Feng.mapPath+'/fx/baiduMap/css/map.css"/>');
+    document.write('<script src="' + Feng.mapPath + '/fx/baiduMap/offlinemap/map_load.js" type="text/javascript" ></sc' + 'ript>');
+</script>
+<!--<script type="text/javascript" src="http://172.16.0.181/fx/baiduMap/offlinemap/map_load.js"></script>-->
+<script src="${ctxPath}/static/modular/fx/areaPeoAnaly/trackDetail.js"></script>
+@}

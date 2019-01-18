@@ -1,0 +1,54 @@
+@layout("/common/_container.html"){
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/pagination/common/reset.css" media="screen">
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/pagination/common/highlight.min.css" media="screen">
+<link rel="stylesheet"  href="${ctxPath}/static/js/plugins/pagination/pagination.css"/>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>预警建议管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#SelectCon id="warningAdviseId" name="预警等级">
+                                    <option value="">全部</option>
+                                    <option value="1">A级：红色预警</option>
+                                    <option value="2">B级：橙色预警</option>
+                                    <option value="3">C级：蓝色预警</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoMonitorLevel" name="防控等级">
+                                    <option value="">全部</option>
+                                    <option value="重点人员3级">重点人员(三级人员)</option>
+                                    <option value="重点人员2级">重点人员(二级人员)</option>
+                                    <option value="重点人员1级">重点人员(一级人员)</option>
+                                    <option value="不放心人员">不放心人员</option>
+                                    <option value="一般人员">一般人员</option>
+                                    <option value="已解脱人员">已解脱人员</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="userInfoName" name="人员姓名" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="查询" icon="fa-search" clickFun="WarningAdvise.search()"/>
+                            </div>
+                        </div>
+                        <div class="warning-content">
+                        </div>
+                        <div style="text-align: center">
+                            <div class="m-style pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/plugins/pagination/jquery.pagination.js"></script>
+<script src="${ctxPath}/static/modular/fx/gridMonitor/warningPush.js"></script>
+@}

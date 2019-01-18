@@ -1,0 +1,43 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="precautionDetail">
+            <div class="precautionTitles" id="precautionTitle">${item.internetInfoName}</div>
+            <div class="precaution-info">
+                <p>
+                    <span>所属网站:</span>
+                    <span id="precautionType">${item.internetInfoFrom}</span>
+                </p>
+                <p>
+                    <span>发布时间:</span>
+                    <span id="precautionCreateTime">${item.internetInfoPublishTime}</span>
+                </p>
+                <p>
+                    <span>作者:</span>
+                    <span>${item.internetInfoAuthor}</span>
+                </p>
+                <p>
+                    <span>URL链接:</span>
+                    <span id="precautionUpdateTime">${item.internetInfoLink}</span>
+                </p>
+            </div>
+            <div class="precaution-content" id="precautionContent">
+                 ${item.internetInfoContent}
+            </div>
+            <div class="interInfoComment">
+                @for(comment in items){
+                  @if(comment.internetInfoContent!="　　"){
+                    <p>
+                        <span>回帖时间：${comment.internetInfoPublishTime}</span>
+                        <span>作者：${comment.internetInfoAuthor}</span>
+                        <span>回帖内容：${comment.internetInfoContent}</span>
+                    </p>
+                   @}
+
+                @}
+
+            </div>
+        </div>
+    </div>
+</div>
+@}

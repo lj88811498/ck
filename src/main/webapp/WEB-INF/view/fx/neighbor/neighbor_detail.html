@@ -1,0 +1,54 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="sub-title clearfix">
+            <div class="sub-title-line"></div>
+            <div class="sub-title-name">预警推送</div>
+        </div>
+        <ul class="tab-menu clearfix">
+            <li><a href="javascript:;" onclick="window.location.href = Feng.ctxPath + '/userInfo/userInfo_detail/${item.neighborUserId}'">基本信息</a></li>
+            <li><a href="javascript:;" onclick="window.location.href = Feng.ctxPath + '/userHeretics/detail/${item.neighborUserId}'">帮教信息</a></li>
+            <li><a href="javascript:;" onclick="window.location.href = Feng.ctxPath + '/involvingEvil/detail/${item.neighborUserId}'">涉邪信息</a></li>
+            <li><a href="javascript:;" onclick="window.location.href = Feng.ctxPath + '/peopleInfo/detail/${item.neighborUserId}'">人口信息</a></li>
+            <li class="active"><a href="javascript:;" onclick="window.location.href = Feng.ctxPath + '/neighbor/neighbor_detail/${item.neighborUserId}'">邻里信息</a></li>
+            <li><a href="javascript:;" onclick="window.location.href = Feng.ctxPath + '/carTravel/detail/${item.neighborUserId}'">出行信息</a></li>
+        </ul>
+        <div class="form-horizontal">
+
+            <input type="hidden" id="userInfoId" value="${item.neighborUserId}">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">某某某社会第001网格</div>
+                            </div>
+                            <ul class="info_card_list_ul clearfix">
+                                <li style="width: 100%">
+                                    <span class="info_name">现居住地</span>
+                                    <span class="info_info" id="neighborAddr">${item.neighborAddr}</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <#button name="添加" icon="fa-plus" clickFun="Neighbor.openAddNeighbor()"/>
+                                </div>
+                            </div>
+                            <#table id="NeighborTable"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/neighbor/neighbor.js"></script>
+@}

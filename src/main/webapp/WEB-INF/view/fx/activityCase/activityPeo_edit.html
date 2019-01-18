@@ -1,0 +1,31 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="activityCaseUserManagerId" value="">
+            <input type="hidden" id="activityCaseUserId" value="${item.activityCaseUserId}">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#inputShowTime id="activityCaseUserCreateTime" name="时间" isTime="false" pattern="YYYY-MM-DD" value="${item.activityCaseUserCreateTime}"/>
+                    <#input id="activityCaseUserName" name="姓名" value="${item.activityCaseUserName}"/>
+                    <#input id="activityCaseUserCard" name="身份证号" value="${item.activityCaseUserCard}" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ActivityCaseInfoDlg.editPeopleSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ActivityCaseInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $("#activityCaseUserCreateTime").val($("#activityCaseUserCreateTime").val().substr(0,10));
+</script>
+<script src="${ctxPath}/static/modular/fx/activityCase/activityCase_info.js"></script>
+@}

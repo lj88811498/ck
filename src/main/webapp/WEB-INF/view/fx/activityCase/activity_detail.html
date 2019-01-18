@@ -1,0 +1,100 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+        <input id="activityCaseManagerId" name="" type="hidden" value="${item.id}"/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">基本信息</div>
+                            </div>
+                            <ul class="info_card_list_ul involving_info_card clearfix">
+                                <li>
+                                    <span class="info_name">填报时间</span>
+                                    <span class="info_info" id="involvingEvilType">${item.activityManagerCreateTime}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">填报单位</span>
+                                    <span class="info_info" id="involvingEvilStartTime">${item.activityManagerUnit}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">填报人</span>
+                                    <span class="info_info" id="involvingEvilWork">${item.activityManagerName}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">分管领导</span>
+                                    <span class="info_info" id="involvingEvilNoticedTime">${item.activityManagerLeader}</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">案件情况</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-6">
+                                        <#TimeToTime bId="beginTime" eId="endTime" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <#button name="查询" icon="fa-search" clickFun="ActivityCase.caseDetailSearch()"/>
+                                        <#button name="新增" icon="fa-plus" clickFun="ActivityCase.openAddActivityCase()"/>
+                                    </div>
+                                </div>
+                                <#table id="caseTable"/>
+                            </div>
+                        </li>
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">新增邪教人员</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-6">
+                                        <#TimeToTime bId="beginTime1" eId="endTime1" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                      <#button name="查询" icon="fa-search" clickFun="ActivityCase.newDetailSearch()"/>
+                                        <#button name="新增" icon="fa-plus" clickFun="ActivityCase.openAddActivityPeople()"/>
+                                    </div>
+                                </div>
+                                <#table id="newAddTable"/>
+                            </div>
+                        </li>
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">被挡获情况</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-6">
+                                        <#TimeToTime bId="beginTime2" eId="endTime2" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <#button name="查询" icon="fa-search" clickFun="ActivityCase.suspendDetailSearch()"/>
+                                        <#button name="新增" icon="fa-plus" clickFun="ActivityCase.openAddActivityAresst()"/>
+                                    </div>
+                                </div>
+                                <#table id="suspendTable"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/activityCase/activityCase.js"></script>
+@}

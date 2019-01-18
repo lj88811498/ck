@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<style>
+    .layui-layer-dialog .layui-layer-content .layui-layer-ico{
+        width: 30px!important;
+        height: 30px!important;
+    }
+</style>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="carTravelType" value="2">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="userInfoName" name="姓名"/>
+                    <#input id="userInfoCard" name="身份证号"/>
+                    <#input id="carTravelStartStation" name="起点"/>
+                    <#input id="carTravelEndStation" name="终点"/>
+                    <#inputTime id="carTravelTime" name="时间"  isTime="true"  pattern="YYYY-MM-DD hh:mm:ss"/>
+                    <#input id="carTravelCarNo" name="车次"/>
+                    <#input id="carTravelSeat" name="座位" underline="true"/>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CarTravelInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="CarTravelInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/carTravel/carTravel_info.js"></script>
+@}

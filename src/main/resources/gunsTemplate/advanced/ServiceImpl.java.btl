@@ -1,0 +1,20 @@
+package ${service.packageName}.impl;
+
+import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.transaction.annotation.Transactional;
+import com.youedata.nncloud.modular.fx.model.${context.entityName};
+import org.springframework.stereotype.Service;
+import com.youedata.nncloud.modular.fx.service.I${context.entityName}Service;
+
+
+/**
+ * ${context.bizChName}Service
+ *
+ * @author ${context.author}
+ * @Date ${tool.currentTime()}
+ */
+@Service
+@Transactional(rollbackFor = java.lang.Exception.class)
+public class ${context.bizEnBigName}ServiceImpl extends ServiceImpl<BaseMapper<${context.entityName}>,${context.entityName}> implements I${context.bizEnBigName}Service {
+}

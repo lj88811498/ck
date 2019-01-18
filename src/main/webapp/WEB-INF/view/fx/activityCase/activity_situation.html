@@ -1,0 +1,59 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12" style="margin-top: 20px;">
+                                <div class="col-sm-12 f-userDataYear">
+                                        <div class="sub-title sub-title-bg clearfix ">
+                                            <div class="sub-title-line"></div>
+                                            <div class="sub-title-name">区域案件趋势</div>
+                                            <div id="monitorSearch" style="width:30%">
+                                                <#DivTimeCon id="year"  name="areaCaseTrending" chartType="line" url="/activityCase/areaCaseTrending" type="year" clickFun="ActivitySituation.selectTime($('#year'))" />
+                                                <select id="month" name="areaCaseTrending" onchange="ActivitySituation.selectTime($('#year'))">
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="areaCaseTrending" style="height:360px;">
+
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="col-sm-12" style="margin-top: 20px;">
+                                <div class="col-sm-12 f-userDataYear">
+                                    <div class="sub-title sub-title-bg clearfix ">
+                                        <div class="sub-title-line"></div>
+                                        <div class="sub-title-name">区域案件情况</div>
+                                    </div>
+                                    <div id="areaCaseDetail" style="height:360px;">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/activityCase/activity_situation.js"></script>
+@}

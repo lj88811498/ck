@@ -1,0 +1,71 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="BaseInfoInfoDlgForm">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="userInfoName" name="姓名" value="" />
+                    <#input id="userInfoCard" name="身份证" value="" />
+                    <#select id="userInfoRegion" name="所属镇,街道">
+                        <option value="郫筒街道">郫筒街道</option>
+                        <option value="合作街道">合作街道</option>
+                        <option value="西园街道">西园街道</option>
+                        <option value="犀浦镇">犀浦镇</option>
+                        <option value="红光镇">红光镇</option>
+                        <option value="安靖镇">安靖镇</option>
+                        <option value="团结镇">团结镇</option>
+                        <option value="唐昌镇">唐昌镇</option>
+                        <option value="三道堰镇">三道堰镇</option>
+                        <option value="新民场镇">新民场镇</option>
+                        <option value="花园镇">花园镇</option>
+                        <option value="安德镇">安德镇</option>
+                        <option value="唐元镇">唐元镇</option>
+                        <option value="德源镇">德源镇</option>
+                        <option value="古城镇">古城镇</option>
+                        <option value="友爱镇">友爱镇</option>
+                    </#select>
+                    <#select id="userInfoCulttype" name="邪教类别">
+                        <option value="法轮功">法轮功</option>
+                        <option value="门徒会">门徒会</option>
+                        <option value="全能神">全能神</option>
+                        <option value="中功">中功</option>
+                        <option value="心灵法门">心灵法门</option>
+                    </#select>
+                    <#select id="userInfoMonitorLevel" name="监控级别">
+                        <option value="重点人员3级">重点人员3级</option>
+                        <option value="重点人员2级">重点人员2级</option>
+                        <option value="重点人员1级">重点人员1级</option>
+                        <option value="不放心人员">不放心人员</option>
+                        <option value="一般人员">一般人员</option>
+                        <option value="已解脱">已解脱</option>
+                    </#select>
+                    <#select id="userInfoContrStatus" name="在控状态">
+                        <option value="在控-本地在控">在控-本地在控</option>
+                        <option value="在控-异地管控">在控-异地管控</option>
+                        <option value="在控-异地推送">在控-异地推送</option>
+                        <option value="失控-失踪">失控-失踪</option>
+                        <option value="失控-失联">失控-失联</option>
+                        <option value="失控-负案在逃">失控-负案在逃</option>
+                        <option value="在押-行政拘留">在押-行政拘留</option>
+                        <option value="在押-刑事拘留">在押-刑事拘留</option>
+                        <option value="服刑-在监">服刑-在监</option>
+                        <option value="服刑-缓刑">服刑-缓刑</option>
+                        <option value="出境">出境</option>
+                    </#select>
+                    <#input id="userInfoRemarks" name="备注" value="" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BaseInfoInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BaseInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/baseInfo/baseInfo_info.js"></script>
+@}

@@ -1,0 +1,61 @@
+@layout("/common/_container.html"){
+<link rel="stylesheet" href="${ctxPath}/static/js/plugins/timeline/css/screen.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${ctxPath}/static/js/plugins/timeline/css/responsive.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${ctxPath}/static/js/plugins/timeline/inc/colorbox.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${ctxPath}/static/css/style1.css" type="text/css" media="screen">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="container sensitiveTime" style="float: left;position: relative">
+
+                                <!--<h2 class="title">敏感时间段</h2>-->
+                                <!--<div id="timelineContainer" class="timelineContainer">-->
+                                    <!--<img src="/static/img/time.png" class="bigTime">-->
+                                <div class="content">
+                                    <div class="wrapper">
+                                        <div class="main">
+                                            <h1 class="title">敏感时间段</h1>
+                                            <div id="timeLines"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                    <!--<div class="timelineToggle"><p><a class="expandAll">+ 全部展开</a></p></div>-->
+                                     <div class="timelineManage" onclick="Sensitive.timeManage()">管理敏感时间段</div>
+                                    <br class="clear">
+
+
+                                    <!--<br class="clear">-->
+                                </div><!-- /#timelineContainer -->
+
+                            </div><!-- /.container -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/timeline/inc/colorbox.js"></script>
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/timeline/js/timeliner.min.js"></script>
+<script src="${ctxPath}/static/modular/fx/sensitive/sensitive.js"></script>
+<script>
+    $(document).ready(function() {
+        $.timeliner({
+            startOpen:['#1EX']
+        });
+        $.timeliner({
+            timelineContainer: '#timelineContainer_2'
+        });
+        // Colorbox Modal
+        $(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
+    });
+
+</script>
+@}

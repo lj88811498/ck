@@ -1,0 +1,100 @@
+@layout("/common/_container.html"){
+<style>
+    #myEditor1{
+        height: 592px;
+        margin-bottom: 20px;
+    }
+    #edui1{
+        height: 585px;
+    }
+    #edui1_iframeholder{
+        height: 479px!important;
+    }
+    #precautionTitle{
+        text-align: left!important;
+        font-size: 14px;
+        font-weight: normal!important;
+    }
+    .form-control-feedback{
+        right: 10px!important;
+    }
+</style>
+<div class="ibox float-e-margins">
+    <div class="ibox-content" id="PrecautionInfoDlgForm">
+        <div class="precautionDetailAdd">
+            <div class="row">
+                <div class="col-sm-6" style="margin-bottom: 20px">
+                    <#input2 id="precautionTitle" name="文章标题"/>
+                    <span style="display: none" id="ferrorTips">文章标题在50个字符以内</span>
+                   <!-- <div class="clearfix m-b-sm">
+                        <label class="input-group-name">文章标题</label>
+                        <input type="text" class="form-control form-control-name" id="precautionTitle" placeholder="请输入文章标题"
+                        maxlength="50" onkeyup="PrecautionAdd.lengthValidate('precautionTitle')"/>
+                        <span style="display: none" id="ferrorTips">文章标题在50个字符以内</span>
+                    </div>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <#SelectCon id="precautionType" name="文章类型">
+                        <option value="0">防控制度</option>
+                        <option value="1">防控措施</option>
+                        <option value="2">防控预案</option>
+                    </#SelectCon>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="clearfix m-b-sm">
+
+                        <label class="input-group-name">上传附件</label>
+                        <form id="upload" class="fUpload">
+                            <div class="uploadbtnBox clearfix">
+                                <a href="javascript:;" class="a-upload" >
+                                    <input type="file" id="fileUpload"  name="file" class="fileUpload"
+                                    accept=".xls,.doc,.pdf,.xlsx"/><i class="fa fa-upload"></i>点击上传
+                                </a>
+                            </div>
+                        </form>
+                        <div class="f_fileList">
+                            <a id="fileName"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="clearfix m-b-sm">
+                        <label class="input-group-name">文章正文</label>
+                    </div>
+                    <script type="text/plain" id="myEditor1"></script>
+
+                    </div>
+            </div>
+            <div class="row">
+                <div  class="f-precautionAddBtn">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PrecautionAdd.submit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PrecautionAdd.close()"/>
+
+                </div>
+            </div>
+            <div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/js/plugins/UEditor/ueditor.config.js" charset="utf-8" ></script>
+<script src="${ctxPath}/static/js/plugins/UEditor/editor_api.js" charset="utf-8" ></script>
+<script src="${ctxPath}/static/modular/fx/precaution/precaution_add.js"></script>
+<script type="text/javascript">
+    UE.getEditor('myEditor1', {
+        theme:"default", //皮肤
+        lang:'zh-cn' //语言
+    });
+
+</script>
+
+@}

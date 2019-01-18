@@ -1,0 +1,29 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="gridmanStreet" name="所属街道"/>
+                    <#input id="gridmanArea" name="所属社区" />
+                    <#input id="gridmanGrid" name="所属网格" />
+                    <#input id="gridmanName" name="姓名" />
+                    <#input id="gridmanAddr" name="联系地址" />
+                    <#input id="gridmanCard" name="身份证号" />
+                    <#input id="gridmanTel" name="联系电话" />
+                    <#input id="" name="负责邪教人数" value=""/>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="GridmanInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="GridmanInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@}

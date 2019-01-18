@@ -1,0 +1,28 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="UserHereticsRecordInfoDlgForm">
+
+            <input type="hidden" id="userHereticsRecordUserId">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#inputTime id="userHereticsRecordTime" name="帮扶时间" isTime="false" pattern="YYYY-MM-DD" />
+                    <#input id="userHereticsRecordHelperName" name="帮教人员" value="" />
+                    <#input id="userHereticsRecordCallLocation" name="帮教地点" value="" />
+                    <#input id="userHereticsRecordContent" name="回访帮教内容" value="" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="UserHereticsRecordInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="UserHereticsRecordInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userHereticsRecord/userHereticsRecord_info.js"></script>
+@}

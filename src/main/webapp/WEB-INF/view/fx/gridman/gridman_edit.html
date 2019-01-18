@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="gridmanId" value="${item.gridmanId}">
+            <div class="row">
+                <div class="col-sm-12 b-r">
+                    <#select id="gridmanStreet" name="所属街道" value="${item.gridmanStreet}" onchange="GridmanInfoDlg.gridCoordinateName('街道',this.options[this.options.selectedIndex].value)">
+                        <option value="郫筒街道">郫筒街道</option>
+                        <option value="犀浦镇">犀浦镇</option>
+                        <option value="红光镇">红光镇</option>
+                        <option value="安靖镇">安靖镇</option>
+                        <option value="团结镇">团结镇</option>
+                        <option value="唐昌镇">唐昌镇</option>
+                        <option value="三道堰镇">三道堰镇</option>
+                        <option value="新民场镇">新民场镇</option>
+                        <option value="花园镇">花园镇</option>
+                        <option value="安德镇">安德镇</option>
+                        <option value="唐元镇">唐元镇</option>
+                        <option value="德源镇">德源镇</option>
+                        <option value="古城镇">古城镇</option>
+                        <option value="友爱镇">友爱镇</option>
+                    </#select>
+
+                    <#select id="gridmanArea" name="所属社区" value="${item.gridmanArea}" onchange="GridmanInfoDlg.gridCoordinateName('社区',this.options[this.options.selectedIndex].value)">
+                        @for(title in area){
+                          <option value="${title.gridCoordinateName}">${title.gridCoordinateName}</option>
+                        @}
+                    </#select>
+                    <#select id="gridmanGrid" name="所属网格" value="${item.gridmanGrid}">
+                        @for(title in grid){
+                        <option value="${title.gridCoordinateName}">${title.gridCoordinateName}</option>
+                        @}
+                    </#select>
+                    <!--<#input id="gridmanStreet" name="所属街道" value="${item.gridmanStreet}"/>-->
+                    <!--<#input id="gridmanArea" name="所属社区" value="${item.gridmanArea}"/>-->
+                    <!--<#input id="gridmanGrid" name="所属网格" value="${item.gridmanGrid}"/>-->
+                    <#input id="gridmanName" name="姓名" value="${item.gridmanName}"/>
+                    <#input id="gridmanAddr" name="联系地址" value="${item.gridmanAddr}"/>
+                    <#input id="gridmanCard" name="身份证号" value="${item.gridmanCard}"/>
+                    <#input id="gridmanTel" name="联系电话" value="${item.gridmanTel}"/>
+                    <#input id="gridmanIds" name="负责邪教人数" value="${item.gridmanIds}" disabled="disabled"/>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="GridmanInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="GridmanInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/gridman/gridman_info.js"></script>
+@}

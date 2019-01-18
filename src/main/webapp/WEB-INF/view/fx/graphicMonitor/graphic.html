@@ -1,0 +1,28 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-3" style="padding-right: 0">
+                        <div class="sub-title clearfix">
+                            <div class="sub-title-line"></div>
+                            <div class="sub-title-name">图像信号源</div>
+                        </div>
+                        <div id="compareBtn">
+                            <#button name="图像对比" icon="" clickFun="Graphic.compareImgs()"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-9" style="border-left: 1px solid #E4E9ED">
+                        <div class="sub-title clearfix">
+                            <div class="sub-title-line"></div>
+                            <div class="sub-title-name">当前信号</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/graphicMonitor/graphic.js"></script>
+@}

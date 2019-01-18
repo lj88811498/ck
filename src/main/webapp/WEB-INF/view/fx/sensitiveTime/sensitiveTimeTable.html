@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <#TimeToTime bId="beginBtime" eId="beginEtime" name="开始时间时间段" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-5">
+                                <#TimeToTime bId="endBtime" eId="endEtime" name="结束时间时间段" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#button name="搜索" icon="fa-search" clickFun="Sensitive.search()"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <#button name="新增" icon="fa-plus" clickFun="Sensitive.openAdd()"/>
+                            </div>
+                        </div>
+                        <#table id="sensitiveTimeTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/sensitive/sensitive.js"></script>
+@}

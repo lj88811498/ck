@@ -1,0 +1,32 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="activityCaseManagerId">
+            <input type="hidden" id="activityCaseId" value="${item.activityCaseId}">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#inputShowTime id="activityCaseTime" name="时间" isTime="false" pattern="YYYY-MM-DD" value="${item.activityCaseTime}"/>
+                    <#input id="activityCaseLocal" name="地点" value="${item.activityCaseLocal}"/>
+                    <#input id="activityCaseContent" name="内容" underline="true" value="${item.activityCaseContent}"/>
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ActivityCaseInfoDlg.editArrestSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ActivityCaseInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $("#activityCaseTime").val($("#activityCaseTime").val().substr(0,10));
+</script>
+<script src="${ctxPath}/static/modular/fx/activityCase/activityCase_info.js"></script>
+@}

@@ -1,0 +1,144 @@
+
+body, html,#map_demo, #tab, #mapfrm {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+#menu{height:100%;overflow-y:auto}
+td{font-size:14px}
+h4{margin:0;}
+.BMapLabel{
+    top: -42px!important;
+    left: -15px!important;
+    box-shadow: 4px 4px 2px #dcdcdc;
+}
+label{
+    max-width:80px!important;
+}
+.BMapLabel::before{
+    content: "";
+    display: inline-block;
+    border-style: solid;
+    border-width: 0px 8px 13px 15px;
+    border-color: transparent transparent #fff transparent;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    bottom: -13px;
+    transform: rotate(180deg);
+    left: 20px;
+
+}
+.BMap_bubble_title{
+    overflow: hidden;
+    line-height: 32px!important;
+    white-space: nowrap;
+    width: 100%;
+    background: #66afc2;
+    color: #fff;
+    height:32px!important;
+    padding-left: 20px;
+}
+.BMap_pop div:nth-of-type(3){
+    z-index: 2!important;
+    height: 31px!important;
+}
+.BMap_pop div:nth-of-type(3) div{
+    background: #66afc2!important;
+    border-right: 1px solid #66afc2!important;
+    height: 40px!important;
+}
+.BMap_pop div:nth-of-type(9){
+    left: 1px!important;
+    top: -1px!important;
+    width:556px!important;
+}
+.BMap_bubble_content
+{
+    width:558px!important;
+}
+.BMap_center{
+    border: 1px solid #dcdcdc!important;
+}
+.f_totalContent{
+    margin-top: 5px;
+    padding-left: 23px;
+}
+.BMap_bubble_content .f_totalContent .f_peopleInfo{
+    margin-bottom: -10px;
+}
+.f_totalContent .f_peopleInfo p {
+    width:34%;
+    display: inline-block;
+}
+.f_totalContent .f_peopleInfo:nth-of-type(3){
+    margin-bottom: 10px!important;
+}
+.f_totalContent .f_peopleInfo p span:nth-of-type(1){
+    font-size: 14px;
+    color:#666;
+    font-weight: bold;
+}
+.f_totalContent .f_peopleInfo p span:nth-of-type(2){
+    font-size: 14px;
+}
+.f_totalContent .f_peopleInfo:nth-of-type(1) p{
+    width:30%;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+.f_totalContent .f_peopleInfo:nth-of-type(1) p:nth-of-type(3){
+    width:40%;
+}
+.f_totalContent .f_peopleInfo:last-of-type{
+    /*text-align: center;*/
+}
+.f_totalContent .f_peopleInfo button{
+    padding: 5px 10px;
+    background: #66afc2;
+    color:#fff;
+    text-align: center;
+    margin-right: 20px;
+    border:none;
+    cursor: pointer;
+    outline: none;
+}
+.sub-title{
+    padding-left: 20px;
+    margin-top: 10px;
+}
+.sub-title .sub-title-line {
+    width: 4px!important;
+    height: 18px!important;
+    background-color: #65AFC2;
+    float: left;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+.sub-title .sub-title-name {
+    font-size: 16px;
+    float: left;
+    background: none!important;
+    height: 11px!important;
+    border-right: none!important;
+}
+
+.table{
+    border: 1px solid #B5DCE6!important;
+    width: 90%!important;
+    background-color: transparent;
+    display: table;
+    border-collapse: collapse!important;
+    margin-left: 28px;
+}
+.openList{
+    margin-top: 15px;
+    margin-left: 30px;
+    /*margin: 20px;*/
+}
+.openList button{
+    padding: 5px 10px;
+    background: #66afc2;
+    color:#fff;
+    text-align: center;
+    margin-right: 20px;
+    border:none;
+    cursor: pointer;
+    outline: none;
+}

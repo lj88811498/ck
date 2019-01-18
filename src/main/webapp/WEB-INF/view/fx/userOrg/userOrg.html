@@ -1,0 +1,82 @@
+@layout("/common/_container.html"){
+<style>
+    #UserOrgListTable tbody tr td:last-of-type{
+        text-align: center;
+    }
+    label{
+        font-weight: 100;
+    }
+    #UserOrgListTable th:nth-of-type(2),#UserOrgListTable td:nth-of-type(2){
+        display: none;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>用户组织管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <ul class="tab-menu clearfix">
+                                <li class="active" data-name="orgList"><a href="javascript:;" onclick="UserOrg.change(this)">机构列表</a></li>
+                                <li data-name="otherList"><a href="javascript:;" onclick="UserOrg.change(this)">组织架构表</a></li>
+                            </ul>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                <div class="orgList">
+                                    <#table id="UserOrgListTable"/>
+                                </div>
+                                </div>
+
+                                <div class="otherList">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="col-sm-4">
+                                                <#input id="userOrgOrganizationName" name="所属组织机构" readonly="readonly" hidden="userOrgOrganizationPid"
+                                                        clickFun="UserOrg.showDeptSelectTree(); return false;"
+                                                        style="background-color: #ffffff !important;"/>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <#NameCon id="userOrgName" name="姓名" />
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <#button name="查询" icon="fa-search" clickFun="UserOrg.search()"/>
+                                            </div>
+                                            <!-- 父级部门的选择框 -->
+                                            <div id="parentUserOrgSelectMenu" class="menuContent"
+                                                 style="display: none; position: absolute; z-index: 200;">
+                                                <ul id="parentUserOrgSelectMenuTree" class="ztree tree-box" style="width: 280px !important;"></ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="col-sm-3">
+                                                <#button name="添加" icon="fa-plus" clickFun="UserOrg.openAddUserOrg()"/>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <#table id="UserOrgOtherTable"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userOrg/userOrg.js"></script>
+@}

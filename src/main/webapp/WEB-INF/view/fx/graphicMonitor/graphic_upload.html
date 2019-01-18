@@ -1,0 +1,31 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins graphic_upload">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-3" style="padding-right: 0">
+                        <#avatarCompare id="graphicMonitor"/>
+                        <#button btnCss="" name="开始比对" id="compare" icon="" clickFun="GraphicUpload.comparePicture()"/>
+                    </div>
+                    </div>
+
+                    <div class="col-sm-9" style="border-left: 1px solid #E4E9ED">
+                        <div class="comparePicture">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="GraphicUpload.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/graphicMonitor/graphic_upload.js"></script>
+@}

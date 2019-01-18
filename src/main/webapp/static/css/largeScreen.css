@@ -1,0 +1,659 @@
+body{
+    width: 100%;
+    height: 1080px;
+    border: 1px solid;
+    background: url("../largeScreen/bg.png") no-repeat transparent !important;
+}
+.wrapper-content {
+    padding: 0;
+}
+/*大标题*/
+.top{
+    height: 65px;
+    background: url("../largeScreen/title.png") no-repeat;
+    color: rgb(69,216,255);
+}
+h1{
+    position: relative;
+    top: 8px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+
+/*其他部分内容的标题*/
+.area-image-title,.work-image-title,.man-label-title,.man-action-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(89,211,255);
+}
+/*其他部分定位*/
+.work-image,.man-label,.all-view,.man-action{
+    position: relative;
+}
+
+
+
+/*左边部分背景*/
+.work-image .bg,.man-label .man-label-bg{
+    margin-left: 20px;
+    width: 540px;
+    height: 410px;
+}
+.man-label .man-label-bg{
+    position: relative;
+    top: 10px;
+}
+
+
+/**
+        左边-------反邪工作流程图
+ */
+/*反邪工作流程图标题定位*/
+.work-image-title{
+    position: absolute;
+    top: 25px;
+    left: 41px;
+}
+/*反邪工作流程图内容*/
+.work-image-content {
+    position: absolute;
+    top: 70px;
+    left: 40px;
+    width: 500px;
+    height: 305px;
+    /*border: 1px solid white;*/
+}
+
+.work-images2{
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.work-images3{
+    position: absolute;
+    left: 0;
+    bottom: 18px;
+}
+.work-images4{
+    position: absolute;
+    right: 0;
+    bottom: 18px;
+}
+.work-images5{
+    position: absolute;
+    top:45px;
+    left: 138px;
+}
+.work-images6{
+    position: absolute;
+    top:205px;
+    left: 138px;
+}
+.work-images7{
+    position: absolute;
+    top:87px;
+    left: 117px;
+}
+/*反邪工作流程图内容文字定位*/
+.desc{
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+.desc1{
+    top:120px;
+    left: 20px;
+}
+.desc2{
+    top:120px;
+    left: 232px;
+}
+.desc3{
+    top:288px;
+    left: 20px;
+}
+.desc4{
+    top:288px;
+    left: 233px;
+}
+.desc5{
+    top:130px;
+    left: 133px;
+    font-size: 14px;
+    color: rgb(67,216,255);
+
+}
+
+
+
+/**
+    左边-----邪教人员标签系列
+ */
+/*邪教人员标签系列背景*/
+.man-label .man-label-bg{
+    height: 530px;
+}
+/*邪教人员标签系列标题*/
+.man-label-title{
+    position: absolute;
+    top: 35px;
+    left: 45px;
+
+}
+.man-images,.man-label-content,.man-desc{
+    position: absolute;
+}
+.man-images1{
+    top:75px;
+    left: 225px;
+}
+.man-desc1{
+    top:80px;
+    left:260px;
+    font-size: 18px !important;
+    font-weight: bold;
+}
+/*邪教人员标签系列主要内容*/
+.man-label-content{
+    top: 105px;
+    left: 55px;
+    width: 472px;
+    height: 330px;
+    /*border:1px solid white;*/
+}
+.man-images2{
+    top:0;
+    left: 40px;
+}
+.man-images3{
+    top: 50px;
+    left: 20px;
+}
+.man-images4{
+    top:50px;
+    left: 120px;
+}
+.man-images5{
+    top: 50px;
+    left: 220px;
+}
+.man-images6{
+    top: 50px;
+    left: 320px;
+}
+.man-images7{
+    top: 50px;
+    left: 420px;
+}
+.man-images-word1{
+    top: 75px;
+    left: 33px;
+}
+.man-images-word2{
+    top: 75px;
+    left: 133px;
+}
+.man-images-word3{
+    top: 75px;
+    left: 233px;
+}
+.man-images-word4{
+    top: 75px;
+    left: 333px;
+}
+.man-images-word5{
+    top: 70px;
+    left: 433px;
+}
+
+.man-images-after1{
+    top:160px;
+    left: 0;
+}
+.man-images-after2{
+     top:160px;
+     left: 100px;
+ }
+.man-images-after3{
+    top:160px;
+    left: 200px;
+}
+.man-images-after4{
+    top:160px;
+    left: 300px;
+}
+.man-images-after5{
+    top:160px;
+    left: 400px;
+}
+
+.man-desc{
+   font-size: 12px;
+   color: white;
+}
+.man-desc-category1{
+    top: 208px;
+    left: 22px;
+}
+.man-desc-category2{
+    top: 233px;
+    left: 22px;
+}
+.man-desc-category3{
+    top: 260px;
+    left: 22px;
+}
+.man-desc-category4{
+    top: 287px;
+    left: 22px;
+}
+.man-desc-category5{
+    top: 314px;
+    left: 22px;
+}
+.man-desc-monitor1{
+    top: 208px;
+    left: 122px;
+}
+.man-desc-monitor2{
+    top: 233px;
+    left: 122px;
+}
+.man-desc-monitor3{
+    top: 260px;
+    left: 122px;
+}
+.man-desc-monitor4{
+    top: 287px;
+    left: 122px;
+}
+.man-desc-monitor5{
+    top: 314px;
+    left: 122px;
+}
+.man-desc-out1{
+    top: 208px;
+    left: 222px;
+}
+.man-desc-out2{
+    top: 233px;
+    left: 222px;
+}
+.man-desc-out3{
+    top: 260px;
+    left: 222px;
+}
+.man-desc-change1{
+    top: 208px;
+    left: 322px;
+}
+.man-desc-change2{
+    top: 233px;
+    left: 322px;
+}
+.man-desc-change3{
+    top: 260px;
+    left: 322px;
+}
+.man-desc-change4{
+    top: 287px;
+    left: 322px;
+}
+.man-desc-deal1{
+    top: 208px;
+    left: 422px;
+}
+.man-desc-deal2{
+    top: 233px;
+    left: 422px;
+}
+.man-desc-deal3{
+    top: 260px;
+    left: 422px;
+}
+.man-desc-deal4{
+    top: 287px;
+    left: 422px;
+}
+
+
+
+
+/**
+    中间 ----- 邪教大数据总览
+ */
+/*邪教大数据总览 背景*/
+.all-view .all-view-bg{
+    position: absolute;
+    left: 90px;
+    width: 760px;
+    height: 950px;
+}
+/*邪教大数据总览 标题*/
+.all-view-title{
+    position: absolute;
+    top:27px;
+    left: 400px;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(69,216,255);
+}
+/*邪教大数据总览 主要内容*/
+.all-view-content{
+    position: absolute;
+    top: 96px;
+    left: 122px;
+    width: 660px;
+    height: 170px;
+}
+.all-view-content ul{
+    float: left;
+    width: 25%;
+    text-align: center;
+    background: url("../../static/largeScreen/icon_data.png") no-repeat 40px;
+}
+.all-view-content li{
+    height: 40px;
+    line-height: 40px;
+}
+.all-view-subtitle{
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+}
+.all-view-count{
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 10px;
+}
+.all-view-increment{
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+}
+
+
+
+/**
+    中间 ---- 邪教人员区域热力图
+ */
+/*邪教人员区域热力图 标题*/
+.area-image-title{
+    position: absolute;
+    top:292px;
+    left: 400px;
+}
+
+
+/**
+    右边 ----- 折线图
+ */
+.man-label-chart{
+    position: absolute;
+    top: 54px;
+    left: -66px;
+    width: 505px;
+    height: 322px;
+    font-size: 14px;
+    color: white;
+    /*border: 1px solid white;*/
+}
+.man-label-btn1.active, .man-label-btn2.active {
+    background: url("../largeScreen/icon_anniu.png") no-repeat center;
+}
+.man-label-btn1{
+    position: absolute;
+    top: 1px;
+    left: 15px;
+    width: 110px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    background: url("../largeScreen/icon_anniu2.png") no-repeat center;
+    cursor: pointer;
+
+}
+.man-label-btn2{
+    position: absolute;
+    top: 1px;
+    left: 130px;
+    width: 110px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    background: url("../largeScreen/icon_anniu2.png") no-repeat center;
+}
+.userHeretics-wrap {
+    width: 505px;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+#userHeretics,#caseInfo {
+    width: 100%;
+    height: 100%;
+}
+#userHeretics {
+    display: block;
+}
+#caseInfo {
+    display: none;
+}
+
+
+
+/**
+    右边------重点关注人员动态
+ */
+/*重点关注人员动态 背景*/
+.man-action .man-action-bg{
+    position: absolute;
+    top:0;
+    left: -105px;
+    width: 580px;
+    height: 950px;
+}
+
+/*重点关注人员动态 标题*/
+.man-action-title{
+    position: absolute;
+    top: 24px;
+    left: 285px;
+}
+
+
+/*重点关注人员动态 卡片总体区域*/
+.man-action-card{
+    position: absolute;
+    top: 388px;
+    left: -66px;
+    width: 505px;
+    height: 521px;
+    overflow: hidden;
+    /*border: 1px solid white;*/
+}
+.txtMarquee-top .bd {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+/*重点关注人员动态 卡片*/
+.manCard{
+    /*padding: 15px 12px;*/
+    margin-bottom: 14px;
+    width: 505px;
+    overflow: hidden;
+    background-color: rgba(121,202,242,0.1);
+    border: 1px solid rgb(110,199,222);
+    /*cursor: pointer;*/
+}
+
+.manCard .row{
+    margin-left: 0;
+    margin-right: 0;
+}
+.manCard .row>div{
+    padding-left: 0;
+    padding-right: 0;
+}
+.manCard-tag-list{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    overflow: hidden;
+    width: 100%;
+    border-top: 1px dashed rgb(110,199,222);
+}
+.manCard-tag-list li{
+    float: left;
+    color: rgb(245,168,36);
+    /*padding: 0 3px;*/
+    margin-bottom: 5px;
+    margin-right: 15px;
+    padding: 2px 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(245,168,36, 0.5);
+    border-radius: 4px;
+
+}
+
+.manCard-img{
+    width: 25%;
+}
+.manCard-left-word{
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fe821d;
+}
+.manCard-left-word p{
+    margin: 0;
+}
+.manCard-left-num{
+    font-size: 40px;
+    font-weight: bold;
+    color: #fe821d;
+}
+.base-content{
+    color: white;
+    font-size: 14px;
+    padding-top: 5px;
+}
+.userHeretics-list{
+    margin-top: 5px;
+    padding-top: 10px;
+    border-top: 1px dashed rgb(52,102,124);
+
+}
+.userHeretics-list li{
+    margin-bottom: 2px;
+    font-size: 12px;
+    color: white;
+}
+.manCard-left-word2,.manCard-left-num2{
+    color: rgb(254,130,29);
+}
+.manCard-left-word3,.manCard-left-num3{
+    color: rgb(254,225,29);
+}
+/*列表样式*/
+.manCard-left {
+    width: 20%;
+    float: left;
+    padding: 15px 12px;
+}
+.manCard-right {
+    width: 80%;
+    float: left;
+    padding: 15px 12px;
+}
+.manCard p {
+    padding: 0;
+    margin: 0;
+}
+.base-content span {
+    margin-right: 30px;
+}
+.own-xj {
+    margin-left: 10px;
+}
+
+/*地图*/
+.area-box {
+    position: absolute;
+    left: 100px;
+    top: 340px;
+    width: 736px;
+    height: 598px;
+    border-radius: 35px;
+    overflow: hidden;
+}
+
+/*平台管理*/
+.work-image-content ul{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.work-image-content ul li{
+    cursor: pointer;
+    text-align: center;
+    width:160px;
+    font-size: 15px;
+    height:45px;
+    color:#fff;
+    background: #123067;
+    float: left;
+    margin-right: 58px;
+    line-height: 45px;
+    margin-bottom:35px;
+    box-shadow: 12px 14px 8px #0e183b;
+}
+.work-image-content ul li.active{
+    background: #2377e3;
+    box-shadow: 12px 14px 8px #163c7b;
+}
+
+
+/*系统简介*/
+.man-label-content ul{
+    padding-left: 0px;
+}
+.man-label-content ul li{
+    width: 480px;
+    height: 120px;
+    margin-bottom: 60px;
+    background: #0c163a;
+    /* vertical-align: middle; */
+    padding-top: 25px;
+}
+.man-label-content ul li p:first-of-type{
+    margin-left: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px dotted #127088;
+    text-align: center;
+    line-height: 40px;
+    color: #127088;
+    margin-right: 25px;
+    display: inline-block;
+    margin-bottom: 20px;
+    vertical-align: bottom;
+    font-size: 22px;
+}
+.man-label-content ul li p:last-of-type{
+    width: 320px;
+    color: #558dff;
+    line-height: 30px;
+    display: inline-block;
+    /* margin-top: 26px; */
+    font-weight: bold;
+    font-size: 15px;
+    vertical-align: top;
+}

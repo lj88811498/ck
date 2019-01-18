@@ -1,0 +1,152 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoRegion" name="行政区域">
+                                    <option value="">全部</option>
+                                    <option value="郫筒街道">郫筒街道</option>
+                                    <option value="合作街道">合作街道</option>
+                                    <option value="西园街道">西园街道</option>
+                                    <option value="犀浦镇">犀浦镇</option>
+                                    <option value="红光镇">红光镇</option>
+                                    <option value="安靖镇">安靖镇</option>
+                                    <option value="团结镇">团结镇</option>
+                                    <option value="唐昌镇">唐昌镇</option>
+                                    <option value="三道堰镇">三道堰镇</option>
+                                    <option value="新民场镇">新民场镇</option>
+                                    <option value="花园镇">花园镇</option>
+                                    <option value="安德镇">安德镇</option>
+                                    <option value="唐元镇">唐元镇</option>
+                                    <option value="德源镇">德源镇</option>
+                                    <option value="古城镇">古城镇</option>
+                                    <option value="友爱镇">友爱镇</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="userInfoName" name="人员姓名"/>
+                            </div>
+                            <div class="col-sm-5">
+                                <#TimeToTime bId="beginTime" eId="endTime" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-1">
+                                <#button name="查询" icon="fa-search" clickFun="BaseInfo.search()"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="userInfoCard" name="身份证号"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoCulttype" name="邪教类别">
+                                    <option value="">全部</option>
+                                    <option value="法轮功">法轮功</option>
+                                    <option value="门徒会">门徒会</option>
+                                    <option value="全能神">全能神</option>
+                                    <option value="中功">中功</option>
+                                    <option value="心灵法门">心灵法门</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoMonitorLevel" name="监控级别">
+                                    <option value="">全部</option>
+                                    <option value="重点人员3级">重点人员3级</option>
+                                    <option value="重点人员2级">重点人员2级</option>
+                                    <option value="重点人员1级">重点人员1级</option>
+                                    <option value="不放心人员">不放心人员</option>
+                                    <option value="一般人员">一般人员</option>
+                                    <option value="已解脱">已解脱</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoConversion" name="转换情况">
+                                    <option value="">全部</option>
+                                    <option value="需攻坚">需攻坚</option>
+                                    <option value="重点巩固">需重点巩固</option>
+                                    <option value="待解脱">待解脱</option>
+                                    <option value="已解脱">已解脱</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoIsflee" name="是否负案在逃">
+                                    <option value="">全部</option>
+                                    <option value="2">是</option>
+                                    <option value="0">否</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoIscultactivity" name="是否涉嫌从事邪教活动">
+                                    <option value="">全部</option>
+                                    <option value="8">是</option>
+                                    <option value="0">否</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoIstreatment" name="是否受过打击处理" width="41%">
+                                    <option value="">全部</option>
+                                    <option value="4">是</option>
+                                    <option value="0">否</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-2">
+                                <#SelectCon id="userInfoIsoutcontrol" name="是否失控" width="48%">
+                                    <option value="">全部</option>
+                                    <option value="5">是</option>
+                                    <option value="0">否</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoIsprison" name="是否在监服刑">
+                                    <option value="">全部</option>
+                                    <option value="9">是</option>
+                                    <option value="0">否</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoIsothercontrol" name="是否异地管控">
+                                    <option value="">全部</option>
+                                    <option value="10">是</option>
+                                    <option value="0">否</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="userInfoIscontrolprocess" name="是否办理交控手续" width="41%">
+                                    <option value="">全部</option>
+                                    <option value="7">是</option>
+                                    <option value="0">否</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-2">
+                                <#SelectCon id="userInfoIsabroad" name="是否境外" width="48%">
+                                    <option value="">全部</option>
+                                    <option value="14">是</option>
+                                    <option value="0">否</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div id="BaseInfoTableToolbar" role="group" >
+                            <#button name="新增人员" icon="fa-plus" clickFun="BaseInfo.openAddBaseInfo()"/>
+                            <!--<#button name="导入" icon="fa-plus" clickFun="BaseInfo.openBaseInfoDetail()" space="true"/>-->
+                            <!--<#button name="导出" icon="fa-plus" clickFun="BaseInfo.delete()" space="true"/>-->
+                            <!--<div style="float: right">-->
+                                <!--<#button name="基本情况分析" icon="fa-plus" clickFun="BaseInfo.skipBasic()" space="true"/>-->
+                            <!--</div>-->
+
+                        </div>
+                        <#table id="BaseInfoTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/baseInfo/baseInfo.js"></script>
+@}

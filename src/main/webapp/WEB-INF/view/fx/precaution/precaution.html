@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="row">
+            <div class="ibox-title">
+                <h5>防控制度体系</h5>
+            </div>
+    <div class="ibox-content">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <#NameCon id="keyWord" name="名称" />
+                    </div>
+                    <div class="col-sm-3">
+                        <#SelectCon id="type" name="类型">
+                            <option value="">全部</option>
+                            <option value="0">防控制度</option>
+                            <option value="1">防控措施</option>
+                            <option value="2">防控预案</option>
+                        </#SelectCon>
+                    </div>
+                    <div class="col-sm-3">
+                        <#button name="查询" icon="fa-search" clickFun="Precaution.search()"/>
+                    </div>
+                </div>
+                <div class="" id="GridmanTableToolbar" role="group">
+                    <#button name="新增" icon="fa-plus" clickFun="Precaution.openAdd()"/>
+                    <!-- <#button name="导入" icon="" clickFun="Gridman.openGridmanDetail()" space="true"/>
+                     <#button name="导出" icon="" clickFun="Gridman.delete()" space="true"/>-->
+                </div>
+                <#table id="PrecautionTable"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/precaution/precaution.js"></script>
+@}

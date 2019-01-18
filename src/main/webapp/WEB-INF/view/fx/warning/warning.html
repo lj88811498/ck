@@ -1,0 +1,135 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>预警周期管理</h5>
+            </div>
+          <!--  <div class="info_card_edit warning-edit">
+                <#button btnCss="primary" name="编辑信息" id="ensure" icon="fa-edit" clickFun="InvolvingEvil.openInvolvingEvilDetail()"/>
+            </div>-->
+            <input type="hidden" id="warningIndexId">
+            <div class="ibox-content warningMangement">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="sub-title clearfix">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">指数模型预警
+                                    <div class="switch">
+                                        <#input id="warningIndexSwith" name="" type="checkbox"  class="switchCheckbox indexCheckbox"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="warning-content">
+                                <div class="index-title">
+                                    <span>综合指数</span>
+                                    <input type="number" class="warning-input" id="warningIndexTotal">
+                                </div>
+                                <div class="index-info">
+                                     <ul>
+                                         <li>
+                                             <div class="index-title">
+                                                 <span>不良行为指数</span>
+                                                 <input type="number" class="warning-input" id="warningIndexBadBehavior">
+                                             </div>
+                                         </li>
+                                         <li>
+                                             <div class="index-title">
+                                                 <span>受打击处理指数</span>
+                                                 <input type="number" class="warning-input" id="warningIndexHit">
+                                             </div>
+                                         </li>
+                                         <li>
+                                             <div class="index-title">
+                                                 <span>转化情况指数</span>
+                                                 <input type="number" class="warning-input" id="warningIndexChange">
+                                             </div>
+                                         </li>
+                                         <li>
+                                             <div class="index-title">
+                                                 <span>帮教情况指数</span>
+                                                 <input type="number" class="warning-input" id="warningIndexHeretics">
+                                             </div>
+                                         </li>
+                                         <li>
+                                             <div class="index-title">
+                                                 <span>潜在危险指数</span>
+                                                 <input type="number" class="warning-input" id="warningIndexDangerous">
+                                             </div>
+                                         </li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="sub-title clearfix">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">标签模型预警
+                                    <div class="switch">
+                                        <#input id="warningTitleSwith" name="" type="checkbox"  class="switchCheckbox titleCheckbox"/>
+                                    </div>
+                                    <p class="mask">(备注：选中标签，即为预警指标之一)</p>
+                                </div>
+                            </div>
+                            <div class="label-content">
+                                <ul id="label-info">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="sub-title clearfix">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">关键字预警
+                                    <div class="switch">
+                                        <#input id="warningKeywordSwith" name="" type="checkbox"  class="switchCheckbox KeywordCheckbox"/>
+                                    </div>
+                                    <p class="mask">(备注：关键词以“；”区分)</p>
+                                </div>
+                            </div>
+                            <div class="keyWords-content">
+                                <input type="hidden" id="warningKeywordId">
+                                <textarea id="warningKeywordName"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="sub-title clearfix">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">周期预警
+                                    <div class="switch">
+                                        <#input id="warningCycleSwith" name="" type="checkbox"  class="switchCheckbox CycleCheckbox"/>
+                                    </div>
+                                    <p class="mask">(失效时间：<span id="warningCycleEndTime"></span>)</p>
+                                </div>
+                            </div>
+                            <div class="cycle-content">
+                                <input type="hidden" id="warningCycleId">
+                                <div class='cycle'>
+                                    <input type='radio' id='year' name='cycle' value="1"/>
+                                    <label for='year'>年</label>
+                                </div>
+                                <div class='cycle'>
+                                    <input type='radio' id='month' name='cycle' value="2"/>
+                                    <label for='month'>月</label>
+                                </div>
+                                <div class='cycle'>
+                                    <input type='radio' id='week' name='cycle' value="3"/>
+                                    <label for='week'>周</label>
+                                </div>
+                                <div class='cycle'>
+                                    <input type='radio' id='day' name='cycle' value="4"/>
+                                    <label for='day'>日</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="info_card_edit warning-edit">
+                <#button btnCss="primary" name="提交" id="ensure" icon="" clickFun="WarningCycle.submitInfo()"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/warning/warning.js"></script>
+@}

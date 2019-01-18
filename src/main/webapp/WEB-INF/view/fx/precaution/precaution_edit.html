@@ -1,0 +1,95 @@
+@layout("/common/_container.html"){
+<style>
+    #myEditor1{
+        height: 592px;
+        margin-bottom: 20px;
+    }
+    #edui1{
+        height: 585px;
+    }
+    #edui1_iframeholder{
+        height: 479px!important;
+    }
+    .form-control-feedback{
+        right: 10px!important;
+    }
+    .precautionTitleEdit .col-sm-8{
+        margin-left: -66px!important;
+    }
+</style>
+<div class="ibox float-e-margins">
+    <div class="ibox-content" id="PrecautionInfoDlgForm">
+        <div class="precautionDetailEdit">
+            <input type="hidden" value="${item.precautionId}" id="precautionId">
+            <input type="hidden" value="${item.precautionAttachment}" id="precautionAttachment">
+            <input type="hidden" value="${item.precautionAttachmentName}" id="precautionAttachmentName">
+            <div class="row">
+                <div class="col-sm-5 precautionTitleEdit">
+                  <#input id="precautionTitle" name="文章题目" value="${item.precautionTitle}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <#select id="precautionType" name="文章类型" value="${item.precautionType}">
+                        <option value="0">防控制度</option>
+                        <option value="1">防控措施</option>
+                        <option value="2">防控预案</option>
+                    </#select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label" >附件名称</label>
+                        <div class="f_fileList col-sm-8">
+                            <span id="fileName">${item.precautionAttachmentName}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="clearfix m-b-sm precautionEditUpload">
+                        <label id= "" class="input-group-name" >上传附件</label>
+                        <form id="upload" class="fUpload">
+                            <div class="uploadbtnBox clearfix">
+                                <a href="javascript:;" class="a-upload" >
+                                    <input type="file" id="fileUpload"  name="file" class="fileUpload"
+                                           accept=".xls,.doc,.pdf,.xlsx"/><i class="fa fa-upload" style="margin-right: 4px;"></i>点击上传
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="clearfix m-b-sm">
+                        <label class="col-sm-3 control-label">文章正文</label>
+                    </div>
+                    <textarea type="hidden" id="precautionContent" style="display: none">${item.precautionContent}</textarea>
+                    <script type="text/plain" id="myEditor1" name="myEditor1"></script>
+                </div>
+            </div>
+            <div class="row">
+                <div  class="f-precautionAddBtn">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PrecautionUpdate.submit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PrecautionUpdate.close()"/>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/js/plugins/UEditor/ueditor.config.js" charset="utf-8" ></script>
+<script src="${ctxPath}/static/js/plugins/UEditor/editor_api.js" charset="utf-8" ></script>
+<script src="${ctxPath}/static/modular/fx/precaution/precaution_edit.js"></script>
+<script type="text/javascript">
+    UE.getEditor('myEditor1', {
+        theme:"default", //皮肤
+        lang:'zh-cn' //语言
+    });
+
+</script>
+@}

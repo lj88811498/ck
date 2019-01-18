@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>privateCar管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="PrivateCar.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="PrivateCarTableToolbar" role="group">
+                            @if(shiro.hasPermission("/privateCar/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="PrivateCar.openAddPrivateCar()"/>
+                            @}
+                            @if(shiro.hasPermission("/privateCar/update")){
+                                <#button name="修改" icon="fa-plus" clickFun="PrivateCar.openPrivateCarDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/privateCar/delete")){
+                                <#button name="删除" icon="fa-plus" clickFun="PrivateCar.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="PrivateCarTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/privateCar/privateCar.js"></script>
+@}

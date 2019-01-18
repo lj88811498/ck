@@ -1,0 +1,50 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Response Parameter</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+
+                        </div>
+                        <div class="hidden-xs" id="QuestionTableToolbar" role="group">
+                            <table class="table table-hover table-bordered" border="border">
+                                <tr>
+                                    <td>返回对象为JSONObject对象</td>
+                                    <td>包含msg，code，page（page非必须，具体根据业务场景）</td>
+                                </tr>
+
+                                <tr>
+                                    <td>msg</td>
+                                    <td>对此次业务处理的结果信息，如：success</td>
+                                </tr>
+
+                                <tr>
+                                    <td>code</td>
+                                    <td>表示此次结果的状态：0表示成功，400表示失败，失败时可以展示msg信息提示给用户</td>
+                                </tr>
+
+                                <tr>
+                                    <td>page</td>
+                                    <td>page为分页对象：<br>
+                                        size	Integer	每页显示条数<br>
+                                        pages	Integer	总共页数<br>
+                                        current	Integer	当前页数<br>
+                                        total	Integer	总条数<br>
+                                        records	List	实体对象数组（具体参考swagger，records为数据来源）
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/nanning/question/question.js"></script>
+@}

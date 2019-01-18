@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="employmentId" name="主键id" underline="true"/>
+                            <#input id="employmentUserId" name="邪教人员id" underline="true"/>
+                            <#input id="employmentInfo" name="从业信息" underline="true"/>
+                            <#input id="employmentIsJoin" name="是否参加社保" underline="true"/>
+                            <#input id="employmentIsReceive" name="是否领取社保"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="employmentDesc" name="备注" underline="true"/>
+                            <#input id="employmentCreateBy" name="创建人" underline="true"/>
+                            <#input id="employmentUpdateBy" name="修改人" underline="true"/>
+                            <#input id="employmentUpdateTime" name="修改时间" underline="true"/>
+                            <#input id="employmentCreateTime" name="创建时间" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="EmploymentInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="EmploymentInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/employment/employment_info.js"></script>
+@}

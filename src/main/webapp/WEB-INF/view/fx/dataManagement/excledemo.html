@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-12">
+                    <#select name="委办局名称" id="dataType" >
+                        <option value="水务局">水务局</option>
+                        <option value="人社局-医保">人社局-医保</option>
+                        <option value="能源办">能源办</option>
+                        <option value="不动产登记中心">不动产登记中心</option>
+                        <option value="卫计局-门诊">卫计局-门诊</option>
+                        <option value="卫计局-医院">卫计局-医院</option>
+                        <option value="公交信息">交通局-公交</option>
+                        <option value="客运中心-柜台">交通局-客运中心-柜台</option>
+                        <option value="客运中心-网站">交通局-客运中心-网站</option>
+                        <option value="市场监管局">市场监管局</option>
+                    </#select>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="下载" id="ensure" icon="fa-check" clickFun="ExcelImportant.importExcleDemo();"/>
+                    <#button btnCss="danger" type="button" name="取消" id="cancel" icon="fa-eraser" clickFun="ExcelImportant.close()"/>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/dataManagement/excleimport_edit.js"></script>
+@}

@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<style>
+    #startTime,#endTime{
+        display: none;
+        margin-left: 182px;
+        color: red;
+    }
+</style>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="SensitiveTimeInfoDlgForm">
+            <input type="hidden" id="sensitiveTimeId" >
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#timeValidate id="sensitiveTimeBeginTime" name="开始时间"  isTime="true"  pattern="YYYY-MM-DD hh:mm:ss"/>
+                    <p id="startTime">开始时间不能为空</p>
+                    <#timeValidate id="sensitiveTimeEndTime" name="结束时间"  isTime="true" pattern="YYYY-MM-DD hh:mm:ss"/>
+                    <p id="endTime">结束时间不能为空</p>
+                    <#input id="sensitiveTimeContent" name="时间内容" underline="true"/>
+                </div>
+
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="SensitiveTimeInfo.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="SensitiveTimeInfo.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/sensitive/sensitiveTime_info.js"></script>
+@}

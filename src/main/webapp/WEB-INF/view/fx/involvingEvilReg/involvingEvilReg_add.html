@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input type="hidden" id="involvingEvilRegId">
+            <input type="hidden" id="involvingEvilRegUserId">
+            <div class="row">
+                <div class="col-sm-12 b-r">
+                    <#inputTime id="involvingEvilRegArrestTime" value="" name="时间" isTime="false" pattern="YYYY-MM-DD"></#inputTime>
+                    <#input id="involvingEvilRegLocal" name="案发地"></#input>
+                    <#input id="involvingEvilRegInfo" name="案件情况"></#input>
+                    <#select id="involvingEvilRegObjInfo" name="处理情况" >
+                        <option value="判处刑罚">判处刑罚</option>
+                        <option value="劳动教养">劳动教养</option>
+                        <option value="刑事拘留">刑事拘留</option>
+                        <option value="行政拘留">行政拘留</option>
+                        <option value="法制班学习">法制班学习</option>
+                        <option value="安靖镇">教育训诫</option>
+                    </#select>
+                    <#input id="involvingEvilRegPunishTime" name="处理期限"></#input>
+                    <#inputTime id="involvingEvilRegUnpunishedTime" name="解除处罚时间" isTime="false" pattern="YYYY-MM-DD"/>
+
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="确定" id="ensure" icon="fa-check" clickFun="InvolvingEvilRegInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="InvolvingEvilRegInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/involvingEvilReg/involvingEvilReg_info.js"></script>
+@}

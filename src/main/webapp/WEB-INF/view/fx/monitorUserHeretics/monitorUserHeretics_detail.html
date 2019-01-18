@@ -1,0 +1,94 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="sub-title clearfix">
+            <div class="sub-title-line"></div>
+            <div class="sub-title-name">预警推送</div>
+        </div>
+        <ul class="tab-menu clearfix"></ul>
+        <div class="form-horizontal">
+
+            <input type="hidden" id="userInfoId">
+            <input type="hidden" id="uId">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">曾经进班学习情况</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTime1" eId="endTime1" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="UserHeretics.search1()"/>
+                                    <#button name="新增" icon="fa-plus" clickFun="UserHeretics.openAddUserHeretics1()"/>
+                                </div>
+                            </div>
+                            <#table id="UserHereticsTable1"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">帮教责任人</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <#button name="新增" icon="fa-plus" clickFun="UserHeretics.openAddUserHereticsDuty()"/>
+                                </div>
+                            </div>
+                            <#table id="UserHereticsPersonTable"/>
+                         <!--   <ul class="info_card_list_ul clearfix">
+                                <li>
+                                    <span class="info_name">包保人电话</span>
+                                    <span class="info_info" id="userHereticsProtectorTel">${item.userHereticsProtectorTel}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">联系人电话</span>
+                                    <span class="info_info" id="userHereticsCompany">${item.userHereticsCompany}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">责任单位</span>
+                                    <span class="info_info" id="userHereticsPoliceStation">${item.userHereticsPoliceStation}</span>
+                                </li>
+                            </ul>-->
+                        </li>
+                    </ul>
+                    <div class="info_card_edit">
+                        <#button btnCss="primary" name="编辑信息" id="ensure" icon="fa-edit" clickFun="UserHeretics.openUserHereticsDetail(${item.userHereticsId})"/>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">帮教记录</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTime" eId="endTime" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="UserHeretics.search()"/>
+                                    <#button name="新增" icon="fa-plus" clickFun="UserHeretics.openAddUserHeretics()"/>
+                                </div>
+                            </div>
+                            <#table id="UserHereticsTable"/>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userHeretics/userHeretics.js"></script>
+@}

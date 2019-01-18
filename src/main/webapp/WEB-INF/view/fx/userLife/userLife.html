@@ -1,0 +1,104 @@
+@layout("/common/_container.html"){
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/pagination/common/reset.css" media="screen">
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/pagination/common/highlight.min.css" media="screen">
+<link rel="stylesheet"  href="${ctxPath}/static/js/plugins/pagination/pagination.css"/>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="row row-lg">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input id="userInfoName" type="text" class="form-control" placeholder="请输入姓名">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" style="padding: 4px 12px" onclick="UserLife.search()">
+                                    查询
+                                </button>
+                            </span>
+                        </div>
+                        <ul id="users" style="padding-left: 0"></ul>
+                        <div class="m-style pagination"></div>
+                    </div>
+                    <div class="col-sm-9" style="border-left: 1px solid #E4E9ED">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="sub-title sub-title-bg clearfix">
+                                    <div class="sub-title-line"></div>
+                                    <div class="sub-title-name">人物关系网</div>
+                                </div>
+                                <div id="relations"></div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="sub-title sub-title-bg clearfix">
+                                    <div class="sub-title-line"></div>
+                                    <div class="sub-title-name">风险指数</div>
+                                </div>
+                                <div class="totalIndex">
+                                    <p>
+                                        <span>综合指数：</span>
+                                        <span id="detailIndex"></span>
+                                    </p>
+                                    <div id="keyFollow">
+                                        重点关注
+                                    </div>
+                                </div>
+                                <div id="risk"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="sub-title sub-title-bg clearfix">
+                                    <div class="sub-title-line"></div>
+                                    <div class="sub-title-name">常住趋势度</div>
+                                    <#DivTimeCon id="addressTime" name="address" chartType="barWithLine" url="/userLife/findUserLife" type="year" clickFun="UserLife.selectTime($('#addressTime'))" />
+                                </div>
+                                <div id="address"></div>
+                            </div>
+                            <!--<div class="col-sm-5">-->
+                                <!--<div class="sub-title sub-title-bg clearfix">-->
+                                    <!--<div class="sub-title-line"></div>-->
+                                    <!--<div class="sub-title-name">数据关联度</div>-->
+                                <!--</div>-->
+                                <!--<div id="data"></div>-->
+                            <!--</div>-->
+
+                            <div class="col-sm-5">
+                                <div class="sub-title sub-title-bg clearfix">
+                                    <div class="sub-title-line"></div>
+                                    <div class="sub-title-name">五保一责任人</div>
+                                </div>
+                                <!--<div id="data"></div>-->
+                                <div id="personLiableTable">
+                                    <#table id="personLiable"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="sub-title sub-title-bg clearfix">
+                                    <div class="sub-title-line"></div>
+                                    <div class="sub-title-name">活动范围分析</div>
+                                </div>
+                                <div id="active"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="sub-title sub-title-bg clearfix">
+                                    <div class="sub-title-line"></div>
+                                    <div class="sub-title-name">涉邪轨迹分析</div>
+                                </div>
+                                <div id="timeLine"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/js/plugins/pagination/jquery.pagination.js"></script>
+<script src="${ctxPath}/static/modular/fx/userLife/userLife.js"></script>
+<script src="${ctxPath}/static/modular/fx/userLife/china.js"></script>
+@}

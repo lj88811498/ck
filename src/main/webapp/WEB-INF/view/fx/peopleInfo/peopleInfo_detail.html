@@ -1,0 +1,82 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="sub-title clearfix">
+        <!--    <div class="sub-title-line"></div>
+            <div class="sub-title-name">预警推送</div>-->
+        </div>
+        <ul class="tab-menu clearfix"></ul>
+        <div class="form-horizontal">
+
+            <input type="hidden" id="userInfoId">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">房间信息</div>
+                            </div>
+                            <ul class="info_card_list_ul clearfix">
+                                <li>
+                                    <span class="info_name">产权人姓名</span>
+                                    <span class="info_info" id="peopleInfoName">${item.peopleInfoName}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">证件类型</span>
+                                    <span class="info_info" id="peopleInfoCardType">${item.peopleInfoCardType}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">证件编号</span>
+                                    <span class="info_info" id="peopleInfoCardCode">${item.peopleInfoCardCode}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否为监视房</span>
+                                    <span class="info_info" id="peopleInfoMonitor">${item.peopleInfoMonitor}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">户口薄编号</span>
+                                    <span class="info_info" id="peopleInfoFamilyCode">${item.peopleInfoFamilyCode}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">房产证编号</span>
+                                    <span class="info_info" id="peopleInfoHouseCode">${item.peopleInfoHouseCode}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">居住面积</span>
+                                    <span class="info_info" id="peopleInfoArea">${item.peopleInfoArea}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">房屋详细地址</span>
+                                    <span class="info_info" id="peopleInfoAdress">${item.peopleInfoAdress}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">房屋类型</span>
+                                    <span class="info_info" id="peopleInfoHomeType">${item.peopleInfoHomeType}</span>
+                                </li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                    <div class="info_card_edit">
+                        <#button btnCss="primary" name="编辑信息" id="ensure" icon="fa-edit" clickFun="PeopleInfo.openPeopleInfoDetail(${item.peopleInfoId})"/>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">家庭成员及主要社会关系</div>
+                            </div>
+                            <#table id="PeopleInfoTable"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/peopleInfo/peopleInfo.js"></script>
+@}

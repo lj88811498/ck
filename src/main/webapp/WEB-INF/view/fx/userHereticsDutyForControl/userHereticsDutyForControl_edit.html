@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input type="hidden" id="userHereticsDutyId" value="${item.userHereticsDutyId}">
+            <input type="hidden" id="userHereticsDutyUserId">
+            <div class="row">
+                <div class="col-sm-12">
+                    <#select id="userHereticsDutyJob" name="职务"  value="${item.userHereticsDutyJob}">
+                        <option value="社区民警">社区民警</option>
+                        <option value="街道干部">街道干部</option>
+                        <option value="村社区干部">村社区干部</option>
+                        <option value="网格员">网格员</option>
+                        <option value="具体盯防人">具体盯防人</option>
+                    </#select>
+                    <!--<#input id="userHereticsDutyJob" name="职务" value="${item.userHereticsDutyJob}"/>-->
+                    <#input id="userHereticsDutyName" name="姓名" value="${item.userHereticsDutyName}"/>
+                    <#input id="userHereticsDutyTel" name="联系电话" value="${item.userHereticsDutyTel}"/>
+                    <#input id="userHereticsDutyUnit" name="责任单位" value="${item.userHereticsDutyUnit}" underline="true"/>
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="UserHereticsDutyForControlInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="UserHereticsDutyForControlInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userHereticsDutyForControl/userHereticsDutyForControl_info.js"></script>
+@}

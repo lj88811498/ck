@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${item.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="socialId" name="主键id" value="${item.socialId}" underline="true"/>
+                            <#input id="socialUserId" name="邪教人员id" value="${item.socialUserId}" underline="true"/>
+                            <#input id="socialTime" name="领取时间" value="${item.socialTime}" underline="true"/>
+                            <#input id="socialLocal" name="领取地点" value="${item.socialLocal}" underline="true"/>
+                            <#input id="socialMoney" name="领取金额" value="${item.socialMoney}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="socialCreateBy" name="创建人" value="${item.socialCreateBy}" underline="true"/>
+                            <#input id="socialUpdateBy" name="修改人" value="${item.socialUpdateBy}" underline="true"/>
+                            <#input id="socialUpdateTime" name="修改时间" value="${item.socialUpdateTime}" underline="true"/>
+                            <#input id="socialCreateTime" name="创建时间" value="${item.socialCreateTime}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="SocialInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="SocialInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/social/social_info.js"></script>
+@}

@@ -1,0 +1,71 @@
+@layout("/common/_container.html"){
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/pagination/common/reset.css" media="screen">
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/pagination/common/highlight.min.css" media="screen">
+<link rel="stylesheet"  href="${ctxPath}/static/js/plugins/pagination/pagination.css"/>
+<style>
+    .usersCard:hover, .usersCard.active{
+         border: none;
+    }
+    #keyAreaName{
+        text-align: left;
+    }
+
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>重点区域</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-4">
+                              <#NameCon name="重点区域名称" id="keyAreaName"></#NameCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="keyAreaTownship" name="所属乡镇">
+                                    <option value="">全部</option>
+                                    <option value="郫筒街道">郫筒街道</option>
+                                    <option value="合作街道">合作街道</option>
+                                    <option value="西园街道">西园街道</option>
+                                    <option value="犀浦镇">犀浦镇</option>
+                                    <option value="红光镇">红光镇</option>
+                                    <option value="安靖镇">安靖镇</option>
+                                    <option value="团结镇">团结镇</option>
+                                    <option value="唐昌镇">唐昌镇</option>
+                                    <option value="三道堰镇">三道堰镇</option>
+                                    <option value="新民场镇">新民场镇</option>
+                                    <option value="花园镇">花园镇</option>
+                                    <option value="安德镇">安德镇</option>
+                                    <option value="唐元镇">唐元镇</option>
+                                    <option value="德源镇">德源镇</option>
+                                    <option value="古城镇">古城镇</option>
+                                    <option value="友爱镇">友爱镇</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="查询" icon="fa-search" clickFun="KeyArea.search()"/>
+                                <#button name="新增" icon="fa-plus" clickFun="KeyArea.Add()"/>
+                            </div>
+                            <div class="col-sm-3">
+
+                            </div>
+                        </div>
+                        <div class="keyAreaContent">
+
+                        </div>
+                        <p id="f_noContent">没有找到匹配的记录!</p>
+                        <div style="text-align: center" class="pgShow">
+                            <div class="m-style pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/plugins/pagination/jquery.pagination.js"></script>
+<script src="${ctxPath}/static/modular/fx/keyArea/keyArea.js"></script>
+@}

@@ -1,0 +1,98 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5></h5>
+            </div>
+            <div class="ibox-content">
+                <ul class="tab-menu clearfix">
+                    <li class="active" data-name="法轮功"><a href="javascript:;" onclick="changeCultFa()">法轮功</a></li>
+                    <li data-name="门徒会"><a href="javascript:;" onclick="changeCultMt()">门徒会</a></li>
+                    <li data-name="全能神"><a href="javascript:;" onclick="changeCultQn()">全能神</a></li>
+                    <li data-name="中功"><a href="javascript:;" onclick="changeCultZg()">中功</a></li>
+                    <li data-name="心灵法门"><a href="javascript:;" onclick="changeCultXl()">心灵法门</a></li>
+                </ul>
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                       <!--年龄-->
+                        <div class="col-sm-6">
+                            <div class="sub-title sub-title-bg clearfix ">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">邪教人员年龄分布</div>
+                            </div>
+                            <p class="total">总量：<span id="totalPerson"></span></p>
+                            <div id="distribution" style="height:400px">
+
+                            </div>
+                        </div>
+                        <!--性别-->
+                        <div class="col-sm-6">
+                            <div class="sub-title sub-title-bg clearfix ">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">邪教人员性别分布</div>
+                            </div>
+                            <p class="total">总量：<span id="totalPerson1"></span></p>
+                            <div id="distribution1" style="height:400px">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--第二行-->
+                    <div class="col-sm-12">
+                        <!--职业-->
+                        <div class="col-sm-6">
+                            <div class="sub-title sub-title-bg clearfix ">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">邪教人员职业分布</div>
+                            </div>
+                            <p class="total">总量：<span id="totalPerson2"></span></p>
+                            <div id="work" style="height:400px">
+
+                            </div>
+                        </div>
+                        <!--学历-->
+                        <div class="col-sm-6">
+                            <div class="sub-title sub-title-bg clearfix ">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">邪教人员学历分布</div>
+                            </div>
+                            <p class="total">总量：<span id="totalPerson3"></span></p>
+                            <div id="education" style="height:400px">
+
+                            </div>
+                        </div>
+                    </div>
+                <!--第三行-->
+                    <div class="col-sm-12">
+                        <!--职务-->
+                        <div class="col-sm-6">
+                            <div class="sub-title sub-title-bg clearfix ">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">曾担任邪教组织职务</div>
+                            </div>
+                            <p class="total">总量：<span id="totalPerson4"></span></p>
+                            <div id="org" style="height:400px">
+
+                            </div>
+                        </div>
+                        <!--政治面貌-->
+                        <div class="col-sm-6">
+                            <div class="sub-title sub-title-bg clearfix ">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">政治面貌</div>
+                            </div>
+                            <p class="total">总量：<span id="totalPerson5"></span></p>
+                            <div id="policalStatus" style="height:400px">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userInfo/basicanaly.js"></script>
+
+@}

@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="sub-title clearfix">
+            <!--<div class="sub-title-line"></div>
+            <div class="sub-title-name">预警推送</div>-->
+        </div>
+        <ul class="tab-menu clearfix"></ul>
+        <div class="form-horizontal">
+            <input type="hidden" id="controInfoUserId">
+            <div class="col-sm-12">
+                <ul class="info_card_list">
+                    <li class="info_card clearfix">
+                        <div class="list-title clearfix">
+                            <div class="list-title-dot"></div>
+                            <div class="list-title-name">五保一责任人</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#button name="新增" icon="fa-plus" clickFun="ControlInfo.openAddControlDutyInfo()"/>
+                            </div>
+                        </div>
+                        <#table id="PersonLiable"/>
+                    </li>
+                    <li class="info_card clearfix">
+                        <div class="list-title clearfix">
+                            <div class="list-title-dot"></div>
+                            <div class="list-title-name">邪教人员管控情况</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <#TimeToTime bId="beginTime" eId="endTime" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="查询" icon="fa-search" clickFun="ControlInfo.search()"/>
+                                <#button name="新增" icon="fa-plus" clickFun="ControlInfo.openAddControlInfo()"/>
+                            </div>
+                        </div>
+                        <#table id="PersonControl"/>
+                    </li>
+                </ul>
+
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/controlInfo/controlInfo.js"></script>
+@}

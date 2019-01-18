@@ -1,0 +1,89 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="sub-title clearfix">
+           <!-- <div class="sub-title-line"></div>
+            <div class="sub-title-name">预警推送</div>-->
+        </div>
+        <ul class="tab-menu clearfix"></ul>
+        <div class="form-horizontal">
+
+            <input type="hidden" id="userInfoId">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">住院信息</div>
+                            </div>
+                            <#table id="hospitalTable"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">门诊信息</div>
+                            </div>
+                            <#table id="outpatientTable"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">工商信息</div>
+                            </div>
+                            <#table id="businessTable"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">从业信息</div>
+                            </div>
+                           <div class="detail-info">
+                               <#button btnCss="primary" name="新增" id="ensure" icon="fa-plus" clickFun="UserInfo.addEmployment()"/>
+                             <ul></ul>
+                           </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">社保信息</div>
+                            </div>
+
+                                <ul class="info_card_list_ul involving_info_card clearfix">
+                                    <li>
+                                        <span class="info_name">是否参加社保</span>
+                                        <span class="info_info" id="employmentIsJoin"></span>
+                                    </li>
+                                    <li>
+                                        <span class="info_name">是否领取社保</span>
+                                        <span class="info_info" id="employmentIsReceive"></span>
+                                    </li>
+                                    <#table id="social"/>
+
+                                </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userInfo/userInfo.js"></script>
+@}

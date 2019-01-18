@@ -1,0 +1,42 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>邪教活动情况管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <#SelectCon id="street" name="填报单位">
+                                        <option value="">全部</option>
+                                    </#SelectCon>
+                                </div>
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTime" eId="endTime" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="ActivityCase.search()"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <#button name="新增" icon="fa-plus" clickFun="ActivityCase.add()"/>
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="区域案件情况" icon="fa-plus" clickFun="ActivityCase.activityAreaCase()"/>
+                                </div>
+                            </div>
+                        </div>
+                        <#table id="ActivityTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/areaPeoAnaly/areapeoanaly.js"></script>
+@}

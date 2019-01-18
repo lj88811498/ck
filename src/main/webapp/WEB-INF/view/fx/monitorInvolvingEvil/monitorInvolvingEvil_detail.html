@@ -1,0 +1,166 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="sub-title clearfix">
+            <div class="sub-title-line"></div>
+            <div class="sub-title-name">预警推送</div>
+        </div>
+        <ul class="tab-menu clearfix"></ul>
+        <div class="form-horizontal">
+            <input type="hidden" id="involvingInfoId">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">涉邪信息</div>
+                            </div>
+                            <ul class="info_card_list_ul involving_info_card clearfix">
+                                <li>
+                                    <span class="info_name">邪教类别</span>
+                                    <span class="info_info" id="involvingEvilType">${item.involvingEvilType}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">开始时间</span>
+                                    <span class="info_info" id="involvingEvilStartTime">${item.involvingEvilStartTime}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">原担任邪教组织职务</span>
+                                    <span class="info_info" id="involvingEvilWork">${item.involvingEvilWork}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">纳入工作视线时间</span>
+                                    <span class="info_info" id="involvingEvilNoticedTime">${item.involvingEvilNoticedTime}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">公安机关列控级别</span>
+                                    <span class="info_info" id="involvingEvilMonitorLevel">${item.involvingEvilMonitorLevel}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">转化情况</span>
+                                    <span class="info_info" id="involvingEvilStatus">${item.involvingEvilStatus}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">转换时间</span>
+                                    <span class="info_info" id="involvingEvilTime">${item.involvingEvilTime}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">近亲家属中有无练功人员</span>
+                                    <span class="info_info" id="involvingEvilFamilyIn">${item.involvingEvilFamilyIn}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否受过打击处理</span>
+                                    <span class="info_info" id="involvingEvilStriked">${item.involvingEvilStriked}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">目前是否涉嫌从事邪教活动</span>
+                                    <span class="info_info" id="involvingEvilStillIn">${item.involvingEvilStillIn}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否负案在逃</span>
+                                    <span class="info_info" id="involvingEvilEscape">${item.involvingEvilEscape}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否失控</span>
+                                    <span class="info_info" id="involvingEvilControlled">${item.involvingEvilControlled}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否涉嫌在监服刑</span>
+                                    <span class="info_info" id="involvingEvilPrison">${item.involvingEvilPrison}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">有无个人电脑</span>
+                                    <span class="info_info" id="involvingEvilPersonalComputer">${item.involvingEvilPersonalComputer}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">有无上网路线</span>
+                                    <span class="info_info" id="involvingEvilInternet">${item.involvingEvilInternet}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否需要异地（跨省）管控</span>
+                                    <span class="info_info" id="involvingEvilOtherLocal">${item.involvingEvilOtherLocal}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否办理交控手续</span>
+                                    <span class="info_info" id="involvingEvilFixProcess">${item.involvingEvilFixProcess}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">交控地</span>
+                                    <span class="info_info" id="involvingEvilControl">${item.involvingEvilControl}</span>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">涉外情况</div>
+                            </div>
+                            <ul class="info_card_list_ul involving_info_card clearfix">
+                                <li>
+                                    <span class="info_name">有无近亲家属在境外</span>
+                                    <span class="info_info" id="involvingEvilRelativesOut">${item.involvingEvilRelativesOut}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">有无出入境证件</span>
+                                    <span class="info_info" id="involvingEvilHavePassport">${item.involvingEvilHavePassport}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">出入境证件号</span>
+                                    <span class="info_info" id="involvingEvilPassportNum">${item.involvingEvilPassportNum}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否办理边控</span>
+                                    <span class="info_info" id="involvingEvilBorderControl">${item.involvingEvilBorderControl}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">是否在境外</span>
+                                    <span class="info_info" id="involvingEvilAbroad">${item.involvingEvilAbroad}</span>
+                                </li>
+                                <li>
+                                    <span class="info_name">有无出入境记录</span>
+                                    <span class="info_info" id="involvingEvilHaveAbroad">${item.involvingEvilHaveAbroad}</span>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <div class="info_card_edit">
+                        <#button btnCss="primary" name="编辑信息" id="ensure" icon="fa-edit" clickFun="InvolvingEvil.openInvolvingEvilDetail(${item.involvingEvilId})"/>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <ul class="info_card_list">
+                        <li class="info_card clearfix">
+                            <div class="list-title clearfix">
+                                <div class="list-title-dot"></div>
+                                <div class="list-title-name">参加邪教活动及处理情况</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#TimeToTime bId="beginTimeReg" eId="endTimeReg" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#button name="查询" icon="fa-search" clickFun="InvolvingEvil.regSearch()"/>
+                                    <#button name="新增" icon="fa-plus" clickFun="InvolvingEvil.openAddInvolvingEvilReg()"/>
+                                </div>
+                            </div>
+                            <#table id="caseHandlingId"/>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/involvingEvil/involvingEvil.js"></script>
+@}

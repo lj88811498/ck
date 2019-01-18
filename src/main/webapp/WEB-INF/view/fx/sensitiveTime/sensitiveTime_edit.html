@@ -1,0 +1,26 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input type="hidden" id="sensitiveTimeId" value="${item.sensitiveTimeId}">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#inputShowTime id="sensitiveTimeBeginTime" name="开始时间" value="${item.sensitiveTimeBeginTime}" isTime="true" pattern="YYYY-MM-DD hh:mm:ss"/>
+                    <#inputShowTime id="sensitiveTimeEndTime" name="结束时间" value="${item.sensitiveTimeEndTime}" isTime="true" pattern="YYYY-MM-DD hh:mm:ss"/>
+                    <#input id="sensitiveTimeContent" name="时间内容" value="${item.sensitiveTimeContent}" underline="true"/>
+                </div>
+
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="SensitiveTimeInfo.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="SensitiveTimeInfo.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/sensitive/sensitiveTime_info.js"></script>
+@}

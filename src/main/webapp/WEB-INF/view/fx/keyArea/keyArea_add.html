@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<style>
+    .textArea label{
+        margin-left: -164px;
+    }
+</style>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="KeyAreaInfoDlgForm">
+            <input type="hidden" id="keyAreaId" >
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-5">
+                        <#input id="keyAreaName" name="区域名称"/>
+                        <#select id="keyAreaTownship" name="所属乡镇" >
+                            <option value="郫筒街道">郫筒街道</option>
+                            <option value="合作街道">合作街道</option>
+                            <option value="西园街道">西园街道</option>
+                            <option value="犀浦镇">犀浦镇</option>
+                            <option value="红光镇">红光镇</option>
+                            <option value="安靖镇">安靖镇</option>
+                            <option value="团结镇">团结镇</option>
+                            <option value="唐昌镇">唐昌镇</option>
+                            <option value="三道堰镇">三道堰镇</option>
+                            <option value="新民场镇">新民场镇</option>
+                            <option value="花园镇">花园镇</option>
+                            <option value="安德镇">安德镇</option>
+                            <option value="唐元镇">唐元镇</option>
+                            <option value="德源镇">德源镇</option>
+                            <option value="古城镇">古城镇</option>
+                            <option value="友爱镇">友爱镇</option>
+                        </#select>
+                        <#avatarKeyArea id="keyAreaImg" name="区域图片" avatarImg="" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-10 textArea">
+                        <#textarea id="keyAreaDesc" name="重点区域介绍" ></#textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="KeyAreaInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="KeyAreaInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/keyArea/keyArea_info.js"></script>
+@}

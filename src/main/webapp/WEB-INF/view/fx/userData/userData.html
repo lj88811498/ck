@@ -1,0 +1,99 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins f-userData">
+            <!--<div class="ibox-title">
+                <h5>用户数据管理</h5>
+            </div>-->
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="sub-title sub-title-bg clearfix ">
+                            <div class="sub-title-line"></div>
+                            <div class="sub-title-name">反邪指挥概况</div>
+                        </div>
+                        <div class="command">
+                           <div class="item">
+                               <p>全量数据：<span class="blueColor" id="allData">0</span></p>
+                               <p>本月新增：<span class="orangeColor" id="allMonth">0</span></p>
+                           </div>
+                            <div class="item">
+                                <p>水务局数据总量：<span class="blueColor" id="waterData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="waterMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>能源办数据总量：<span class="blueColor" id="energyData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="energyMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>交通局数据总量：<span class="blueColor" id="trafficData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="trafficMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>民政局数据总量：<span class="blueColor" id="serviceData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="serviceMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>卫计局数据总量：<span class="blueColor" id="bureauData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="bureauMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>人社局数据总量：<span class="blueColor" id="peopleData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="peopleMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>综治办数据总量：<span class="blueColor" id="officeData">0</span></p>
+                                <p>本日新增：<span class="orangeColor" id="officeMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>公安局数据总量：<span class="blueColor" id="policeData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="policeMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>不动产数据总量：<span class="blueColor" id="estateData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="estateMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>市场监督局数据总量：<span class="blueColor" id="mallData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="mallMonth">0</span></p>
+                            </div>
+                            <div class="item">
+                                <p>国保局数据总量：<span class="blueColor" id="countryData">0</span></p>
+                                <p>本月新增：<span class="orangeColor" id="countryMonth">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 f-userDataYear">
+                        <div class="sub-title sub-title-bg clearfix ">
+                            <div class="sub-title-line"></div>
+                            <div class="sub-title-name">数据趋势</div>
+                            <div id="monitorSearch">
+                                <#DivTimeCon id="year"  name="dataTrend" chartType="bar" url="/userData/list" type="year" clickFun="UserData.selectTime($('#year'))" />
+                                <!--<select id="year">-->
+                                <!--<option value="2018">2018</option>-->
+                                <!--</select>-->
+                                <select id="month" name="dataTrend" onchange="UserData.selectTime($('#year'))">
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="dataTrend" style="height: 360px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userData/userData.js"></script>
+@}

@@ -1,0 +1,30 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="UserHereticsRecordInfoDlgForm">
+
+            <input type="hidden" id="userHereticsRecordUserId" value="${item.userHereticsRecordUserId}">
+            <input type="hidden" id="userHereticsRecordId" value="${item.userHereticsRecordId}">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#inputShowTime id="userHereticsRecordTime" name="帮扶时间" value="${item.userHereticsRecordTime}"/>
+                    <!--<#input id="userHereticsRecordObj" name="帮教对象" value="${item.userHereticsRecordObj}" />-->
+                    <#input id="userHereticsRecordHelperName" name="帮教人员" value="${item.userHereticsRecordHelperName}" />
+                    <#input id="userHereticsRecordCallLocation" name="帮教地点" value="${item.userHereticsRecordCallLocation}" />
+                    <#input id="userHereticsRecordContent" name="回访帮教内容" value="${item.userHereticsRecordContent}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="UserHereticsRecordInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="UserHereticsRecordInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userHereticsRecord/userHereticsRecord_info.js"></script>
+@}

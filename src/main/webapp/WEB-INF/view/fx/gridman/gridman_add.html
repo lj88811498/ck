@@ -1,0 +1,34 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-3">
+                        <div class="gridman-userList-search">
+                            <input type="search" placeholder="请输入人员姓名" id="gridmanName" class="fa fa-search">
+                            <button onclick="GridmanPersonInfoDlg.search()">搜索</button>
+                        </div>
+                        <!--<#NameCon id="gridmanName" name="人员姓名" />-->
+                    </div>
+
+
+                </div>
+                <div class="gridman-userList">
+                    <ul id="user-content"></ul>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="GridmanPersonInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="GridmanPersonInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/gridman/gridman_add.js"></script>
+@}

@@ -1,0 +1,231 @@
+@layout("/common/_container.html"){
+
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/pagination/common/reset.css" media="screen">
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/pagination/common/highlight.min.css" media="screen">
+<link rel="stylesheet"  href="${ctxPath}/static/js/plugins/pagination/pagination.css"/>
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/css/gridMonitor.css"/>
+<div class="row gridMonitor">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>网格化指挥</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-sm-12" style="background: #fff;margin-left: 7px;">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="userInfoPresentResident" name="行政区域">
+                                                <option value="">全部</option>
+                                                <option value="郫筒街道">郫筒街道</option>
+                                                <option value="合作街道">合作街道</option>
+                                                <option value="西园街道">西园街道</option>
+                                                <option value="犀浦镇">犀浦镇</option>
+                                                <option value="红光镇">红光镇</option>
+                                                <option value="安靖镇">安靖镇</option>
+                                                <option value="团结镇">团结镇</option>
+                                                <option value="唐昌镇">唐昌镇</option>
+                                                <option value="三道堰镇">三道堰镇</option>
+                                                <option value="新民场镇">新民场镇</option>
+                                                <option value="花园镇">花园镇</option>
+                                                <option value="安德镇">安德镇</option>
+                                                <option value="唐元镇">唐元镇</option>
+                                                <option value="德源镇">德源镇</option>
+                                                <option value="古城镇">古城镇</option>
+                                                <option value="友爱镇">友爱镇</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <#NameCon id="userInfoName" name="人员姓名"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <#TimeToTime bId="involvingEvilStartTime1" eId="involvingEvilStartTime2" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <#NameCon id="userInfoCard" name="身份证号"/>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilType" name="邪教类别">
+                                                <option value="">全部</option>
+                                                <option value="法轮功">法轮功</option>
+                                                <option value="门徒会">门徒会</option>
+                                                <option value="全能神">全能神</option>
+                                                <option value="中功">中功</option>
+                                                <option value="心灵法门">心灵法门</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilMonitorLevel" name="监控级别">
+                                                <option value="">全部</option>
+                                                <option value="重点人员3级">重点人员(三级人员)</option>
+                                                <option value="重点人员2级">重点人员(二级人员)</option>
+                                                <option value="重点人员1级">重点人员(一级人员)</option>
+                                                <option value="不放心人员">不放心人员</option>
+                                                <option value="一般人员">一般人员</option>
+                                                <option value="已解脱人员">已解脱人员</option>
+                                            </#SelectCon>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilStatus" name="转换情况">
+                                                <option value="">全部</option>
+                                                <option value="未转化需攻坚">未转化需攻坚</option>
+                                                <option value="已转化需巩固">已转化需巩固</option>
+                                                <option value="已转化并解脱">已转化并解脱</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilControlled" name="是否失控" width="48%">
+                                                <option value="">全部</option>
+                                                <option value="5">是</option>
+                                                <option value="0">否</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilAbroad" name="是否境外" width="48%">
+                                                <option value="">全部</option>
+                                                <option value="14">是</option>
+                                                <option value="0">否</option>
+                                            </#SelectCon>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilEscape" name="是否负案在逃">
+                                                <option value="">全部</option>
+                                                <option value="2">是</option>
+                                                <option value="0">否</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilPrison" name="是否在监服刑">
+                                                <option value="">全部</option>
+                                                <option value="9">是</option>
+                                                <option value="0">否</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilOtherLocal" name="是否异地管控">
+                                                <option value="">全部</option>
+                                                <option value="10">是</option>
+                                                <option value="0">否</option>
+                                            </#SelectCon>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilFixPprocess" name="是否办理交控手续" width="41%">
+                                                <option value="">全部</option>
+                                                <option value="7">是</option>
+                                                <option value="0">否</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <#SelectCon id="involvingEvilStriked" name="是否受过打击处理" width="41%">
+                                                <option value="">全部</option>
+                                                <option value="4">是</option>
+                                                <option value="0">否</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <#SelectCon id="involvingEvilStillIn" name="是否涉嫌从事邪教活动">
+                                                <option value="">全部</option>
+                                                <option value="8">是</option>
+                                                <option value="0">否</option>
+                                            </#SelectCon>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <#button name="查询" icon="fa-search" clickFun="GridMonitor.search()"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<iframe class="" unselectable="on" style="width:98%;height:850px;margin-top: 4px;" name="mapfrm" id="mapfrm" src="${ctxPath}/static/js/plugins/baiduMap/offlinemap_demo/demo/1_0.html"></iframe>-->
+                            <div class="row" style="width:100%;height:750px;">
+                                <div id="map_demo" style="width:100%;height:750px;"></div>
+                            </div>
+
+                            <div class="icon_detail">
+                                <ul>
+                                    <li>
+                                       <img src="../../../../static/img/5.png">
+                                        <div>
+                                           <p>类别：</p>
+                                            <p>重点人员3级</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../../static/img/4.png">
+                                        <div>
+                                            <p>类别：</p>
+                                            <p>重点人员2级</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../../static/img/6.png" style="width:29px;height:55px;">
+                                        <div>
+                                            <p>类别：</p>
+                                            <p>重点人员1级</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../../static/img/3.png">
+                                        <div>
+                                            <p>类别：</p>
+                                            <p>不放心人员</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../../static/img/2.png">
+                                        <div>
+                                            <p>类别：</p>
+                                            <p>一般人员</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../../static/img/1.png">
+                                        <div>
+                                            <p>类别：</p>
+                                            <p>已解脱</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="sub-title sub-title-bg clearfix">
+                                <div class="sub-title-line"></div>
+                                <div class="sub-title-name">预警推送</div>
+                                <a style="float: right;margin-top: 3px;" href="javascript:;" onclick="window.location.href = Feng.ctxPath + '/gridMonitor/gridMonitorPush'">更多>></a>
+                            </div>
+                            <div class="warning-content">
+                            </div>
+                            <div style="text-align: center">
+                                <div class="m-style pagination"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript"  id="mapLoad" ></script>
+<script>
+    document.write('<link rel="stylesheet" type="text/css" href="'+Feng.mapPath+'/fx/baiduMap/css/map.css"/>');
+    document.write('<script src="' + Feng.mapPath + '/fx/baiduMap/offlinemap/map_load.js" type="text/javascript" ></sc' + 'ript>');
+</script>
+<script src="/static/js/plugins/pagination/jquery.pagination.js"></script>
+<script type="text/javascript"  id="mapData" src="${ctxPath}/static/modular/fx/gridMonitor/mapData.js"></script>
+<script src="${ctxPath}/static/modular/fx/gridMonitor/gridMonitor.js"></script>
+@}

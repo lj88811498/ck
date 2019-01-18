@@ -1,0 +1,46 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="PeopleInfoInfoDlgForm">
+
+            <input type="hidden" id="peopleInfoUserId" value="${item.peopleInfoUserId}">
+            <input type="hidden" id="peopleInfoId" value="${item.peopleInfoId}">
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="peopleInfoName" name="产权人姓名" value="${item.peopleInfoName}" />
+                    <#input id="peopleInfoCardType" name="证件类型" value="${item.peopleInfoCardType}" />
+                    <#input id="peopleInfoCardCode" name="证件编号" value="${item.peopleInfoCardCode}" />
+                    <!--<#input id="peopleInfoMonitor" name="是否为监视房" value="${item.peopleInfoMonitor}" />-->
+                    <#select id="peopleInfoMonitor" name="是否为监视房" value="${item.peopleInfoMonitor}">
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </#select>
+                    <#input id="peopleInfoFamilyCode" name="户口薄编号" value="${item.peopleInfoFamilyCode}" />
+                    <#input id="peopleInfoHouseCode" name="房产证编号" value="${item.peopleInfoHouseCode}" />
+                    <#input id="peopleInfoArea" name="居住面积" value="${item.peopleInfoArea}"/>
+                    <#select id="peopleInfoHomeType" name="房屋类型" value="${item.peopleInfoHomeType}">
+                        <option value="自主房">自主房</option>
+                        <option value="出租房">出租房</option>
+                    </#select>
+                    <#select id="peopleInfoStreetName" name="房屋地址" value="${item.peopleInfoStreetName}" onchange="PeopleInfoInfoDlg.change(this.options[this.options.selectedIndex].value)">
+
+                    </#select>
+                    <#input id="peopleInfoAdress" name="房屋详细地址" value="${item.peopleInfoAdress}" underline="true"/>
+                    <!--<#input id="peopleInfoType" name="产权性质" value="${item.peopleInfoType}" underline="true"/>-->
+                    <!--<#input id="peopleInfoHouseType" name="户型" value="${item.peopleInfoHouseType}" underline="true"/>-->
+                    <!--<#input id="peopleInfoYearSalary" name="家庭年收入" value="${item.peopleInfoYearSalary}" underline="true"/>-->
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PeopleInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PeopleInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/peopleInfo/peopleInfo_info.js"></script>
+@}

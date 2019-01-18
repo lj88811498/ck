@@ -1,0 +1,26 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="employmentInfoForm">
+
+            <input type="hidden" id="employmentId" value="${item.employmentId}">
+            <input type="hidden" id="employmentUserId" value="${item.employmentUserId}">
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="employmentInfo" name="从业信息" value="${item.employmentInfo}" underline="true"/>
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="UserInfoInfoDlg.editEmploymentInfoSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="UserInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userInfo/userInfo_info.js"></script>
+@}

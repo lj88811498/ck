@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+       <div class="precautionDetail">
+            <div class="precautionTitles" id="precautionTitle"></div>
+           <div class="precaution-info">
+               <p>
+                   <span>类型:</span>
+                   <span id="precautionType"></span>
+               </p>
+               <p>
+                   <span>创建时间:</span>
+                   <span id="precautionCreateTime"></span>
+               </p>
+               <p>
+                   <span>编辑时间:</span>
+                   <span id="precautionUpdateTime"></span>
+               </p>
+               <p>
+                   <span>编辑人:</span>
+                   <span id="precautionUpdateBy"></span>
+               </p>
+               <p>
+                   <span>附件名:</span>
+                   <span id="precautionAttachmentName"></span>
+                   <a id="download" download="">附件下载</a>
+               </p>
+           </div>
+           <div class="precaution-content" id="precautionContent">
+
+           </div>
+       </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/precaution/precaution_view.js"></script>
+@}

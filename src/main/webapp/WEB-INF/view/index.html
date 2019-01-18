@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>南宁工业大数据应用服务平台</title>
+    <link rel="shortcut icon" href="${ctxPath}/static/favicon.ico">
+    <link href="${ctxPath}/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="${ctxPath}/static/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="${ctxPath}/static/css/animate.css" rel="stylesheet">
+    <link href="${ctxPath}/static/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden;min-width: 1200px;">
+    <div id="wrapper">
+    
+        <!--左侧导航开始-->
+        	@include("/common/_tab.html"){}
+        <!--左侧导航结束-->
+        
+        <!--右侧部分开始-->
+        	@include("/common/_right.html"){}
+        <!--右侧部分结束-->
+        
+        <!--右侧边栏开始-->
+        	@include("/common/_theme.html"){}
+        <!--右侧边栏结束-->
+       
+    </div>
+
+    <!-- 全局js -->
+    <script src="${ctxPath}/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${ctxPath}/static/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="${ctxPath}/static/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="${ctxPath}/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="${ctxPath}/static/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <script src="${ctxPath}/static/js/plugins/layer/layer.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="${ctxPath}/static/js/hplus.js?v=4.1.0"></script>
+    <script type="text/javascript" src="${ctxPath}/static/js/contabs.js"></script>
+
+    <!-- 第三方插件 -->
+    <script src="${ctxPath}/static/js/plugins/pace/pace.min.js"></script>
+
+    <script>
+        $(function () {
+            //判断是否是IE浏览器
+            function IEVersion() {
+                var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+                var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器
+                var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器
+                var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+                if(isIE) {
+                    var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+                    reIE.test(userAgent);
+                    var fIEVersion = parseFloat(RegExp["$1"]);
+                    if(fIEVersion == 7) {
+                        return 7;
+                    } else if(fIEVersion == 8) {
+                        return 8;
+                    } else if(fIEVersion == 9) {
+                        return 9;
+                    } else if(fIEVersion == 10) {
+                        return 10;
+                    } else {
+                        return 6;//IE版本<=7
+                    }
+                } else if(isEdge) {
+                    return 'edge';//edge
+                } else if(isIE11) {
+                    return 11; //IE11
+                }else{
+                    return -1;//不是ie浏览器
+                }
+            }
+            //如果是IE浏览器，判断是否安装了FlashPlayer插件
+            var isIE = IEVersion();
+            if(isIE != -1){
+                try{
+                    var swf1 = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+                }
+                catch(e){
+                    Feng.confirm('没有安装Flash插件或插件版本过低，为保证平台功能正常使用，是否跳转到相关页面下载最新的FlashPlayer插件并安装？', function () {
+                        window.open('https://get2.adobe.com/cn/flashplayer/otherversions/');
+                    });
+                }
+            }
+            // else {
+            //     try{
+            //         var swf2 = navigator.plugins['Shockwave Flash'];
+            //         if(swf2 == undefined){
+            //             alert('没有安装Flash');
+            //         }
+            //         else {
+            //             alert('安装了Flash');
+            //         }
+            //     }
+            //     catch(e){
+            //         alert('没有安装Flash');
+            //     }
+            // }
+            $('input, textarea').placeholder();
+            var cookieArr = [];
+            var activeTab = '';
+            function removeByValue(arr, val) {
+                for(var j = 0; j < arr.length; j++) {
+                    if(arr[j] === val) {
+                        arr.splice(j, 1);
+                        break;
+                    }
+                }
+            }
+            $(".J_menuItem").click(function () {
+                var currentIndex = $(this).data("index");
+                activeTab = $(this).attr('href');
+                sessionStorage.setItem('activeTab', activeTab);
+                if (cookieArr.indexOf(currentIndex) === -1) {
+                    cookieArr.push(currentIndex);
+                    sessionStorage.setItem('navArr', cookieArr);
+                }else {
+                    return;
+                }
+            });
+            $('.J_menuTabs').on('click', '.fa-times-circle', function () {
+                var menus = $('.J_menuItem');
+                var menuTabs = $('.J_menuTab');
+                for (var i = 0; i < menus.length; i++) {
+                    if ($(menus[i]).attr('href') === $(this).parent('a').data('id')) {
+                        removeByValue(cookieArr, $(menus[i]).data('index'));
+                        sessionStorage.setItem('navArr', cookieArr);
+                    }
+                }
+                for (var j = 0; j < menuTabs.length; j++) {
+                    if ($(menuTabs[j]).hasClass('active')) {
+                        activeTab = $(menuTabs[j]).data('id');
+                        sessionStorage.setItem('activeTab', activeTab);
+                    }
+                }
+            });
+            $('.J_menuTabs').on('click', '.J_menuTab', function () {
+                activeTab = $(this).data('id');
+                sessionStorage.setItem('activeTab', activeTab);
+            });
+
+            // 关闭全部
+            $('.J_tabCloseAll').on('click', function () {
+                cookieArr = [];
+                activeTab = '';
+                sessionStorage.setItem('activeTab', activeTab);
+                sessionStorage.setItem('navArr', cookieArr);
+            });
+        });
+        /*刷新时*/
+        window.onload = function (ev) {
+            var newNavi = sessionStorage.getItem('navArr');
+            var newActiveTab = sessionStorage.getItem('activeTab');
+            var navMenus = $(".J_menuItem");
+            if (newNavi) {
+                var newNaviArr = newNavi.split(',');
+                for (var i = 0; i < newNaviArr.length; i++) {
+                    $(".J_menuItem").eq(newNaviArr[i]).trigger("click");
+                }
+            }
+            if (newActiveTab) {
+                var menuTabs = $('.J_menuTab');
+                for (var j = 0; j < menuTabs.length; j++) {
+                    if ($(menuTabs[j]).data('id') === newActiveTab) {
+                        $(menuTabs[j]).trigger('click');
+                        for (var k = 0; k < navMenus.length; k++) {
+                            if ($(navMenus[k]).attr('href') === $(menuTabs[j]).data('id')) {
+                                if ($(navMenus[k]).parents('.nav-third-level')) {
+                                    $(navMenus[k]).parents('.nav-third-level').siblings('a').trigger("click");
+                                }
+                                if ($(navMenus[k]).parents('.nav-second-level')) {
+                                    $(navMenus[k]).parents('.nav-second-level').siblings('a').trigger("click");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        function closeProfile() {
+            var profile = $('.profile-element');
+            var closeTabBtn = $('.J_tabClose');
+            profile.removeClass('open');
+            profile.find('a.dropdown-toggle').attr('aria-expanded', 'false');
+            closeTabBtn.parent('.btn-group').removeClass('open');
+            closeTabBtn.attr('aria-expanded', 'false');
+        }
+    </script>
+
+</body>
+
+</html>

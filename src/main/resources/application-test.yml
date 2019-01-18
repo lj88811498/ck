@@ -1,0 +1,32 @@
+##########################################################
+##################  所有profile共有的配置  #################
+##########################################################
+
+###################  项目启动端口  ###################
+server:
+  port: 8899
+
+##########################################################
+###################  开发环境的profile  ###################
+##########################################################
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://172.16.0.5:3306/nncloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    username: root
+    password: 1qaz@WSX
+    db-name: nncloud
+    filters: log4j,wall,mergeStat
+
+guns:
+  #file-upload-path: /mnt/NFS_Client/fx/  #文件上传目录(不配置的话为java.io.tmpdir目录)
+  #server-path: http://172.16.0.240/fx/
+  #map-server-path: http://172.16.0.240
+  file-upload-path: /var/www/html/nanning/
+  file-upload-pathlib: /var/www/html/nanning/
+  #file-upload-path: /var/www/html/fx/
+  #file-upload-pathlib: /var/www/html/fx/
+  #server-path: http://172.16.0.181/fx/
+  #map-server-path: http://172.16.0.181
+  server-path: http://172.16.0.181/nanning/
+  map-server-path: http://172.16.0.181

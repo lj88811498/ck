@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+           <input type="hidden" id="involvingEvilRecordUserId">
+            <div class="row">
+                <div class="col-sm-12 b-r">
+             <!--       <#input id="involvingEvilRecordArrestTime" value="" name="被抓获时间"></#input>-->
+                    <#inputTime id="involvingEvilRecordArrestTime" value="" name="被抓获时间" isTime="false" pattern="YYYY-MM-DD"></#inputTime>
+                    <#select id="involvingEvilRecordType" name="处罚种类">
+                        <option value="刑事拘留">刑事拘留</option>
+                        <option value="被判刑">被判刑</option>
+                        <option value="劳教">劳教</option>
+                        <option value="行政拘留">行政拘留</option>
+                    </#select>
+
+                   <!-- <#input id="involvingEvilRecordArrestTime" value="" name=""></#input>-->
+                    <#inputTime id="involvingEvilRecordPunishedTime" value="" name="处罚期限" isTime="false" pattern="YYYY-MM-DD"></#inputTime>
+                  <!--  <#input id="involvingEvilRecordUnpunishedTime" name="解除处罚时间" value=""/>-->
+                    <#inputTime id="involvingEvilRecordUnpunishedTime" value="" name="解除处罚时间" isTime="false" pattern="YYYY-MM-DD"></#inputTime>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="确定" id="ensure" icon="fa-check" clickFun="InvolvingEvilInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="InvolvingEvilInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/involvingEvil/involvingEvil_info.js"></script>
+@}

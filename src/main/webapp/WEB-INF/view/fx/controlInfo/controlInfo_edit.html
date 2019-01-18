@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input type="hidden" id="controlInfoId" value="${item.controlInfoId}">
+            <input type="hidden" id="controlInfoUserId" >
+            <div class="row">
+                <div class="col-sm-12">
+                    <#inputShowTime id="controlInfoTime" name="填报时间" isTime="false" pattern="YYYY-MM-DD" value="${item.controlInfoTime}"/>
+                            <#input id="controlInfoUnit" name="填报单位" value="${item.controlInfoUnit}"/>
+                            <#input id="controlInfoName" name="填报人" value="${item.controlInfoName}"/>
+                            <#input id="controlInfoLeader" name="分管领导" value="${item.controlInfoLeader}"/>
+                    <#select id="controlInfoIsActivity" name="有无现实活动" value="${item.controlInfoIsActivity}">
+                        <option value="有">有</option>
+                        <option value="疑似活动">疑似有活动</option>
+                        <option value="无">无</option>
+                    </#select>
+                    <#select id="controlInfoIsVisit" name="是否开展上门走访"  value="${item.controlInfoIsVisit}">
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </#select>
+                    <#select id="controlInfoMonitor" name="是否稳控当地" value="${item.controlInfoMonitor}">
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </#select>
+                        <!--    <#input id="controlInfoIsActivity" name="有无现实活动" value="${item.controlInfoIsActivity}"/>
+                    <#input id="controlInfoIsVisit" name="是否开展上门走访" value="${item.controlInfoIsVisit}"/>
+                    <#input id="controlInfoMonitor" name="是否稳控当地" value="${item.controlInfoMonitor}"/>-->
+                    <#input id="controlInfoDesc" name="备注" value="${item.controlInfoDesc}" underline="true"/>
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ControlInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ControlInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/controlInfo/controlInfo_info.js"></script>
+@}

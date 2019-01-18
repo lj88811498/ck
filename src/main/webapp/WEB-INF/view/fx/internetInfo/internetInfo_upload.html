@@ -1,0 +1,26 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="precautionDetail">
+            <div class="clearfix m-b-sm internetInfoUpload">
+                <label id= "" class="input-group-name" >导入数据</label>
+                <form id="upload" class="fUpload" style="display: inline-block">
+                    <!--<div class="uploadbtnBox clearfix">-->
+                        <!--<a href="javascript:;" class="a-upload" >-->
+                            <input type="file" id="fileUpload"  name="file" class="fileUpload"
+                                   />
+                        <!--</a>-->
+                    <!--</div>-->
+                </form>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="导入" id="ensure" icon="fa-check" clickFun="InternetInfoUpload.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="InternetInfoUpload.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/internetInfo/internetInfo_upload.js"></script>
+@}

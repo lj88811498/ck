@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="UserHereticsInfoDlgForm">
+
+            <input type="hidden" id="userHereticsDutyId" value="${item.userHereticsDutyId}">
+            <input type="hidden" id="userHereticsDutyUserId">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="userHereticsDutyJob" name="职务" value="${item.userHereticsDutyJob}"/>
+                    <#input id="userHereticsDutyName" name="姓名" value="${item.userHereticsDutyName}"/>
+                    <#input id="userHereticsDutyTel" name="联系电话" value="${item.userHereticsDutyTel}"/>
+                    <#input id="userHereticsDutyUnit" name="责任单位" value="${item.userHereticsDutyUnit}" underline="true"/>
+                   <!-- <#input id="userHereticsProtector" name="包保人" value="${item.userHereticsProtector}" />
+                    <#input id="userHereticsProtectorTel" name="包保人电话" value="${item.userHereticsProtectorTel}" />
+                    <#input id="userHereticsCompany" name="责任单位" value="${item.userHereticsCompany}" />
+                    <#input id="userHereticsPoliceStation" name="协办派出所" value="${item.userHereticsPoliceStation}" />
+                    <#input id="userHereticsPoliceTel" name="派出所电话" value="${item.userHereticsPoliceTel}" />
+                    <#input id="userHereticsInformationProvider" name="网格员" value="${item.userHereticsInformationProvider}" />
+                    <#input id="userHereticsInformationProviderTel" name="网格员电话" value="${item.userHereticsInformationProviderTel}" underline="true"/>-->
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="UserHereticsInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="UserHereticsInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/userHeretics/userHeretics_info.js"></script>
+@}

@@ -1,0 +1,105 @@
+package ${controller.packageName};
+
+<% for(import in controller.imports!){ %>
+import ${import};
+<% } %>
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.RequestMethod;
+/**
+ * ${context.bizChName}控制器
+ *
+ * @author ${context.author}
+ * @Date ${tool.currentTime()}
+ */
+@Controller
+@RequestMapping("/${context.bizEnName}")
+@Api(value = "${context.bizEnBigName}-controller", description = "${context.bizChName}")
+public class ${context.bizEnBigName}Controller extends BaseController {
+
+    private String PREFIX = "/${context.moduleName}/${context.bizEnName}/";
+
+    @Autowired
+    private I${context.entityName}Service ${context.bizEnName}Service;
+
+    /**
+     * 跳转到${context.bizChName}首页
+     */
+    @RequestMapping("")
+    public String index() {
+        return PREFIX + "${context.bizEnName}.html";
+    }
+
+    /**
+     * 跳转到添加${context.bizChName}
+     */
+    @RequestMapping("/${context.bizEnName}_add")
+    public String ${context.bizEnName}Add() {
+        return PREFIX + "${context.bizEnName}_add.html";
+    }
+
+    /**
+     * 跳转到修改${context.bizChName}
+     */
+    @RequestMapping(value = "/${context.bizEnName}_update/{${context.bizEnName}Id}", method = RequestMethod.GET)
+    @ApiOperation(value = "编辑${context.bizChName}", notes = "编辑${context.bizChName}")
+    public String ${context.bizEnName}Update(@PathVariable Integer ${context.bizEnName}Id, Model model) {
+        ${context.entityName} ${context.bizEnName} = ${context.bizEnName}Service.selectById(${context.bizEnName}Id);
+        model.addAttribute("item",${context.bizEnName});
+        LogObjectHolder.me().set(${context.bizEnName});
+        return PREFIX + "${context.bizEnName}_edit.html";
+    }
+
+    /**
+     * 获取${context.bizChName}列表
+     */
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "获取${context.bizChName}列表", notes = "获取${context.bizChName}列表")
+    public Object list(String condition) {
+        return ${context.bizEnName}Service.selectList(null);
+    }
+
+    /**
+     * 新增${context.bizChName}
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "新增${context.bizChName}", notes = "新增${context.bizChName}")
+    public Object add(${context.entityName} ${context.bizEnName}) {
+        ${context.bizEnName}Service.insert(${context.bizEnName});
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * 删除${context.bizChName}
+     */
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "删除${context.bizChName}", notes = "删除${context.bizChName}")
+    public Object delete(@RequestParam Integer ${context.bizEnName}Id) {
+        ${context.bizEnName}Service.deleteById(${context.bizEnName}Id);
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * 修改${context.bizChName}
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "修改${context.bizChName}", notes = "修改${context.bizChName}")
+    public Object update(${context.entityName} ${context.bizEnName}) {
+        ${context.bizEnName}Service.updateById(${context.bizEnName});
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * ${context.bizChName}详情
+     */
+    @RequestMapping(value = "/detail/{${context.bizEnName}Id}", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "${context.bizChName}详情", notes = "${context.bizChName}详情")
+    public Object detail(@PathVariable("${context.bizEnName}Id") Integer ${context.bizEnName}Id) {
+        return ${context.bizEnName}Service.selectById(${context.bizEnName}Id);
+    }
+}

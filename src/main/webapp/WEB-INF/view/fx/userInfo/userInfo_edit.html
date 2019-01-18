@@ -1,0 +1,131 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="UserInfoInfoDlgForm">
+
+            <input type="hidden" id="userInfoId" value="${item.userInfoId}">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="userInfoName" name="姓名" value="${item.userInfoName}" class="userInfoName"/>
+                    <#avatar2 id="userInfoImgUrl" name="上传照片" avatarImg="${item.userInfoImgUrl}" />
+                    <#select id="userInfoSex" name="性别" value="${item.userInfoSex}">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </#select>
+
+                    <#input id="userInfoCard" name="身份证" value="${item.userInfoCard}" />
+
+                    <#select id="userInfoRegion" name="所属镇,街道" value="${item.userInfoRegion}">
+                        <option value="郫筒街道">郫筒街道</option>
+                        <option value="合作街道">合作街道</option>
+                        <option value="西园街道">西园街道</option>
+                        <option value="犀浦镇">犀浦镇</option>
+                        <option value="红光镇">红光镇</option>
+                        <option value="安靖镇">安靖镇</option>
+                        <option value="团结镇">团结镇</option>
+                        <option value="唐昌镇">唐昌镇</option>
+                        <option value="三道堰镇">三道堰镇</option>
+                        <option value="新民场镇">新民场镇</option>
+                        <option value="花园镇">花园镇</option>
+                        <option value="安德镇">安德镇</option>
+                        <option value="唐元镇">唐元镇</option>
+                        <option value="德源镇">德源镇</option>
+                        <option value="古城镇">古城镇</option>
+                        <option value="友爱镇">友爱镇</option>
+                    </#select>
+                    <#select id="userInfoNamePolicalStatus" name="政治面貌" value="${item.userInfoNamePolicalStatus}">
+                        <option value="群众">群众</option>
+                        <option value="中共党员">中共党员</option>
+                        <option value="预备党员">预备党员</option>
+                        <option value="民主党派">民主党派</option>
+                    </#select>
+                    <#select id="userInfoNationality" name="民族" value="${item.userInfoNationality}">
+                        <!--<option value="汉族">汉族</option>
+                        <option value="维吾尔族">维吾尔族</option>-->
+                    </#select>
+                    <#select id="userInfoFlag" name="人口性质" value="${item.userInfoFlag}">
+                        <option value="常住">常住</option>
+                        <option value="暂住">暂住</option>
+                    </#select>
+                    <#select id="userInfoEducation" name="文化程度" value="${item.userInfoEducation}">
+                        <option value="小学">小学</option>
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                        <option value="专科">专科</option>
+                        <option value="文盲">文盲</option>
+                        <option value="技校">技校</option>
+                        <option value="大学">大学</option>
+                        <option value="研究生">研究生</option>
+                        <option value="文化程度不详">文化程度不详</option>
+                    </#select>
+                    <#select id="userInfoNameMaritalStatus" name="婚姻状况" value="${item.userInfoNameMaritalStatus}">
+                        <option value="已婚">已婚</option>
+                        <option value="未婚">未婚</option>
+                        <option value="离异">离异</option>
+                    </#select>
+                    <#select id="userInfoHealthy" name="健康状况" value="${item.userInfoHealthy}">
+                        <option value="良好">良好</option>
+                        <option value="一般">一般</option>
+                        <option value="无行动能力">无行动能力</option>
+                    </#select>
+                    <#input id="userInfoTel" name="联系方式" value="${item.userInfoTel}" />
+                    <#select id="userInfoMonitorLevel" name="监控级别" value="${item.userInfoMonitorLevel}">
+                        <option value="重点人员3级">重点人员3级</option>
+                        <option value="重点人员2级">重点人员2级</option>
+                        <option value="重点人员1级">重点人员1级</option>
+                        <option value="不放心人员">不放心人员</option>
+                        <option value="一般人员">一般人员</option>
+                        <option value="已解脱">已解脱</option>
+                    </#select>
+                    <#input id="userInfoRegisterResident" name="户籍所在地" value="${item.userInfoRegisterResident}" />
+                    <#input id="userInfoPresentResident" name="现居地址" value="${item.userInfoPresentResident}"/>
+                    <#select id="userInfoOccupation" name="职业" value="${item.userInfoOccupation}">
+                        <option value="待业">待业</option>
+                        <option value="售货等服务员">售货等服务员</option>
+                        <option value="农民">农民</option>
+                        <option value="个体户">个体户</option>
+                        <option value="技术人员">技术人员</option>
+                        <option value="金融财务">金融财务</option>
+                        <option value="企业员工">企业员工</option>
+                        <option value="文艺工作者">文艺工作者</option>
+                        <option value="高级知识分子">高级知识分子</option>
+                        <option value="医生">医生</option>
+                        <option value="中小学教师">中小学教师</option>
+                        <option value="党政机关">党政机关</option>
+                        <option value="离退休">离退休</option>
+                    </#select>
+                    <!--<#input id="userInfoOccupation" name="职业" value="${item.userInfoOccupation}"/>-->
+                    <#input id="userInfoWorkplace" name="单位" value="${item.userInfoWorkplace}" underline="true"/>
+                    <#select id="userInfoContrStatus" name="在控状态"  value="${item.userInfoContrStatus}">
+                        <option value="在控-本地在控">在控-本地在控</option>
+                        <option value="在控-异地管控">在控-异地管控</option>
+                        <option value="在控-异地推送">在控-异地推送</option>
+                        <option value="失控-失踪">失控-失踪</option>
+                        <option value="失控-失联">失控-失联</option>
+                        <option value="失控-负案在逃">失控-负案在逃</option>
+                        <option value="在押-行政拘留">在押-行政拘留</option>
+                        <option value="在押-刑事拘留">在押-刑事拘留</option>
+                        <option value="服刑-在监">服刑-在监</option>
+                        <option value="服刑-缓刑">服刑-缓刑</option>
+                        <option value="出境">出境</option>
+                    </#select>
+                    <#input id="userInfoRemarks" name="备注" value="${item.userInfoRemarks}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="UserInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="UserInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $("#userInfoBirthday").val($("#userInfoBirthday").val().substr(0,10));
+</script>
+<script src="${ctxPath}/static/modular/fx/userInfo/userInfo_info.js"></script>
+@}

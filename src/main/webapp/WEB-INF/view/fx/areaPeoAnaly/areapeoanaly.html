@@ -1,0 +1,74 @@
+@layout("/common/_container.html"){
+<!--<link rel="stylesheet" type="text/css" href="http://172.16.0.181/fx/baiduMap/css/map.css"/>-->
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/js/plugins/tablePage/css/table.css">
+<link rel="stylesheet" type="text/css" href="${ctxPath}/static/css/areapeoanaly.css">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>区域人员分析</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2">
+                                    <#SelectCon id="userInfoRegion" name="行政区域">
+                                        <option value="">全部</option>
+                                        <option value="郫筒街道">郫筒街道</option>
+                                        <option value="犀浦镇">犀浦镇</option>
+                                        <option value="红光镇">红光镇</option>
+                                        <option value="安靖镇">安靖镇</option>
+                                        <option value="团结镇">团结镇</option>
+                                        <option value="唐昌镇">唐昌镇</option>
+                                        <option value="三道堰镇">三道堰镇</option>
+                                        <option value="新民场镇">新民场镇</option>
+                                        <option value="花园镇">花园镇</option>
+                                        <option value="安德镇">安德镇</option>
+                                        <option value="唐元镇">唐元镇</option>
+                                        <option value="德源镇">德源镇</option>
+                                        <option value="古城镇">古城镇</option>
+                                        <option value="友爱镇">友爱镇</option>
+                                    </#SelectCon>
+                                </div>
+                                <div class="col-sm-2">
+                                    <#NameCon id="userInfoCard" name="身份证号"/>
+                                </div>
+                                <div class="col-sm-2">
+                                    <#NameCon id="userInfoName" name="人员姓名"/>
+                                </div>
+                                <div class="col-sm-5">
+                                    <#TimeToTime bId="beginTime" eId="endTime" name="起止时间" isTime="false" pattern="YYYY-MM-DD" />
+                                </div>
+                                <div class="col-sm-1">
+                                    <#button name="查询" icon="fa-search" clickFun="mapData.search()"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!--<iframe class="" unselectable="on" style="width:98%;height:850px;margin-top: 4px;" name="mapfrm" id="mapfrm" src="${ctxPath}/static/js/plugins/baiduMap/offlinemap_demo/demo/2_0.html"></iframe>-->
+                            <div class="col-sm-12" style="height:700px;overflow-y: scroll">
+                                <div id="map_demo" style="width: 100%;height: 100%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.write('<link rel="stylesheet" type="text/css" href="'+Feng.mapPath+'/fx/baiduMap/css/map.css"/>');
+    document.write('<script src="' + Feng.mapPath + '/fx/baiduMap/offlinemap/map_load.js" type="text/javascript" ></sc' + 'ript>');
+</script>
+<!--<script type="text/javascript" src="http://172.16.0.181/fx/baiduMap/offlinemap/map_load.js"></script>-->
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/tablePage/js/page.js"></script><!-- 前台分页 -->
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/tablePage/js/shujv2.js"></script>
+<script src="${ctxPath}/static/js/plugins/pagination/jquery.pagination.js"></script>
+<script src="${ctxPath}/static/js/common/f-pagination.js"></script>
+<script src="${ctxPath}/static/modular/fx/areaPeoAnaly/areapeoanaly.js"></script>
+<script type="text/javascript" src="${ctxPath}/static/modular/fx/areaPeoAnaly/areapeoanalyMap.js"></script>
+@}

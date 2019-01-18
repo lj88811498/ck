@@ -1,0 +1,105 @@
+@layout("/common/_container.html"){
+
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input type="hidden" id="involvingInfoId" value="${item.involvingEvilId}">
+            <input type="hidden" id="involvingEvilUserId">
+            <div class="row">
+                <div class="col-sm-12 b-r">
+                    <div class="row">
+                        <div class="col-sm-12">
+                                <#select id="involvingEvilType" name="邪教类别" value="${item.involvingEvilType}">
+                                    <option value="法轮功">法轮功</option>
+                                    <option value="门徒会">门徒会</option>
+                                    <option value="全能神">全能神</option>
+                                    <option value="中功">中功</option>
+                                    <option value="心灵法门">心灵法门</option>
+                                </#select>
+                                <#inputShowTime value="${item.involvingEvilStartTime}" id="startTime" name="开始时间" isTime="false" pattern="YYYY-MM-DD"></#inputShowTime>
+                                <#input id="work" name="原担任邪教组织职务" value="${item.involvingEvilWork}"/>
+                               <#inputShowTime value="${item.involvingEvilNoticedTime}" id="work" name="纳入工作视线时间" isTime="false" pattern="YYYY-MM-DD"></#inputShowTime>
+                              <!--<#NameCon id="work" name="纳入工作视线时间"/>-->
+                            <#input id="involvingEvilMonitorLevel" name="公安机关列控级别" value="${item.involvingEvilMonitorLevel}"/>
+                            <#select id="involvingEvilStatus" name="转化情况" value="${item.involvingEvilStatus}">
+                                <option value="需攻坚">需攻坚</option>
+                                <option value="重点巩固">重点巩固</option>
+                                <option value="待解脱">待解脱</option>
+                                <option value="已解脱">已解脱</option>
+                            </#select>
+                            <#inputShowTime value="${item.involvingEvilTime}" id="conversionTime" name="转化时间" isTime="false" pattern="YYYY-MM-DD"></#inputShowTime>
+                            <#select id="involvingEvilFamilyIn" name="近亲家属中有无练功人员" value="${item.involvingEvilFamilyIn}">
+                                <option value="有">有</option>
+                                <option value="无">无</option>
+                            </#select>
+                            <#select id="involvingEvilStriked" name="是否受过打击处理" value="${item.involvingEvilStriked}">
+                                <option value="有">有</option>
+                                <option value="无">无</option>
+                            </#select>
+                            <#input id="involvingEvilStillIn" name="目前是否从事邪教活动" value="${item.involvingEvilStillIn}"/>
+                            <#select id="involvingEvilEscape" name="是否负案在逃" value="${item.involvingEvilEscape}">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </#select>
+                            <#select id="involvingEvilControlled" name="是否失控" value="${item.involvingEvilControlled}">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </#select>
+                            <#select id="involvingEvilOtherLocal" name="是否需异地（跨省）管控" value="${item.involvingEvilOtherLocal}">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </#select>
+                            <#select id="involvingEvilFixProcess" name="是否办理交控手续" value="${item.involvingEvilFixProcess}">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </#select>
+                            <#select id="involvingEvilPrison" name="是否涉嫌在监服刑" value="${item.involvingEvilPrison}">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </#select>
+                            <#select id="involvingEvilPersonalComputer" name="有无个人电脑" value="${item.involvingEvilPersonalComputer}">
+                                <option value="有">有</option>
+                                <option value="无">无</option>
+                            </#select>
+                            <#select id="involvingEvilInternet" name="有无上网路线" value="${item.involvingEvilInternet}">
+                                <option value="有">有</option>
+                                <option value="无">无</option>
+                            </#select>
+                            <#input id="involvingEvilControl" name="交控地" value="${item.involvingEvilControl}"/>
+                            <#select id="involvingEvilRelativesOut" name="有无近亲家属在境外" value="${item.involvingEvilRelativesOut}">
+                                <option value="有">有</option>
+                                <option value="无">无</option>
+                            </#select>
+                            <#select id="involvingEvilHavePassport" name="有无出入境证件" value="${item.involvingEvilHavePassport}">
+                                <option value="有">有</option>
+                                <option value="无">无</option>
+                            </#select>
+                            <#input id="involvingEvilPassportNum" name="出入境证件号" value="${item.involvingEvilPassportNum}"/>
+                            <#select id="involvingEvilBorderControl" name="是否办理边控" value="${item.involvingEvilBorderControl}">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </#select>
+                            <#select id="involvingEvilAbroad" name="是否在境外" value="${item.involvingEvilAbroad}">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </#select>
+                            <#select id="involvingEvilHaveAbroad" name="有无出入境记录" value="${item.involvingEvilHaveAbroad}">
+                                <option value="有">有</option>
+                                <option value="无">无</option>
+                            </#select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="InvolvingEvilInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="InvolvingEvilInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/involvingEvil/involvingEvil_info.js"></script>
+@}

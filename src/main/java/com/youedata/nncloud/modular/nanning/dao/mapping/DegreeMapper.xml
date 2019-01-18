@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youedata.nncloud.modular.nanning.dao.DegreeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.youedata.nncloud.modular.nanning.model.Degree">
+        <id column="degree_id" property="degreeId" />
+        <result column="degree_question_id" property="degreeQuestionId" />
+        <result column="degree_main" property="degreeMain" />
+        <result column="degree_answer" property="degreeAnswer" />
+        <result column="degree_work" property="degreeWork" />
+        <result column="degree_office" property="degreeOffice" />
+        <result column="degree_create_by" property="degreeCreateBy" />
+        <result column="degree_update_by" property="degreeUpdateBy" />
+        <result column="degree_update_time" property="degreeUpdateTime" />
+        <result column="degree_create_time" property="degreeCreateTime" />
+        <result column="degree_user_id" property="degreeUserId" />
+    </resultMap>
+
+    <!--整体满意度-->
+    <select id="getMainAvg" resultType="Double">
+        select ROUND(T1.main/(T2.cou*5),2) from (select sum(degree_main) AS main from degree) T1,(select count(*) AS cou from degree) T2
+    </select>
+    <!--客服回复满意度-->
+    <select id="getAnswerAvg" resultType="Double">
+        select ROUND(T1.answer/(T2.cou*5),2) from (select sum(degree_answer) AS answer from degree) T1,(select count(*) AS cou from degree) T2
+    </select>
+    <!--客服工作态度满意度-->
+    <select id="getWorkAvg" resultType="Double">
+        select ROUND(T1.works/(T2.cou*5),2) from (select sum(degree_work) AS works from degree) T1,(select count(*) AS cou from degree) T2
+    </select>
+
+</mapper>

@@ -1,0 +1,28 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <input type="hidden" id="privateCarId" value="${item.privateCarId}">
+            <input type="hidden" id="privateCarUserId">
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="privateCarCard" name="车牌号" value="${item.privateCarCard}"/>
+                    <#input id="privateCarBrand" name="汽车品牌" value="${item.privateCarBrand}"/>
+                    <#input id="privateCarVehicles" name="汽车车系" value="${item.privateCarVehicles}"/>
+                    <#input id="privateCarType" name="汽车车型" value="${item.privateCarType}" />
+                    <#input id="privateCarColor" name="汽车颜色" value="${item.privateCarColor}" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PrivateCarInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PrivateCarInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/privateCar/privateCar_info.js"></script>
+@}

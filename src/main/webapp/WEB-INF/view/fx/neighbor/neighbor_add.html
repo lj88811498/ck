@@ -1,0 +1,29 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="NeighborInfoDlgForm">
+
+            <input type="hidden" id="neighborUserId">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <#input id="neighborBuild" name="楼层" value="" />
+                    <#input id="neighborDoor" name="门牌号" value="" />
+                    <#input id="neighborName" name="户主" value="" />
+                    <#input id="neighborPeopleAmount" name="房间人数" value="" />
+                    <#input id="neighborUseInfo" name="使用情况" value="" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-12">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="NeighborInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="NeighborInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/fx/neighbor/neighbor_info.js"></script>
+@}
