@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youedata.nncloud.modular.nanning.dao.UserInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.youedata.nncloud.modular.nanning.model.UserInfo">
+        <id column="userInfo_id" property="userinfoId" />
+        <result column="userInfo_name" property="userinfoName" />
+        <result column="userInfo_pwd" property="userinfoPwd" />
+        <result column="userInfo_nickname" property="userinfoNickname" />
+        <result column="userInfo_tel" property="userinfoTel" />
+        <result column="userInfo_wx" property="userinfoWx" />
+        <result column="userInfo_lv" property="userinfoLv" />
+        <result column="userInfo_code" property="userinfoCode" />
+        <result column="userInfo_org" property="userinfoOrg" />
+        <result column="userInfo_treecode" property="userinfoTreecode" />
+        <result column="userInfo_create_by" property="userinfoCreateBy" />
+        <result column="userInfo_update_by" property="userinfoUpdateBy" />
+        <result column="userInfo_create_time" property="userinfoCreateTime" />
+        <result column="userInfo_update_time" property="userinfoUpdateTime" />
+    </resultMap>
+
+</mapper>
