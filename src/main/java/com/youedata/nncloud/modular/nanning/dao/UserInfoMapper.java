@@ -31,4 +31,11 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @return
      */
     UserInfo selectByTel(@Param("TreeCode")String userInfoName);
+
+    /**
+     * 查询个人简版信息
+     * @param userInfoName
+     * @return
+     */
+    UserInfo selectMiniMessage(@Param("userInfoName")String userInfoName);
 }

@@ -28,4 +28,10 @@
         SELECT * from userInfo
         WHERE userInfo_name = #{userInfoName}
     </select>
+
+    <select id="selectMiniMessage" resultMap="BaseResultMap">
+        SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code
+        FROM userInfo
+        WHERE userInfo_name = #{userInfoName}
+    </select>
 </mapper>

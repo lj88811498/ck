@@ -6,9 +6,9 @@ import com.youedata.nncloud.core.constant.Constant;
 import com.youedata.nncloud.core.log.LogManager;
 import com.youedata.nncloud.core.log.factory.LogTaskFactory;
 import com.youedata.nncloud.core.support.BeanKit;
-import com.youedata.nncloud.core.util.GlobalHashMap;
-import com.youedata.nncloud.core.util.JsonUtil;
-import com.youedata.nncloud.core.util.RecordLogUtil;
+import com.youedata.nncloud.core.util.*;
+import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
+import com.youedata.nncloud.modular.system.dao.UserMapper;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -38,6 +38,8 @@ public class UserInfoController extends BaseController {
 
     @Autowired
     private IUserInfoService userInfoService;
+    @Autowired
+    private UserInfoMapper userInfoMapper;
 
     /**
      * 用户登录
@@ -49,7 +51,10 @@ public class UserInfoController extends BaseController {
                       @ApiParam("密码(必填)") @RequestParam(value = "userinfoPwd", required = true) String userinfoPwd) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            userInfoService.login(userInfoName,userinfoPwd);
+            result.put("page", userInfoService.login(userInfoName, userinfoPwd));
+            String token = ToolUtil.getRandomString(18);
+            GlobalHashMap.addUserToken(token);
+            result.put("token", token);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
@@ -65,11 +70,11 @@ public class UserInfoController extends BaseController {
     public Object add(@ApiParam("当前用户id") @RequestParam(value = "userInfoId", required = true) String userInfoId,
                       @ApiParam("手机号(必填)") @RequestParam(value = "userinfoTel", required = true) String userinfoTel,
                       @ApiParam("微信号(必填)") @RequestParam(value = "userinfoWx", required = true) String userinfoWx,
-                      @ApiParam("商家姓名(必填)") @RequestParam(value = "userinfoNickname", required = true ) String userinfoNickname,
+                      @ApiParam("商家姓名(必填)") @RequestParam(value = "userinfoNickname", required = true) String userinfoNickname,
                       @ApiParam("密码(必填)") @RequestParam(value = "userinfoPwd", required = false) String userinfoPwd) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            userInfoService.addUser(userInfoId,userinfoTel,userinfoWx,userinfoNickname,userinfoPwd);
+            userInfoService.addUser(userInfoId, userinfoTel, userinfoWx, userinfoNickname, userinfoPwd);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
@@ -79,13 +84,13 @@ public class UserInfoController extends BaseController {
     /**
      * 用户信息详情
      */
-    @RequestMapping(value = "/detail/{userInfoId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "用户信息详情", notes = "用户信息详情")
-    public Object detail(@PathVariable("userInfoId") Integer userInfoId) {
+    public Object detail(@ApiParam("手机号(必填)") @RequestParam(value = "userinfoTel", required = true) String userinfoTel) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            result.put("page",userInfoService.selectById(userInfoId));
+            result.put("page", userInfoMapper.selectByTel(userinfoTel));
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
@@ -103,7 +108,7 @@ public class UserInfoController extends BaseController {
                             @ApiParam("新密码") @RequestParam(value = "newPassord", required = true) String newPassord) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            userInfoService.changePwd(userInfoId,oldPassord,newPassord);
+            userInfoService.changePwd(userInfoId, oldPassord, newPassord);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }

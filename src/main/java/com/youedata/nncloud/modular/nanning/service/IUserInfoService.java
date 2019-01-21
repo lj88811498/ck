@@ -23,7 +23,7 @@ public interface IUserInfoService extends IService<UserInfo>{
      * @param userinfoNickname
      * @param userinfoPwd
      */
-    void addUser(String userInfoId,String userinfoTel, String userinfoWx, String userinfoNickname, String userinfoPwd);
+    void addUser(String userInfoId,String userinfoTel, String userinfoWx, String userinfoNickname, String userinfoPwd) throws Exception;
 
     /**
      * 修改密码
