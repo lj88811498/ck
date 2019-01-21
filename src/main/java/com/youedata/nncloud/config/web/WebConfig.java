@@ -7,7 +7,6 @@ import com.alibaba.druid.support.spring.stat.BeanTypeAutoProxyCreator;
 import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
-import com.youedata.nncloud.config.properties.DataOsProperties;
 import com.youedata.nncloud.config.properties.GunsProperties;
 import com.youedata.nncloud.core.listener.ConfigListener;
 import com.youedata.nncloud.core.xss.XssFilter;
@@ -39,8 +38,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private GunsProperties gunsProperties;
-    @Autowired
-    private DataOsProperties dataOsProperties;
+//    @Autowired
+//    private DataOsProperties dataOsProperties;
 //    @Bean
 //    DataOSLogin DataOSLogin() {
 //        return new DataOSLogin();
