@@ -64,14 +64,15 @@ public class LoginController extends BaseController {
                 model.addAttribute("tips", "该用户没有角色，无法登陆");
                 return "/login.html";
             }
-            List<MenuNode> menus = menuService.getMenusByRoleIds(roleList);
+            List<MenuNode> menus = menuService.selectAll();
+//            List<MenuNode> menus = menuService.getMenusByRoleIds(roleList);
             List<MenuNode> titles = MenuNode.buildTitle(menus);
             titles = ApiMenuFilter.build(titles);
 
             model.addAttribute("titles", titles);
 
             //获取用户头像
-            Integer id = ShiroKit.getUser().getId();
+            Integer id = 1;
             User user = userService.selectById(id);
             String avatar = user.getAvatar();
             model.addAttribute("avatar", avatar);
