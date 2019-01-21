@@ -72,3 +72,6 @@ dataos:
   checkAccessToken: yyzhzx/api/v1/session
   #注册
   register: yyzhzx/api/v1/accounts
+
+token:
+  swith: off
