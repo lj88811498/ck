@@ -20,4 +20,12 @@
         <result column="userInfo_update_time" property="userinfoUpdateTime" />
     </resultMap>
 
+    <select id="getTreeCodeNext" resultType="String">
+
+    </select>
+
+    <select id="selectByTel" resultMap="BaseResultMap">
+        SELECT * from userInfo
+        WHERE userInfo_name = #{userInfoName}
+    </select>
 </mapper>
