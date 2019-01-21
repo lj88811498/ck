@@ -56,6 +56,7 @@ public class LoginController extends BaseController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
         try {
+            autoLogin();
             List<Integer> roleList = roleWarpper.selectAllRoleIds();
             //获取菜单列表
 //            List<Integer> roleList = ShiroKit.getUser().getRoleList();
@@ -88,7 +89,7 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-//        autoLogin();
+        autoLogin();
         if (ShiroKit.isAuthenticated() || ShiroKit.getUser() != null) {
             return REDIRECT + "/";
         } else {
