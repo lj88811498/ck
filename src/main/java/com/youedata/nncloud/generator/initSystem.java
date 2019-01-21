@@ -51,7 +51,7 @@ public class initSystem extends AbstractGeneratorConfig {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("1qaz@WSX");
-        dsc.setUrl("jdbc:mysql://172.16.0.5:3306/nncloud?characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://cdyoue.com.cn:506/one?characterEncoding=utf8");
         mpg.setDataSource(dsc);
 
         // 策略配置
@@ -108,11 +108,11 @@ public class initSystem extends AbstractGeneratorConfig {
 //        //驼峰式表名
 //        String entityNames[] = {"UserInfo","Role","UserRole","Dept","Question","Office","Collet","Attachment","Degree"};
 
-        String bizChNames[] = {"职称评审"};
+        String bizChNames[] = {"升级表"};
         //数据表英文名
-        String bizEnNames[] = {"titleEvaluation"} ;
+        String bizEnNames[] = {"upgrade"} ;
         //驼峰式表名
-        String entityNames[] = {"TitleEvaluation"};
+        String entityNames[] = {"Upgrade"};
 
 
         String projectPath = sysPath;
@@ -151,11 +151,12 @@ public class initSystem extends AbstractGeneratorConfig {
 //        String sysPath = "E:\\tcj123\\tcj\\guns-admin";
 //        String sysPath = "E:\\git\\fxplat";
 //        String sysPath = "D:\\YouE\\反邪教\\code\\fxplat";
-        String sysPath = "D:\\YouE\\南宁云app\\code\\nncloud";
+//        String sysPath = "D:\\YouE\\南宁云app\\code\\nncloud";
+        String sysPath = "D:\\github\\ck";
         //作者
         String author = "Monkey";
         //String数组针对后续添加表需要设置表名，不能为空，为空则表示全部导入
-//        first(sysPath, author, new String[]{"title_evaluation"});
+//        first(sysPath, author, new String[]{"upgrade"});
 //        second(sysPath, author);
         //垃圾路径
         File file = new File(sysPath + "\\src\\main\\java\\TTT");
