@@ -14,14 +14,14 @@ import java.util.Set;
  * @Date: Created in 14:10  2018/11/13.
  * @Description:
  */
-@Component
+//@Component
 public class GlobalHashMap {
 
     /**
      * 开关配置文件
      */
-    @Value("${token.swith}")
-    private static String swith;
+//    @Value("${token.swith}")
+    private static String swith = "on";
 
     /**
      * token的缓存

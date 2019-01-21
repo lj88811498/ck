@@ -1,0 +1,42 @@
+node ('slave2-181'){
+  // 代码检出
+  stage('get Code') {
+    sh "echo '拉取git代码'"
+    git credentialsId: '044b03b3-a2fd-4958-b3dd-49b3fc37df7b', url: 'http://GitLab.cdyoue.com/lijiang/nncloud.git'
+  }
+
+
+    // 镜像中进行单元测试
+  stage('rename tag'){
+
+    //sh "docker stop $(docker ps -a | grep 'nncloud:2.0' | awk '{print $1}')"
+    //sh 'docker stop $(docker ps -a | grep \'nncloud:2.0\' | awk \'{print $1}\')'
+
+    sh '''
+    //echo '停止镜像开始……'
+    //CID=`docker ps | grep 'nncloud:2.0' | awk '{print $1}'`
+    //[ -n "$CID" ] && echo "dockerID:" $CID && docker stop $CID
+    //if [ -n $CID ];then
+    //  docker stop $CID
+    //fi
+
+    //docker stop `docker ps -a | grep \'nncloud:2.0\' | awk \'{print $1}\'`
+    //echo '停止镜像成功'
+
+    docker tag nncloud:2.0 nncloud:temp
+    echo '修改临时tag成功'
+
+    docker rmi nncloud:2.0
+    echo '删除镜像成功'
+    '''
+  }
+
+  // 镜像中代码构建
+  stage('Build'){
+
+    sh 'mvn clean package docker:build'
+  }
+
+  // 编译镜像并push到仓库
+
+}

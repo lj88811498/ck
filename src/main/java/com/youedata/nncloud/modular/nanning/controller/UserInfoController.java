@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.youedata.nncloud.core.base.controller.BaseController;
 import com.youedata.nncloud.core.constant.Constant;
 import com.youedata.nncloud.core.support.BeanKit;
+import com.youedata.nncloud.core.util.GlobalHashMap;
 import com.youedata.nncloud.core.util.JsonUtil;
 import com.youedata.nncloud.core.util.RecordLogUtil;
 import io.swagger.annotations.ApiParam;
@@ -110,6 +111,14 @@ public class UserInfoController extends BaseController {
         return result;
     }
 
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "修改密码", notes = "修改密码")
+    public Object test() {
+        GlobalHashMap.addUserToken("12121212231-23-12-3-12-3-12-3");
+        GlobalHashMap.isUserOnline("12121212231-23-12-3-12-3-12-3");
 
+        return JsonUtil.createOkJson();
+    }
 
 }
