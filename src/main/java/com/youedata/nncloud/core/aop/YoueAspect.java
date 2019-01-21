@@ -30,6 +30,7 @@ public class YoueAspect {
         filterList.add("LoginController");
         filterList.add("HttpdServerController");
         filterMethodList.add("spiderScheduled");
+        filterMethodList.add("tokenScheduled");
     }
 
     @Pointcut("execution(public * com.youedata.nncloud.modular.*.controller..*.*(..))"

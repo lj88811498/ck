@@ -77,6 +77,7 @@ public class GlobalHashMap {
             long diss = System.currentTimeMillis() - (long)val ;
             if (diss > 1000 * 60 * 10) {
                 map.remove(key);
+                RecordLogUtil.info("----------删除token：" + key + "-------------");
             }
         }
 

@@ -3,25 +3,24 @@ package com.youedata.nncloud.modular.nanning.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.youedata.nncloud.core.base.controller.BaseController;
 import com.youedata.nncloud.core.constant.Constant;
+import com.youedata.nncloud.core.log.LogManager;
+import com.youedata.nncloud.core.log.factory.LogTaskFactory;
 import com.youedata.nncloud.core.support.BeanKit;
 import com.youedata.nncloud.core.util.GlobalHashMap;
 import com.youedata.nncloud.core.util.JsonUtil;
 import com.youedata.nncloud.core.util.RecordLogUtil;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.youedata.nncloud.core.log.LogObjectHolder;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -111,14 +110,20 @@ public class UserInfoController extends BaseController {
         return result;
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "/clearToken", method = RequestMethod.GET)
     @ResponseBody
-    @ApiOperation(value = "修改密码", notes = "修改密码")
-    public Object test() {
-        GlobalHashMap.addUserToken("12121212231-23-12-3-12-3-12-3");
-        GlobalHashMap.isUserOnline("12121212231-23-12-3-12-3-12-3");
+    @ApiOperation(value = "清理token", notes = "清理token")
+    public Object clearToken() {
 
-        return JsonUtil.createOkJson();
+        JSONObject js = JsonUtil.createOkJson();
+        try {
+            GlobalHashMap.clear();
+        } catch (Exception e) {
+            RecordLogUtil.error(e.getMessage());
+            js = JsonUtil.createFailJson();
+        }
+
+        return js;
     }
 
 }

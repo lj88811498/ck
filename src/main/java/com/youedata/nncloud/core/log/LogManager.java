@@ -34,4 +34,7 @@ public class LogManager {
     public void executeBatchInsert(TimerTask task) {
         executor.schedule(task, 1, TimeUnit.MILLISECONDS);
     }
+
+    public void clearOutTimeToken(TimerTask task) {executor.schedule(task, 1, TimeUnit.MILLISECONDS);}
+
 }

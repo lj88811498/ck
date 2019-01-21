@@ -2,23 +2,22 @@ package com.youedata.nncloud.core.log.factory;
 
 import com.youedata.nncloud.core.common.constant.state.LogSucceed;
 import com.youedata.nncloud.core.common.constant.state.LogType;
+import com.youedata.nncloud.core.db.Db;
+import com.youedata.nncloud.core.log.LogManager;
+import com.youedata.nncloud.core.util.GlobalHashMap;
 import com.youedata.nncloud.core.util.RecordLogUtil;
-import com.youedata.nncloud.core.util.SpringContextHolder;
-//import com.youedata.nncloud.modular.nanning.model.Message;
-//import com.youedata.nncloud.modular.nanning.service.IMessageService;
+import com.youedata.nncloud.core.util.ToolUtil;
 import com.youedata.nncloud.modular.system.dao.LoginLogMapper;
 import com.youedata.nncloud.modular.system.dao.OperationLogMapper;
 import com.youedata.nncloud.modular.system.model.LoginLog;
 import com.youedata.nncloud.modular.system.model.OperationLog;
-import com.youedata.nncloud.core.db.Db;
-import com.youedata.nncloud.core.log.LogManager;
-import com.youedata.nncloud.core.util.ToolUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.ObjectUtils;
 
-import java.util.List;
 import java.util.TimerTask;
+
+//import com.youedata.nncloud.modular.nanning.model.Message;
+//import com.youedata.nncloud.modular.nanning.service.IMessageService;
 
 /**
  * 日志操作任务创建工厂
@@ -107,23 +106,17 @@ public class LogTaskFactory {
     }
 
     /**
-     * 批量插入消息线程
-     * @author Monkey
-     * @param messages
+     * 清除过期token
      * @return
      */
-//    public static TimerTask batchInsertMessage(final List<Message> messages) {
-//        return new TimerTask() {
-//            @Override
-//            public void run() {
-//                RecordLogUtil.info("启动消息推送...start");
-//                if (!ObjectUtils.isEmpty(messages)) {
-//                    IMessageService messageService = SpringContextHolder.getBean(IMessageService.class);
-//                    messageService.insertBatch(messages);
-//                }
-//                RecordLogUtil.info("消息推送结束...end");
-//            }
-//        };
-//    }
+    public static TimerTask clearOutTimeToken() {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                GlobalHashMap.clear();
+            }
+        };
+    }
+
 
 }
