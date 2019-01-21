@@ -13,7 +13,7 @@ spring:
   profiles: dev
   datasource:
     #url: jdbc:mysql://127.0.0.1:3306/nncloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
-    url: jdbc:mysql://172.16.0.5:3306/nncloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://172.16.0.5:3306/one?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     #url: jdbc:mysql://cdyoue.com.cn:506/nncloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
     password: 1qaz@WSX
@@ -74,4 +74,4 @@ dataos:
   register: yyzhzx/api/v1/accounts
 
 token:
-  swith: off
+  swith: on
