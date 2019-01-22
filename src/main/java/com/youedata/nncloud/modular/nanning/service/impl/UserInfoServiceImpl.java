@@ -120,4 +120,25 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         return page;
     }
 
+
+    /**
+     * 修改个人信息
+     * @param userInfoId
+     * @return
+     */
+    @Override
+    public void update(String userInfoId, String userinfoHead, String userInfoSurname, String userInfoSex,
+                       String userinfoTel, String userInfoProvince, String userInfoCity, String userinfoWx,
+                       String userinfoNickname) {
+        UserInfo userInfo = userInfoMapper.selectById(userInfoId);
+        userInfo.setUserinfoHead(userinfoHead);
+        userInfo.setUserInfoSurname(userInfoSurname);
+        userInfo.setUserInfoSex(userInfoSex);
+        userInfo.setUserinfoTel(userinfoTel);
+        userInfo.setUserinfoName(userinfoTel);
+        userInfo.setUserInfoProvince(userInfoProvince);
+        userInfo.setUserInfoCity(userInfoCity);
+        userInfo.setUserinfoWx(userinfoWx);
+        userInfo.updateById();
+    }
 }

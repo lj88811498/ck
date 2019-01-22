@@ -5,9 +5,15 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.youedata.nncloud.modular.nanning.model.UserInfo">
         <id column="userInfo_id" property="userinfoId"/>
+        <result column="userinfo_head" property="userinfoHead"/>
         <result column="userInfo_name" property="userinfoName"/>
+        <result column="userInfo_sex" property="userInfoSex"/>
         <result column="userInfo_pwd" property="userinfoPwd"/>
         <result column="userInfo_nickname" property="userinfoNickname"/>
+        <result column="userInfo_surname" property="userInfoSurname"/>
+        <result column="userInfo_birthday" property="userInfoBirthday"/>
+        <result column="userInfo_province" property="userInfoProvince"/>
+        <result column="userInfo_city" property="userInfoCity"/>
         <result column="userInfo_tel" property="userinfoTel"/>
         <result column="userInfo_wx" property="userinfoWx"/>
         <result column="userInfo_lv" property="userinfoLv"/>
@@ -45,7 +51,7 @@
         WHERE #{TreeCode} =  SUBSTRING_INDEX(userInfo_treecode,'-',length(userInfo_treecode)-LENGTH(REPLACE(userInfo_treecode,'-','')))
         ORDER BY
             userInfo_treecode DESC
-        LIMIT 1;
+        LIMIT 1
     </select>
 
     <!--根据电话号查询用户信息-->
@@ -56,7 +62,7 @@
 
     <!--查询精简用户信息-->
     <select id="selectMiniMessage" resultType="com.youedata.nncloud.modular.nanning.model.UserMini">
-        SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
+        SELECT userInfo_id,userinfo_head,userInfo_nickname,userInfo_sex,userInfo_birthday,userInfo_province,userInfo_city,userInfo_surname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
         FROM userInfo
         WHERE userInfo_name = #{userInfoName}
     </select>

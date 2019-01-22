@@ -44,13 +44,13 @@ public class UserInfoController extends BaseController {
     @ResponseBody
     @ApiOperation(value = "用户登录", notes = "用户登录")
     public Object login(@ApiParam("用户名(必填)") @RequestParam(value = "userInfoName", required = true) String userInfoName,
-                      @ApiParam("密码(必填)") @RequestParam(value = "userinfoPwd", required = true) String userinfoPwd) {
+                        @ApiParam("密码(必填)") @RequestParam(value = "userinfoPwd", required = true) String userinfoPwd) {
         JSONObject result = JsonUtil.createOkJson();
         try {
             JSONObject page = new JSONObject();
-            page.put("data",userInfoService.login(userInfoName, userinfoPwd));
+            page.put("data", userInfoService.login(userInfoName, userinfoPwd));
             String token = ToolUtil.getRandomString(18);
-            page.put("token",token );
+            page.put("token", token);
             GlobalHashMap.addUserToken(token);
             result.put("page", page);
         } catch (Exception e) {
@@ -89,6 +89,30 @@ public class UserInfoController extends BaseController {
         JSONObject result = JsonUtil.createOkJson();
         try {
             result.put("page", userInfoMapper.selectByTel(userinfoTel));
+        } catch (Exception e) {
+            result = JsonUtil.createFailJson(e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * 修改个人信息
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "帮助注册", notes = "帮助注册")
+    public Object update(@ApiParam("当前用户id") @RequestParam(value = "userInfoId", required = true) String userInfoId,
+                         @ApiParam("头像(必填)") @RequestParam(value = "userinfoHead", required = true) String userinfoHead,
+                         @ApiParam("昵称(必填)") @RequestParam(value = "userInfoSurname", required = true) String userInfoSurname,
+                         @ApiParam("商家姓名(必填)") @RequestParam(value = "userinfoNickname", required = true) String userinfoNickname,
+                         @ApiParam("性别(必填：0、女；1、男；)") @RequestParam(value = "userInfoSex", required = true) String userInfoSex,
+                         @ApiParam("手机号(必填)") @RequestParam(value = "userinfoTel", required = true) String userinfoTel,
+                         @ApiParam("微信号(必填)") @RequestParam(value = "userinfoWx", required = true) String userinfoWx,
+                         @ApiParam("省份(必填)") @RequestParam(value = "userInfoProvince", required = true) String userInfoProvince,
+                         @ApiParam("城市(必填)") @RequestParam(value = "userInfoCity", required = true) String userInfoCity) {
+        JSONObject result = JsonUtil.createOkJson();
+        try {
+            userInfoService.update(userInfoId,userinfoHead,userInfoSurname,userInfoSex, userinfoTel, userInfoProvince,userInfoCity,userinfoWx, userinfoNickname);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
@@ -151,7 +175,7 @@ public class UserInfoController extends BaseController {
     @ResponseBody
     @ApiOperation(value = "test", notes = "test")
     public Object test(@ApiParam("用户id") @RequestParam(value = "userInfoId", required = true) int userInfoId,
-                       @ApiParam("目标id") @RequestParam(value = "targetId", required = true)int targetId){
+                       @ApiParam("目标id") @RequestParam(value = "targetId", required = true) int targetId) {
 
         return JsonUtil.createOkJson(userInfoId + "~~~~" + targetId);
     }
