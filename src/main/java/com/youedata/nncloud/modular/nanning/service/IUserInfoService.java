@@ -50,4 +50,5 @@ public interface IUserInfoService extends IService<UserInfo> {
      * @return
      */
     JSONObject myGroup(String userInfoId);
+
 }

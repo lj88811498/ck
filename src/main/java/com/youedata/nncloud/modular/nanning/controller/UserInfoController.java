@@ -119,7 +119,7 @@ public class UserInfoController extends BaseController {
     @RequestMapping(value = "/myGroup", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "我的团队", notes = "我的团队")
-    public Object myGroup(@ApiParam("用户id(必填)") @RequestParam(value = "userInfoId", required = true) String userInfoId) {
+    public Object myGroup(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) String userInfoId) {
         JSONObject result = JsonUtil.createOkJson();
         try {
             result.put("page", userInfoService.myGroup(userInfoId));
@@ -128,6 +128,7 @@ public class UserInfoController extends BaseController {
         }
         return result;
     }
+
 
     @RequestMapping(value = "/clearToken", method = RequestMethod.GET)
     @ResponseBody

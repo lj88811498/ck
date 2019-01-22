@@ -75,7 +75,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         newUser.setUserinfoNickname(userinfoNickname);
         newUser.setUserinfoPwd(Encrypt.getMd5(userinfoPwd));
         newUser.setUserinfoLv("0");
-        newUser.setUserinfoOrg(userInfo.getUserinfoOrg());
+        newUser.setUserinfoOrg(userInfo.getUserinfoCode());
 
         newUser.setUserinfoTreecode(userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode()));
         newUser.setUserinfoCreateBy(Integer.valueOf(userInfoId));
@@ -119,4 +119,5 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         page.put("sum",integer);
         return page;
     }
+
 }
