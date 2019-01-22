@@ -216,6 +216,4 @@ public class UserInfoController extends BaseController {
         return js;
     }
 
-
-
 }

@@ -1,6 +1,10 @@
 package com.youedata.nncloud.modular.nanning.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.youedata.nncloud.core.base.controller.BaseController;
+import com.youedata.nncloud.core.util.JsonUtil;
+import com.youedata.nncloud.core.util.RecordLogUtil;
+import io.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -74,9 +78,16 @@ public class UpgradeController extends BaseController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "新增升级表", notes = "新增升级表")
-    public Object add(Upgrade upgrade) {
-        upgradeService.insert(upgrade);
-        return SUCCESS_TIP;
+    public Object add(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) int userInfoId) {
+        JSONObject js = JsonUtil.createOkJson();
+        try {
+            upgradeService.add(userInfoId);
+
+        } catch (Exception e) {
+            RecordLogUtil.error(e.getMessage());
+            js = JsonUtil.createFailJson(e.getMessage());
+        }
+        return js;
     }
 
     /**
