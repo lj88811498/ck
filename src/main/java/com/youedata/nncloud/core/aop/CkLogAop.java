@@ -5,7 +5,6 @@ import com.youedata.nncloud.core.log.LogManager;
 import com.youedata.nncloud.core.log.factory.LogTaskFactory;
 import com.youedata.nncloud.core.support.HttpKit;
 import com.youedata.nncloud.core.util.RecordLogUtil;
-import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -15,7 +14,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -113,7 +111,7 @@ public class CkLogAop {
 
             LogManager.me().executeLog(LogTaskFactory.bussinessLog(t_userId, bussinessName, className, methodName, ip, msg));
         }   catch (Exception e) {
-            RecordLogUtil.error("参数错误！！！！");
+            RecordLogUtil.error("参数错误！！！！" + point.getSignature());
         }
     }
 }
