@@ -74,7 +74,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         newUser.setUserinfoLv("0");
         newUser.setUserinfoOrg(userInfo.getUserinfoOrg());
 
-        newUser.setUserinfoTreecode(userInfo.getUserinfoTreecode());
+        newUser.setUserinfoTreecode(userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode()));
         newUser.setUserinfoCreateBy(Integer.valueOf(userInfoId));
         newUser.setUserinfoCreateTime(new Date());
         newUser.insert();
