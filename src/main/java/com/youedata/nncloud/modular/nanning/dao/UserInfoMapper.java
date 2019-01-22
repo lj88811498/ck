@@ -64,7 +64,8 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @return
      */
     UserMini selectHighLvUser(@Param("userInfoTreecode") String userInfoTreecode,
-                              @Param("userInfoLv") String userInfoLv);
+                              @Param("userInfoLv") String userInfoLv,
+                              @Param("flag") boolean flag);
 
 
     /**

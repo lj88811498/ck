@@ -61,6 +61,9 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>,Upgrade>
         if (merchants != null) {
             List<UserMini> users = (List)merchants.get("page");
             for (UserMini user : users) {
+                if (user == null) {
+                    continue;
+                }
                 Upgrade upgrade = new Upgrade();
                 upgrade.setUpgradeLeaderId(user.getUserinfoId());
                 upgrade.setUpgradeUserinfoId(userInfoId);

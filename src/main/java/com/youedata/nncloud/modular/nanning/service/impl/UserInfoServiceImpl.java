@@ -169,7 +169,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
     @Override
     public UserMini selectHighLvUser(String userInfoTreecode, String userInfoLv) {
 
-        return userInfoMapper.selectHighLvUser(userInfoTreecode, userInfoLv);
+        return userInfoMapper.selectHighLvUser(userInfoTreecode, userInfoLv, true);
     }
 
     /**
@@ -185,7 +185,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         String targetLv;
         String userInfoOrg;
         JSONObject js = JsonUtil.createOkJson();
-        List list = new ArrayList();
+        List<UserMini> list = new ArrayList();
         UserInfo userInfo = userInfoMapper.selectById(userInfoId);
         if (userInfo != null){
             userInfoTreecode = userInfo.getUserinfoTreecode();
@@ -195,26 +195,35 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         }  else {
             throw new Exception("不存在此用户");
         }
+        UserMini mini5 = null;
+        UserMini leader = null;
         //如果是0级
         if ("0".equals(userInfoLv)) {
-            UserMini mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "5");
-            UserMini leader = userInfoMapper.selectLeader(userInfoOrg);
-            list.add(mini5);
-            list.add(leader);
-
+            mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
+            leader = userInfoMapper.selectLeader(userInfoOrg);
         }
         //如果是4级
         else if ("4".equals(userInfoLv)){
-            UserMini mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "5");
-            UserMini mini9 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "9");
-            list.add(mini5);
-            list.add(mini9);
+            mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
+            leader =    userInfoMapper.selectHighLvUser(userInfoTreecode, "9", true);
         }
         //其他情况
         else {
-            UserMini mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv);
+            mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, true);
+        }
+
+        if (mini5 != null) {
             list.add(mini5);
         }
+        if (leader != null) {
+            list.add(leader);
+        }
+
+        if (list.size() == 0 || list.isEmpty()) {
+            mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, false);
+            list.add(mini5);
+        }
+
         js.put("page", list);
         return js;
 
