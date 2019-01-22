@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  * 用户表 Mapper 接口
@@ -37,5 +40,5 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @param userInfoName
      * @return
      */
-    UserInfo selectMiniMessage(@Param("userInfoName")String userInfoName);
+    List<Map<String, String>> selectMiniMessage(@Param("userInfoName")String userInfoName);
 }

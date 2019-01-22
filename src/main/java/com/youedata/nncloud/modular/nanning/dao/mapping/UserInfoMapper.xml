@@ -20,6 +20,7 @@
         <result column="userInfo_update_time" property="userinfoUpdateTime" />
     </resultMap>
 
+    <!--查询子集中组织码中下一个-->
     <select id="getTreeCodeNext" resultType="String">
         SELECT
         CONCAT(#{TreeCode},'-',
@@ -47,12 +48,14 @@
         LIMIT 1;
     </select>
 
+    <!--根据电话号查询用户信息-->
     <select id="selectByTel" resultMap="BaseResultMap">
         SELECT * from userInfo
         WHERE userInfo_name = #{userInfoName}
     </select>
 
-    <select id="selectMiniMessage" resultMap="BaseResultMap">
+    <!--查询精简用户信息-->
+    <select id="selectMiniMessage" resultType="Map">
         SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code
         FROM userInfo
         WHERE userInfo_name = #{userInfoName}
