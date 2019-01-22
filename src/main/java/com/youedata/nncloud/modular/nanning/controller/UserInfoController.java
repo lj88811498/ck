@@ -43,7 +43,7 @@ public class UserInfoController extends BaseController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户登录", notes = "用户登录")
-    public Object add(@ApiParam("用户名(必填)") @RequestParam(value = "userInfoName", required = true) String userInfoName,
+    public Object login(@ApiParam("用户名(必填)") @RequestParam(value = "userInfoName", required = true) String userInfoName,
                       @ApiParam("密码(必填)") @RequestParam(value = "userinfoPwd", required = true) String userinfoPwd) {
         JSONObject result = JsonUtil.createOkJson();
         try {
@@ -118,7 +118,7 @@ public class UserInfoController extends BaseController {
      */
     @RequestMapping(value = "/myGroup", method = RequestMethod.GET)
     @ResponseBody
-    @ApiOperation(value = "用户信息详情", notes = "用户信息详情")
+    @ApiOperation(value = "我的团队", notes = "我的团队")
     public Object myGroup(@ApiParam("用户id(必填)") @RequestParam(value = "userInfoId", required = true) String userInfoId) {
         JSONObject result = JsonUtil.createOkJson();
         try {
