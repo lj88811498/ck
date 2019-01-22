@@ -72,4 +72,14 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>,Upgrade>
         }
         return true;
     }
+
+    /**
+     * 审核升级-订单列表
+     * @param userInfoId
+     * @return
+     */
+    @Override
+    public List<Map<String, String>> orderList(String userInfoId) {
+        return upgradeMapper.orderList(userInfoId);
+    }
 }

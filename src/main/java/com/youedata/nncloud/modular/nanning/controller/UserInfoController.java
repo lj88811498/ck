@@ -8,6 +8,7 @@ import com.youedata.nncloud.core.util.JsonUtil;
 import com.youedata.nncloud.core.util.RecordLogUtil;
 import com.youedata.nncloud.core.util.ToolUtil;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
+import com.youedata.nncloud.modular.nanning.service.IUpgradeService;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
 import com.youedata.nncloud.modular.system.dao.NoticeMapper;
 import io.swagger.annotations.Api;
@@ -36,6 +37,8 @@ public class UserInfoController extends BaseController {
     private IUserInfoService userInfoService;
     @Autowired
     private UserInfoMapper userInfoMapper;
+    @Autowired
+    private IUpgradeService iUpgradeService;
 
     /**
      * 用户登录
@@ -113,7 +116,7 @@ public class UserInfoController extends BaseController {
                          @ApiParam("城市(必填)") @RequestParam(value = "userInfoCity", required = true) String userInfoCity) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            userInfoService.update(userInfoId,userinfoHead,userInfoSurname,userInfoSex, userinfoTel, userInfoProvince,userInfoCity,userinfoWx, userinfoNickname);
+            userInfoService.update(userInfoId, userinfoHead, userInfoSurname, userInfoSex, userinfoTel, userInfoProvince, userInfoCity, userinfoWx, userinfoNickname);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
@@ -187,6 +190,39 @@ public class UserInfoController extends BaseController {
         return result;
     }
 
+    /**
+     * 审核升级-订单列表
+     */
+    @RequestMapping(value = "/orderList", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "审核升级-订单列表", notes = "审核升级-订单列表")
+    public Object orderList(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) String userInfoId) {
+        JSONObject result = JsonUtil.createOkJson();
+        try {
+            result.put("page", iUpgradeService.orderList(userInfoId));
+        } catch (Exception e) {
+            result = JsonUtil.createFailJson(e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * 审核升级
+     */
+    @RequestMapping(value = "/auditEscalation", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "审核升级", notes = "审核升级")
+    public Object auditEscalation() {
+        JSONObject result = JsonUtil.createOkJson();
+        try {
+            result.put("page", userInfoMapper.customerService());
+        } catch (Exception e) {
+            result = JsonUtil.createFailJson(e.getMessage());
+        }
+        return result;
+    }
+
+
     @RequestMapping(value = "/clearToken", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "清理token", notes = "清理token")
@@ -214,7 +250,6 @@ public class UserInfoController extends BaseController {
     }
 
 
-
     @RequestMapping(value = "/getMerchants", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "获取商家信息", notes = "获取商家信息")
@@ -227,7 +262,6 @@ public class UserInfoController extends BaseController {
             RecordLogUtil.error(e.getMessage());
             js = JsonUtil.createFailJson(e.getMessage());
         }
-
         return js;
     }
 
