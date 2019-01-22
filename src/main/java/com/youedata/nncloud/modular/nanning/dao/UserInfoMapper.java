@@ -2,6 +2,7 @@ package com.youedata.nncloud.modular.nanning.dao;
 
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.youedata.nncloud.modular.nanning.model.UserMini;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,5 +41,19 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @param userInfoName
      * @return
      */
-    List<Map<String, String>> selectMiniMessage(@Param("userInfoName")String userInfoName);
+    UserMini selectMiniMessage(@Param("userInfoName")String userInfoName);
+
+    /**
+     * 查询用户所有直系下线
+     * @param userInfoId
+     * @return
+     */
+    List<UserMini> selectImmediateList(@Param("userInfoId")String userInfoId);
+
+    /**
+     * 查询用户子孙节点中所有一星及以上下线总和
+     * @param userInfoId
+     * @return
+     */
+    Integer selectHeirCount(@Param("userInfoId")String userInfoId);
 }

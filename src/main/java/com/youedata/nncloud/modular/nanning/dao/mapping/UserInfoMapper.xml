@@ -4,20 +4,20 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.youedata.nncloud.modular.nanning.model.UserInfo">
-        <id column="userInfo_id" property="userinfoId" />
-        <result column="userInfo_name" property="userinfoName" />
-        <result column="userInfo_pwd" property="userinfoPwd" />
-        <result column="userInfo_nickname" property="userinfoNickname" />
-        <result column="userInfo_tel" property="userinfoTel" />
-        <result column="userInfo_wx" property="userinfoWx" />
-        <result column="userInfo_lv" property="userinfoLv" />
-        <result column="userInfo_code" property="userinfoCode" />
-        <result column="userInfo_org" property="userinfoOrg" />
-        <result column="userInfo_treecode" property="userinfoTreecode" />
-        <result column="userInfo_create_by" property="userinfoCreateBy" />
-        <result column="userInfo_update_by" property="userinfoUpdateBy" />
-        <result column="userInfo_create_time" property="userinfoCreateTime" />
-        <result column="userInfo_update_time" property="userinfoUpdateTime" />
+        <id column="userInfo_id" property="userinfoId"/>
+        <result column="userInfo_name" property="userinfoName"/>
+        <result column="userInfo_pwd" property="userinfoPwd"/>
+        <result column="userInfo_nickname" property="userinfoNickname"/>
+        <result column="userInfo_tel" property="userinfoTel"/>
+        <result column="userInfo_wx" property="userinfoWx"/>
+        <result column="userInfo_lv" property="userinfoLv"/>
+        <result column="userInfo_code" property="userinfoCode"/>
+        <result column="userInfo_org" property="userinfoOrg"/>
+        <result column="userInfo_treecode" property="userinfoTreecode"/>
+        <result column="userInfo_create_by" property="userinfoCreateBy"/>
+        <result column="userInfo_update_by" property="userinfoUpdateBy"/>
+        <result column="userInfo_create_time" property="userinfoCreateTime"/>
+        <result column="userInfo_update_time" property="userinfoUpdateTime"/>
     </resultMap>
 
     <!--查询子集中组织码中下一个-->
@@ -55,9 +55,26 @@
     </select>
 
     <!--查询精简用户信息-->
-    <select id="selectMiniMessage" resultType="Map">
-        SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code
+    <select id="selectMiniMessage" resultType="com.youedata.nncloud.modular.nanning.model.UserMini">
+        SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
         FROM userInfo
         WHERE userInfo_name = #{userInfoName}
+    </select>
+
+    <!--查询用户直系下线-->
+    <select id="selectImmediateList" resultType="com.youedata.nncloud.modular.nanning.model.UserMini">
+        SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
+        from userInfo
+        WHERE userInfo_code =
+        (select userInfo_code from userInfo
+        WHERE userInfo_id = #{userInfoId})
+    </select>
+
+    <!--查询用户子孙节点中所有一星及以上下线总和-->
+    <select id="selectHeirCount" resultType="Integer">
+        select COUNT(*)-1
+        from userInfo
+        WHERE userInfo_treecode like CONCAT((select userInfo_treecode from userInfo
+        WHERE userInfo_id = #{userInfoId}),'%')
     </select>
 </mapper>

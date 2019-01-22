@@ -1,10 +1,13 @@
 package com.youedata.nncloud.modular.nanning.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.youedata.nncloud.core.util.Encrypt;
 import com.youedata.nncloud.core.util.MD5Util;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
+import com.youedata.nncloud.modular.nanning.model.UserMini;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
@@ -35,7 +38,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
      * @param userinfoPwd
      */
     @Override
-    public List<Map<String, String>> login(String userInfoName, String userinfoPwd) throws Exception {
+    public UserMini login(String userInfoName, String userinfoPwd) throws Exception {
         UserInfo userInfo = userInfoMapper.selectByTel(userInfoName);
         if (userInfo == null ||  !userInfo.getUserinfoPwd().equals(Encrypt.getMd5(userinfoPwd))) {
             throw new Exception("用户名或密码错误");
@@ -101,5 +104,19 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
 
     }
 
-
+    /**
+     * 我的团队
+     * @param userInfoId
+     * @return
+     */
+    @Override
+    public JSONObject myGroup(String userInfoId) {
+        JSONObject page = new JSONObject();
+        //直系下线查询
+        List<UserMini> userList = userInfoMapper.selectImmediateList(userInfoId);
+        page.put("data",userList);
+        Integer integer = userInfoMapper.selectHeirCount(userInfoId);
+        page.put("sum",integer);
+        return page;
+    }
 }

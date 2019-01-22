@@ -47,10 +47,12 @@ public class UserInfoController extends BaseController {
                       @ApiParam("密码(必填)") @RequestParam(value = "userinfoPwd", required = true) String userinfoPwd) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            result.put("page", userInfoService.login(userInfoName, userinfoPwd));
+            JSONObject page = new JSONObject();
+            page.put("data",userInfoService.login(userInfoName, userinfoPwd));
             String token = ToolUtil.getRandomString(18);
+            page.put("token",token );
             GlobalHashMap.addUserToken(token);
-            result.put("token", token);
+            result.put("page", page);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
@@ -105,6 +107,22 @@ public class UserInfoController extends BaseController {
         JSONObject result = JsonUtil.createOkJson();
         try {
             userInfoService.changePwd(userInfoId, oldPassord, newPassord);
+        } catch (Exception e) {
+            result = JsonUtil.createFailJson(e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * 我的团队
+     */
+    @RequestMapping(value = "/myGroup", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "用户信息详情", notes = "用户信息详情")
+    public Object myGroup(@ApiParam("用户id(必填)") @RequestParam(value = "userInfoId", required = true) String userInfoId) {
+        JSONObject result = JsonUtil.createOkJson();
+        try {
+            result.put("page", userInfoService.myGroup(userInfoId));
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }

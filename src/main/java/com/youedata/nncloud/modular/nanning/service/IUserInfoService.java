@@ -1,7 +1,9 @@
 package com.youedata.nncloud.modular.nanning.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.service.IService;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
+import com.youedata.nncloud.modular.nanning.model.UserMini;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +21,7 @@ public interface IUserInfoService extends IService<UserInfo> {
      * @param userInfoName
      * @param userinfoPwd
      */
-    List<Map<String, String>> login(String userInfoName, String userinfoPwd) throws Exception;
+    UserMini login(String userInfoName, String userinfoPwd) throws Exception;
 
     /**
      * 帮助注册
@@ -42,4 +44,10 @@ public interface IUserInfoService extends IService<UserInfo> {
     void changePwd(String userInfoId, String oldPassord, String newPassord) throws Exception;
 
 
+    /**
+     * 我的团队
+     * @param userInfoId
+     * @return
+     */
+    JSONObject myGroup(String userInfoId);
 }
