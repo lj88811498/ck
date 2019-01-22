@@ -4,12 +4,12 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.youedata.nncloud.modular.nanning.model.Upgrade">
-        <id column="upgrade_id" property="upgradeId" />
-        <result column="upgrade_userinfo_id" property="upgradeUserinfoId" />
-        <result column="upgrade_leader_id" property="upgradeLeaderId" />
-        <result column="upgrade_status" property="upgradeStatus" />
-        <result column="upgrade_create_time" property="upgradeCreateTime" />
-        <result column="upgrade_update_time" property="upgradeUpdateTime" />
+        <id column="upgrade_id" property="upgradeId"/>
+        <result column="upgrade_userinfo_id" property="upgradeUserinfoId"/>
+        <result column="upgrade_leader_id" property="upgradeLeaderId"/>
+        <result column="upgrade_status" property="upgradeStatus"/>
+        <result column="upgrade_create_time" property="upgradeCreateTime"/>
+        <result column="upgrade_update_time" property="upgradeUpdateTime"/>
     </resultMap>
 
     <!--审核升级列表-->
@@ -20,4 +20,8 @@
         AND up.upgrade_status = 0
     </select>
 
+    <update id="auditEscalation">
+        UPDATE `upgrade` SET upgrade_status = #{upgradeStatus}
+        WHERE upgrade_id = #{upgradeId}
+    </update>
 </mapper>

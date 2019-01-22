@@ -27,7 +27,7 @@ import java.util.Map;
  */
 @Service
 @Transactional(rollbackFor = java.lang.Exception.class)
-public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>,Upgrade> implements IUpgradeService {
+public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade> implements IUpgradeService {
 
     @Autowired
     private IUserInfoService userInfoService;
@@ -53,13 +53,13 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>,Upgrade>
         Map map = new HashMap<>();
         map.put("upgrade_userinfo_id", userInfoId);
         List list = upgradeMapper.selectByMap(map);
-        if (list.size() > 0 ) {
+        if (list.size() > 0) {
             throw new Exception("用户还有未审核的申请！");
         }
 
         JSONObject merchants = userInfoService.getMerchants(userInfoId);
         if (merchants != null) {
-            List<UserMini> users = (List)merchants.get("page");
+            List<UserMini> users = (List) merchants.get("page");
             for (UserMini user : users) {
                 if (user == null) {
                     continue;
@@ -75,11 +75,19 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>,Upgrade>
 
     /**
      * 审核升级-订单列表
+     *
      * @param userInfoId
      * @return
      */
     @Override
     public List<Map<String, String>> orderList(String userInfoId) {
         return upgradeMapper.orderList(userInfoId);
+    }
+
+    /**
+     * 审核升级
+     */
+    public void auditEscalation(String upgradeId, String upgradeStatus) {
+        upgradeMapper.auditEscalation(upgradeId, upgradeStatus);
     }
 }

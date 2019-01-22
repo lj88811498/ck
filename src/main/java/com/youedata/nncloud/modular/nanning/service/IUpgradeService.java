@@ -26,4 +26,9 @@ public interface IUpgradeService extends IService<Upgrade> {
      * @return
      */
     List<Map<String,String>> orderList(String userInfoId);
+
+    /**
+     * 审核升级
+     */
+    void auditEscalation(String upgradeId,String upgradeStatus);
 }

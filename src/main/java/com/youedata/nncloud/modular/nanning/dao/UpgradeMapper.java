@@ -21,5 +21,10 @@ import java.util.Map;
 @Component
 public interface UpgradeMapper extends BaseMapper<Upgrade> {
 
-    List<Map<String,String>> orderList(@Param("userInfoId") String userInfoId);
+    List<Map<String, String>> orderList(@Param("userInfoId") String userInfoId);
+
+    /**
+     * 审核升级
+     */
+    void auditEscalation(@Param("upgradeId") String upgradeId, @Param("upgradeStatus")String upgradeStatus);
 }

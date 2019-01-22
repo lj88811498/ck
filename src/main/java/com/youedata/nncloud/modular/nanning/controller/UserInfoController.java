@@ -212,10 +212,11 @@ public class UserInfoController extends BaseController {
     @RequestMapping(value = "/auditEscalation", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "审核升级", notes = "审核升级")
-    public Object auditEscalation() {
+    public Object auditEscalation(@ApiParam("订单id(必填)") @RequestParam(value = "upgradeId", required = true) String upgradeId,
+                                  @ApiParam("状态：0未审核1审核通过2审核不通过(必填)") @RequestParam(value = "upgradeStatus", required = true) String upgradeStatus) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            result.put("page", userInfoMapper.customerService());
+            iUpgradeService.auditEscalation(upgradeId, upgradeStatus);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
