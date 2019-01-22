@@ -9,6 +9,7 @@ import com.youedata.nncloud.core.util.RecordLogUtil;
 import com.youedata.nncloud.core.util.ToolUtil;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
+import com.youedata.nncloud.modular.system.dao.NoticeMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -35,6 +36,8 @@ public class UserInfoController extends BaseController {
     private IUserInfoService userInfoService;
     @Autowired
     private UserInfoMapper userInfoMapper;
+    @Autowired
+    private NoticeMapper noticeMapper;
 
     /**
      * 用户登录
@@ -153,6 +156,21 @@ public class UserInfoController extends BaseController {
         return result;
     }
 
+    /**
+     * 客服电话
+     */
+    @RequestMapping(value = "/customerServiceNumbers", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "客服电话", notes = "客服电话")
+    public Object customerService() {
+        JSONObject result = JsonUtil.createOkJson();
+        try {
+            result.put("page", userInfoMapper.customerService());
+        } catch (Exception e) {
+            result = JsonUtil.createFailJson(e.getMessage());
+        }
+        return result;
+    }
 
     @RequestMapping(value = "/clearToken", method = RequestMethod.GET)
     @ResponseBody

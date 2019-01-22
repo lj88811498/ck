@@ -56,4 +56,10 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @return
      */
     Integer selectHeirCount(@Param("userInfoId")String userInfoId);
+
+    /**
+     * 查询客服信息
+     * @return
+     */
+    List<Map<String,String>> customerService();
 }

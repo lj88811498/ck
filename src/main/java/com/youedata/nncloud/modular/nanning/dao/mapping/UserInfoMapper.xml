@@ -71,7 +71,7 @@
     <select id="selectImmediateList" resultType="com.youedata.nncloud.modular.nanning.model.UserMini">
         SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
         from userInfo
-        WHERE userInfo_code =
+        WHERE userInfo_org =
         (select userInfo_code from userInfo
         WHERE userInfo_id = #{userInfoId})
     </select>
@@ -82,5 +82,12 @@
         from userInfo
         WHERE userInfo_treecode like CONCAT((select userInfo_treecode from userInfo
         WHERE userInfo_id = #{userInfoId}),'%')
+        AND  <![CDATA[  userInfo_lv >= 1  ]]>
+    </select>
+
+    <select id="customerService" resultType="map">
+        select *
+        FROM customer_service
+        WHERE id =1
     </select>
 </mapper>
