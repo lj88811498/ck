@@ -14,9 +14,7 @@ import com.youedata.nncloud.core.util.ToolUtil;
 import com.youedata.nncloud.modular.system.dao.SysRoleMapper;
 import com.youedata.nncloud.modular.system.model.User;
 import com.youedata.nncloud.modular.system.service.IMenuService;
-import com.youedata.nncloud.modular.system.service.IRoleService;
 import com.youedata.nncloud.modular.system.service.IUserService;
-import com.youedata.nncloud.modular.system.warpper.RoleWarpper;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
-import java.util.Map;
 
 import static com.youedata.nncloud.core.support.HttpKit.getIp;
 
