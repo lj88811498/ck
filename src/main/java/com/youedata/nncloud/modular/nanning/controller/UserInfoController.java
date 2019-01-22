@@ -36,8 +36,6 @@ public class UserInfoController extends BaseController {
     private IUserInfoService userInfoService;
     @Autowired
     private UserInfoMapper userInfoMapper;
-    @Autowired
-    private NoticeMapper noticeMapper;
 
     /**
      * 用户登录
@@ -103,7 +101,7 @@ public class UserInfoController extends BaseController {
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    @ApiOperation(value = "帮助注册", notes = "帮助注册")
+    @ApiOperation(value = "修改个人信息", notes = "修改个人信息")
     public Object update(@ApiParam("当前用户id") @RequestParam(value = "userInfoId", required = true) String userInfoId,
                          @ApiParam("头像(必填)") @RequestParam(value = "userinfoHead", required = true) String userinfoHead,
                          @ApiParam("昵称(必填)") @RequestParam(value = "userInfoSurname", required = true) String userInfoSurname,
@@ -134,6 +132,23 @@ public class UserInfoController extends BaseController {
         JSONObject result = JsonUtil.createOkJson();
         try {
             userInfoService.changePwd(userInfoId, oldPassord, newPassord);
+        } catch (Exception e) {
+            result = JsonUtil.createFailJson(e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * 忘记密码
+     */
+    @RequestMapping(value = "/forgetPwd", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "忘记密码", notes = "忘记密码")
+    public Object forgetPwd(@ApiParam("手机号(必填)") @RequestParam(value = "userinfoTel", required = true) String userinfoTel,
+                            @ApiParam("新密码") @RequestParam(value = "newPassord", required = true) String newPassord) {
+        JSONObject result = JsonUtil.createOkJson();
+        try {
+            userInfoService.forgetPwd(userinfoTel, newPassord);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
