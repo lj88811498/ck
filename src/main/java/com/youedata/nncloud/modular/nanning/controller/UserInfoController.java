@@ -2,27 +2,22 @@ package com.youedata.nncloud.modular.nanning.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.youedata.nncloud.core.base.controller.BaseController;
-import com.youedata.nncloud.core.constant.Constant;
-import com.youedata.nncloud.core.log.LogManager;
-import com.youedata.nncloud.core.log.factory.LogTaskFactory;
-import com.youedata.nncloud.core.support.BeanKit;
-import com.youedata.nncloud.core.util.*;
+import com.youedata.nncloud.core.common.annotion.CkLog;
+import com.youedata.nncloud.core.util.GlobalHashMap;
+import com.youedata.nncloud.core.util.JsonUtil;
+import com.youedata.nncloud.core.util.RecordLogUtil;
+import com.youedata.nncloud.core.util.ToolUtil;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
-import com.youedata.nncloud.modular.system.dao.UserMapper;
-import io.swagger.annotations.ApiParam;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.ui.Model;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.youedata.nncloud.core.log.LogObjectHolder;
-import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
-import javax.servlet.http.HttpServletRequest;
+import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 用户信息控制器
@@ -129,6 +124,16 @@ public class UserInfoController extends BaseController {
         }
 
         return js;
+    }
+
+    @CkLog(userId = "userInfoId", operation = "注册了", target = "", desc = "注册了新用户", key = "")
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "test", notes = "test")
+    public Object test(@ApiParam("用户id") @RequestParam(value = "userInfoId", required = true) int userInfoId,
+                       @ApiParam("目标id") @RequestParam(value = "targetId", required = true)int targetId){
+
+        return JsonUtil.createOkJson(userInfoId + "~~~~" + targetId);
     }
 
 }
