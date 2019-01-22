@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.youedata.nncloud.core.util.Encrypt;
+import com.youedata.nncloud.core.util.JsonUtil;
 import com.youedata.nncloud.core.util.MD5Util;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import com.youedata.nncloud.modular.nanning.model.UserMini;
@@ -14,6 +15,7 @@ import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import org.springframework.stereotype.Service;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -118,6 +120,67 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         Integer integer = userInfoMapper.selectHeirCount(userInfoId);
         page.put("sum",integer);
         return page;
+    }
+
+    /**
+     * 获取指定等级的推荐用户-五级和九级
+     *
+     * @param userInfoTreecode
+     * @param userInfoLv
+     * @return
+     */
+    @Override
+    public UserMini selectHighLvUser(String userInfoTreecode, String userInfoLv) {
+
+        return userInfoMapper.selectHighLvUser(userInfoTreecode, userInfoLv);
+    }
+
+    /**
+     * 获取商家信息
+     *
+     * @param userInfoId
+     * @return
+     */
+    @Override
+    public JSONObject getMerchants(int userInfoId) throws Exception {
+        String userInfoTreecode;
+        String userInfoLv;
+        String targetLv;
+        String userInfoOrg;
+        JSONObject js = JsonUtil.createOkJson();
+        List list = new ArrayList();
+        UserInfo userInfo = userInfoMapper.selectById(userInfoId);
+        if (userInfo != null){
+            userInfoTreecode = userInfo.getUserinfoTreecode();
+            userInfoLv = userInfo.getUserinfoLv();
+            targetLv = (Integer.parseInt(userInfoLv) + 1 ) + "";
+            userInfoOrg = userInfo.getUserinfoOrg();
+        }  else {
+            throw new Exception("不存在此用户");
+        }
+        //如果是0级
+        if ("0".equals(userInfoLv)) {
+            UserMini mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "5");
+            UserMini leader = userInfoMapper.selectLeader(userInfoOrg);
+            list.add(mini5);
+            list.add(leader);
+
+        }
+        //如果是4级
+        else if ("4".equals(userInfoLv)){
+            UserMini mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "5");
+            UserMini mini9 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "9");
+            list.add(mini5);
+            list.add(mini9);
+        }
+        //其他情况
+        else {
+            UserMini mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv);
+            list.add(mini5);
+        }
+        js.put("page", list);
+        return js;
+
     }
 
 }

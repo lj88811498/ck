@@ -156,4 +156,24 @@ public class UserInfoController extends BaseController {
         return JsonUtil.createOkJson(userInfoId + "~~~~" + targetId);
     }
 
+
+
+    @RequestMapping(value = "/getMerchants", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "获取商家信息", notes = "获取商家信息")
+    public Object getMerchants(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) int userInfoId) {
+
+        JSONObject js = JsonUtil.createOkJson();
+        try {
+            js = userInfoService.getMerchants(userInfoId);
+        } catch (Exception e) {
+            RecordLogUtil.error(e.getMessage());
+            js = JsonUtil.createFailJson(e.getMessage());
+        }
+
+        return js;
+    }
+
+
+
 }

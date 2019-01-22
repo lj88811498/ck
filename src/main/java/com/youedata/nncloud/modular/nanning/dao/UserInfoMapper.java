@@ -56,4 +56,21 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @return
      */
     Integer selectHeirCount(@Param("userInfoId")String userInfoId);
+
+    /**
+     * 获取指定等级的推荐用户-五级和九级
+     * @param userInfoTreecode
+     * @param userInfoLv
+     * @return
+     */
+    UserMini selectHighLvUser(@Param("userInfoTreecode") String userInfoTreecode,
+                              @Param("userInfoLv") String userInfoLv);
+
+
+    /**
+     * 查询用户的上一级
+     * @param userInfoCode
+     * @return
+     */
+    UserMini selectLeader(@Param("userInfoCode") String userInfoCode);
 }

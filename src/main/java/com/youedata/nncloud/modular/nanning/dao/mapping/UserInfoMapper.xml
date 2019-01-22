@@ -20,6 +20,10 @@
         <result column="userInfo_update_time" property="userinfoUpdateTime"/>
     </resultMap>
 
+    <sql id="mini">
+        userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
+    </sql>
+
     <!--查询子集中组织码中下一个-->
     <select id="getTreeCodeNext" resultType="String">
         SELECT
@@ -45,7 +49,7 @@
         WHERE #{TreeCode} =  SUBSTRING_INDEX(userInfo_treecode,'-',length(userInfo_treecode)-LENGTH(REPLACE(userInfo_treecode,'-','')))
         ORDER BY
             userInfo_treecode DESC
-        LIMIT 1;
+        LIMIT 1
     </select>
 
     <!--根据电话号查询用户信息-->
@@ -77,4 +81,27 @@
         WHERE userInfo_treecode like CONCAT((select userInfo_treecode from userInfo
         WHERE userInfo_id = #{userInfoId}),'%')
     </select>
+
+    <!-- 获取指定等级的推荐用户-五级和九级 二到九级都可以使用-->
+    <select id="selectHighLvUser" resultType="com.youedata.nncloud.modular.nanning.model.UserMini">
+        SELECT
+            <include refid="mini"/>
+        FROM
+            userInfo
+        WHERE
+            instr(#{userInfoTreecode}, userInfo_treecode) > 0
+        and #{userInfoTreecode} != userInfo_treecode
+        and userInfo_lv = #{userInfoLv}
+        order by userInfo_treecode desc
+        limit 1
+    </select>
+
+    <select id="selectLeader" resultType="com.youedata.nncloud.modular.nanning.model.UserMini">
+        select
+        <include refid="mini"/>
+        from userInfo
+        where userInfo_code = #{userInfoCode}
+    </select>
+
+
 </mapper>

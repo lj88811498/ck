@@ -1,9 +1,11 @@
 package com.youedata.nncloud.modular.nanning.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import com.youedata.nncloud.modular.nanning.model.UserMini;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -51,4 +53,17 @@ public interface IUserInfoService extends IService<UserInfo> {
      */
     JSONObject myGroup(String userInfoId);
 
+    /**
+     * 获取指定等级的推荐用户-五级和九级
+     * @param userInfoTreecode
+     * @param userInfoLv
+     * @return
+     */
+    UserMini selectHighLvUser(String userInfoTreecode, String userInfoLv);
+
+    /**
+     * 获取商家信息
+     * @return
+     */
+    JSONObject getMerchants(int userInfoId) throws Exception;
 }
