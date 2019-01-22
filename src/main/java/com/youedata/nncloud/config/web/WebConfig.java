@@ -7,7 +7,9 @@ import com.alibaba.druid.support.spring.stat.BeanTypeAutoProxyCreator;
 import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
+import com.youedata.nncloud.config.properties.DataOsProperties;
 import com.youedata.nncloud.config.properties.GunsProperties;
+import com.youedata.nncloud.core.aop.DataOSLogin;
 import com.youedata.nncloud.core.listener.ConfigListener;
 import com.youedata.nncloud.core.xss.XssFilter;
 import org.springframework.aop.Advisor;
@@ -38,12 +40,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private GunsProperties gunsProperties;
-//    @Autowired
-//    private DataOsProperties dataOsProperties;
-//    @Bean
-//    DataOSLogin DataOSLogin() {
-//        return new DataOSLogin();
-//    }
+    @Autowired
+    private DataOsProperties dataOsProperties;
+    @Bean
+    DataOSLogin DataOSLogin() {
+        return new DataOSLogin();
+    }
 
 
     /**
@@ -51,14 +53,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
      * @author yuqingquan
      * @param registry
      */
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        if(dataOsProperties.getIsOpen()){
-//            registry.addInterceptor(DataOSLogin())
-//                    //放行特定路径请求;
-//                    .excludePathPatterns("/userInfo/session","/userInfo/loginDataOs");
-//        }
-////                .addPathPatterns("/**"); //拦截特定路径请求
-//    }
+    public void addInterceptors(InterceptorRegistry registry) {
+        if(dataOsProperties.getIsOpen()){
+            registry.addInterceptor(DataOSLogin())
+                    //放行特定路径请求;
+                    .excludePathPatterns("/userInfo/login","/userInfo/forgetPwd");
+        }
+//                .addPathPatterns("/**"); //拦截特定路径请求
+    }
 
     /**
      * 增加swagger的支持

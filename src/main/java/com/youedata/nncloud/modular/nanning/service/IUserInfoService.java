@@ -72,4 +72,11 @@ public interface IUserInfoService extends IService<UserInfo> {
      * @return
      */
     JSONObject getMerchants(int userInfoId) throws Exception;
+
+    /**
+     * 忘记密码
+     * @param userinfoTel
+     * @param newPassord
+     */
+    void forgetPwd(String userinfoTel, String newPassord) throws Exception;
 }

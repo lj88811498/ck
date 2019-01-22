@@ -107,6 +107,21 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
     }
 
     /**
+     * 忘记密码
+     * @param userinfoTel
+     * @param newPassord
+     */
+    @Override
+    public void forgetPwd(String userinfoTel, String newPassord) throws Exception {
+        UserInfo userInfo = userInfoMapper.selectByTel(userinfoTel);
+        if(userInfo == null){
+            throw new Exception("用户不存在");
+        }
+        userInfo.setUserinfoPwd(newPassord);
+        userInfo.updateById();
+    }
+
+    /**
      * 我的团队
      * @param userInfoId
      * @return
@@ -117,6 +132,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         //直系下线查询
         List<UserMini> userList = userInfoMapper.selectImmediateList(userInfoId);
         page.put("data",userList);
+        page.put("myGroupSum",userList.size());
         Integer integer = userInfoMapper.selectHeirCount(userInfoId);
         page.put("sum",integer);
         return page;
@@ -203,5 +219,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         return js;
 
     }
+
+
 
 }
