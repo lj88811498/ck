@@ -28,7 +28,13 @@ public class DataOSLogin implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
         String token = request.getHeader("accessToken");//从请求头中获取accessToken
-        return GlobalHashMap.isUserOnline(token);
+        if(GlobalHashMap.isUserOnline(token)){
+            return true;
+        }else{
+            JSONObject json = JsonUtil.dataOSFailJson();
+            response.getWriter().append(json.toString());
+            return false;
+        }
     }
 
     @Override
