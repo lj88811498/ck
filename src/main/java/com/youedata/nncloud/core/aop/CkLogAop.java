@@ -103,10 +103,13 @@ public class CkLogAop {
             }
 
             msg = msg.replaceAll("null", "");
-
+            int t_userId = 0;
+            if (StringUtils.isNotBlank(_userId)) {
+                t_userId = Integer.parseInt(_userId);
+            }
             String ip = HttpKit.getRemoteHostReal(HttpKit.getRequest());
 
-            LogManager.me().executeLog(LogTaskFactory.bussinessLog(Integer.parseInt(_userId), bussinessName, className, methodName, ip, msg));
+            LogManager.me().executeLog(LogTaskFactory.bussinessLog(t_userId, bussinessName, className, methodName, ip, msg));
         }   catch (Exception e) {
             RecordLogUtil.error("参数错误！！！！");
         }
