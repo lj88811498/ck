@@ -21,7 +21,30 @@
     </resultMap>
 
     <select id="getTreeCodeNext" resultType="String">
+        SELECT
+        CONCAT(#{TreeCode},'-',
+        IF (
+            SUBSTRING_INDEX(userInfo_treecode, '-' ,- 1) = 9,
+            10,
 
+        IF (
+            LENGTH(
+                SUBSTRING_INDEX(userInfo_treecode, '-' ,- 1) + 1
+            ) = 1,
+            CONCAT(
+                '0',
+                SUBSTRING_INDEX(userInfo_treecode, '-' ,- 1) + 1
+            ),
+            SUBSTRING_INDEX(userInfo_treecode, '-' ,- 1) + 1
+        )
+        )
+        )
+        FROM
+            userInfo
+        WHERE #{TreeCode} =  SUBSTRING_INDEX(userInfo_treecode,'-',length(userInfo_treecode)-LENGTH(REPLACE(userInfo_treecode,'-','')))
+        ORDER BY
+            userInfo_treecode DESC
+        LIMIT 1;
     </select>
 
     <select id="selectByTel" resultMap="BaseResultMap">

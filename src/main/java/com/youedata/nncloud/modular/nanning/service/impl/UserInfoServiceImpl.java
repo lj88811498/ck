@@ -60,6 +60,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
 
         //查询当前登录用户信息（推荐人信息）
         UserInfo userInfo = userInfoMapper.selectById(userInfoId);
+
         //新用户信息补全
         UserInfo newUser = new UserInfo();
         newUser.setUserinfoName(userinfoTel);//用户名就是手机号
@@ -67,11 +68,10 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         newUser.setUserinfoWx(userinfoWx);
         newUser.setUserinfoNickname(userinfoNickname);
         newUser.setUserinfoPwd(Encrypt.getMd5(userinfoPwd));
-        newUser.setUserinfoLv("1");
+        newUser.setUserinfoLv("0");
         newUser.setUserinfoOrg(userInfo.getUserinfoOrg());
 
-        String treeCode = userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode());
-        newUser.setUserinfoTreecode(userInfo.getUserinfoTreecode() + "-" + treeCode);
+        newUser.setUserinfoTreecode(userInfo.getUserinfoTreecode());
         newUser.setUserinfoCreateBy(Integer.valueOf(userInfoId));
         newUser.setUserinfoCreateTime(new Date());
         newUser.insert();

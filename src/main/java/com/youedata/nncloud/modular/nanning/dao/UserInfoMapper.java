@@ -30,7 +30,7 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @param userInfoName
      * @return
      */
-    UserInfo selectByTel(@Param("TreeCode")String userInfoName);
+    UserInfo selectByTel(@Param("userInfoName")String userInfoName);
 
     /**
      * 查询个人简版信息

@@ -62,11 +62,11 @@ public class UserInfoController extends BaseController {
     }
 
     /**
-     * 新增用户信息
+     * 帮助注册
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    @ApiOperation(value = "新增用户信息", notes = "新增用户信息")
+    @ApiOperation(value = "帮助注册", notes = "帮助注册")
     public Object add(@ApiParam("当前用户id") @RequestParam(value = "userInfoId", required = true) String userInfoId,
                       @ApiParam("手机号(必填)") @RequestParam(value = "userinfoTel", required = true) String userinfoTel,
                       @ApiParam("微信号(必填)") @RequestParam(value = "userinfoWx", required = true) String userinfoWx,
