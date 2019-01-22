@@ -3,6 +3,7 @@ package com.youedata.nncloud.modular.nanning.service.impl;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.youedata.nncloud.core.util.Encrypt;
+import com.youedata.nncloud.core.util.MD5Util;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -32,9 +35,9 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
      * @param userinfoPwd
      */
     @Override
-    public Object login(String userInfoName, String userinfoPwd) throws Exception {
+    public List<Map<String, String>> login(String userInfoName, String userinfoPwd) throws Exception {
         UserInfo userInfo = userInfoMapper.selectByTel(userInfoName);
-        if (userInfo == null || !userinfoPwd.equals(userInfo.getUserinfoPwd())) {
+        if (userInfo == null ||  !userInfo.getUserinfoPwd().equals(Encrypt.getMd5(userinfoPwd))) {
             throw new Exception("用户名或密码错误");
         } else {
             return userInfoMapper.selectMiniMessage(userInfoName);
@@ -71,7 +74,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         newUser.setUserinfoLv("0");
         newUser.setUserinfoOrg(userInfo.getUserinfoOrg());
 
-        newUser.setUserinfoTreecode(userInfo.getUserinfoTreecode());
+        newUser.setUserinfoTreecode(userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode()));
         newUser.setUserinfoCreateBy(Integer.valueOf(userInfoId));
         newUser.setUserinfoCreateTime(new Date());
         newUser.insert();
