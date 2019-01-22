@@ -39,7 +39,7 @@ public class UserInfoController extends BaseController {
     /**
      * 用户登录
      */
-    @CkLog(operation = "用户登陆了", key = "userInfoName")
+    @CkLog(operation = "用户登陆了: ", key = "userInfoName")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户登录", notes = "用户登录")

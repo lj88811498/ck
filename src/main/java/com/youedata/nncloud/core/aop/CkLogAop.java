@@ -1,13 +1,11 @@
 package com.youedata.nncloud.core.aop;
 
-import com.youedata.nncloud.core.common.annotion.BussinessLog;
 import com.youedata.nncloud.core.common.annotion.CkLog;
-import com.youedata.nncloud.core.common.constant.dictmap.base.AbstractDictMap;
 import com.youedata.nncloud.core.log.LogManager;
 import com.youedata.nncloud.core.log.factory.LogTaskFactory;
 import com.youedata.nncloud.core.support.HttpKit;
-import com.youedata.nncloud.core.util.Contrast;
 import com.youedata.nncloud.core.util.RecordLogUtil;
+import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -17,6 +15,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -31,6 +30,9 @@ import java.util.Map;
 @Aspect
 @Component
 public class CkLogAop {
+
+//    @Autowired
+//    private UserInfoMapper userInfoMapper;
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
