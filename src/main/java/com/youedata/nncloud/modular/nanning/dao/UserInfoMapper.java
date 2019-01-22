@@ -73,4 +73,10 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @return
      */
     UserMini selectLeader(@Param("userInfoCode") String userInfoCode);
+
+    /**
+     * 查询客服信息
+     * @return
+     */
+    List<Map<String,String>> customerService();
 }

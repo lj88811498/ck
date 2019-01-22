@@ -5,9 +5,15 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.youedata.nncloud.modular.nanning.model.UserInfo">
         <id column="userInfo_id" property="userinfoId"/>
+        <result column="userinfo_head" property="userinfoHead"/>
         <result column="userInfo_name" property="userinfoName"/>
+        <result column="userInfo_sex" property="userInfoSex"/>
         <result column="userInfo_pwd" property="userinfoPwd"/>
         <result column="userInfo_nickname" property="userinfoNickname"/>
+        <result column="userInfo_surname" property="userInfoSurname"/>
+        <result column="userInfo_birthday" property="userInfoBirthday"/>
+        <result column="userInfo_province" property="userInfoProvince"/>
+        <result column="userInfo_city" property="userInfoCity"/>
         <result column="userInfo_tel" property="userinfoTel"/>
         <result column="userInfo_wx" property="userinfoWx"/>
         <result column="userInfo_lv" property="userinfoLv"/>
@@ -60,7 +66,7 @@
 
     <!--查询精简用户信息-->
     <select id="selectMiniMessage" resultType="com.youedata.nncloud.modular.nanning.model.UserMini">
-        SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
+        SELECT userInfo_id,userinfo_head,userInfo_nickname,userInfo_sex,userInfo_birthday,userInfo_province,userInfo_city,userInfo_surname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
         FROM userInfo
         WHERE userInfo_name = #{userInfoName}
     </select>
@@ -69,7 +75,7 @@
     <select id="selectImmediateList" resultType="com.youedata.nncloud.modular.nanning.model.UserMini">
         SELECT userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_code,userInfo_name,userInfo_wx
         from userInfo
-        WHERE userInfo_code =
+        WHERE userInfo_org =
         (select userInfo_code from userInfo
         WHERE userInfo_id = #{userInfoId})
     </select>
@@ -80,6 +86,13 @@
         from userInfo
         WHERE userInfo_treecode like CONCAT((select userInfo_treecode from userInfo
         WHERE userInfo_id = #{userInfoId}),'%')
+        AND  <![CDATA[  userInfo_lv >= 1  ]]>
+    </select>
+
+    <select id="customerService" resultType="map">
+        select *
+        FROM customer_service
+        WHERE id =1
     </select>
 
     <!-- 获取指定等级的推荐用户-五级和九级 二到九级都可以使用-->

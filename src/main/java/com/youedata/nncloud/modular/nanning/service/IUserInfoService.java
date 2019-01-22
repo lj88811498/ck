@@ -54,6 +54,12 @@ public interface IUserInfoService extends IService<UserInfo> {
     JSONObject myGroup(String userInfoId);
 
     /**
+     * 修改个人信息
+     * @param userInfoId
+     * @return
+     */
+    void update(String userInfoId, String userinfoHead, String userInfoSurname, String userInfoSex, String userinfoTel, String userInfoProvince, String userInfoCity, String userinfoWx, String userinfoNickname);
+    /**
      * 获取指定等级的推荐用户-五级和九级
      * @param userInfoTreecode
      * @param userInfoLv

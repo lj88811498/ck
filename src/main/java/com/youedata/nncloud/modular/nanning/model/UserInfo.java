@@ -25,21 +25,52 @@ public class UserInfo extends Model<UserInfo> {
 
     @TableId(value = "userInfo_id", type = IdType.AUTO)
     private Integer userinfoId;
+
     /**
-     * 用户名
+     * 头像
+     */
+    @TableField("userinfo_head")
+    private String userinfoHead;
+    /**
+     * 登录用户名（同手机号）
      */
     @TableField("userInfo_name")
     private String userinfoName;
+    /**
+     * 性别
+     */
+    @TableField("userInfo_sex")
+    private String userInfoSex;
     /**
      * 密码
      */
     @TableField("userInfo_pwd")
     private String userinfoPwd;
     /**
-     * 昵称
+     * 真实姓名
      */
     @TableField("userInfo_nickname")
     private String userinfoNickname;
+    /**
+     * 昵称
+     */
+    @TableField("userInfo_surname")
+    private String userInfoSurname;
+    /**
+     * 生日
+     */
+    @TableField("userInfo_birthday")
+    private Date userInfoBirthday;
+    /**
+     * 省份
+     */
+    @TableField("userInfo_province")
+    private String userInfoProvince;
+    /**
+     * 城市
+     */
+    @TableField("userInfo_city")
+    private String userInfoCity;
     /**
      * 电话
      */
@@ -91,7 +122,6 @@ public class UserInfo extends Model<UserInfo> {
     @TableField("userInfo_update_time")
     private Date userinfoUpdateTime;
 
-
     public Integer getUserinfoId() {
         return userinfoId;
     }
@@ -100,12 +130,28 @@ public class UserInfo extends Model<UserInfo> {
         this.userinfoId = userinfoId;
     }
 
+    public String getUserinfoHead() {
+        return userinfoHead;
+    }
+
+    public void setUserinfoHead(String userinfoHead) {
+        this.userinfoHead = userinfoHead;
+    }
+
     public String getUserinfoName() {
         return userinfoName;
     }
 
     public void setUserinfoName(String userinfoName) {
         this.userinfoName = userinfoName;
+    }
+
+    public String getUserInfoSex() {
+        return userInfoSex;
+    }
+
+    public void setUserInfoSex(String userInfoSex) {
+        this.userInfoSex = userInfoSex;
     }
 
     public String getUserinfoPwd() {
@@ -122,6 +168,38 @@ public class UserInfo extends Model<UserInfo> {
 
     public void setUserinfoNickname(String userinfoNickname) {
         this.userinfoNickname = userinfoNickname;
+    }
+
+    public String getUserInfoSurname() {
+        return userInfoSurname;
+    }
+
+    public void setUserInfoSurname(String userInfoSurname) {
+        this.userInfoSurname = userInfoSurname;
+    }
+
+    public Date getUserInfoBirthday() {
+        return userInfoBirthday;
+    }
+
+    public void setUserInfoBirthday(Date userInfoBirthday) {
+        this.userInfoBirthday = userInfoBirthday;
+    }
+
+    public String getUserInfoProvince() {
+        return userInfoProvince;
+    }
+
+    public void setUserInfoProvince(String userInfoProvince) {
+        this.userInfoProvince = userInfoProvince;
+    }
+
+    public String getUserInfoCity() {
+        return userInfoCity;
+    }
+
+    public void setUserInfoCity(String userInfoCity) {
+        this.userInfoCity = userInfoCity;
     }
 
     public String getUserinfoTel() {
@@ -205,27 +283,34 @@ public class UserInfo extends Model<UserInfo> {
     }
 
     @Override
+    public String toString() {
+        return "UserInfo{" +
+                "userinfoId=" + userinfoId +
+                ", userinfoHead='" + userinfoHead + '\'' +
+                ", userinfoName='" + userinfoName + '\'' +
+                ", userInfoSex='" + userInfoSex + '\'' +
+                ", userinfoPwd='" + userinfoPwd + '\'' +
+                ", userinfoNickname='" + userinfoNickname + '\'' +
+                ", userInfoSurname='" + userInfoSurname + '\'' +
+                ", userInfoBirthday=" + userInfoBirthday +
+                ", userInfoProvince='" + userInfoProvince + '\'' +
+                ", userInfoCity='" + userInfoCity + '\'' +
+                ", userinfoTel='" + userinfoTel + '\'' +
+                ", userinfoWx='" + userinfoWx + '\'' +
+                ", userinfoLv='" + userinfoLv + '\'' +
+                ", userinfoCode='" + userinfoCode + '\'' +
+                ", userinfoOrg='" + userinfoOrg + '\'' +
+                ", userinfoTreecode='" + userinfoTreecode + '\'' +
+                ", userinfoCreateBy=" + userinfoCreateBy +
+                ", userinfoUpdateBy=" + userinfoUpdateBy +
+                ", userinfoCreateTime=" + userinfoCreateTime +
+                ", userinfoUpdateTime=" + userinfoUpdateTime +
+                '}';
+    }
+
+    @Override
     protected Serializable pkVal() {
         return this.userinfoId;
     }
 
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-        "userinfoId=" + userinfoId +
-        ", userinfoName=" + userinfoName +
-        ", userinfoPwd=" + userinfoPwd +
-        ", userinfoNickname=" + userinfoNickname +
-        ", userinfoTel=" + userinfoTel +
-        ", userinfoWx=" + userinfoWx +
-        ", userinfoLv=" + userinfoLv +
-        ", userinfoCode=" + userinfoCode +
-        ", userinfoOrg=" + userinfoOrg +
-        ", userinfoTreecode=" + userinfoTreecode +
-        ", userinfoCreateBy=" + userinfoCreateBy +
-        ", userinfoUpdateBy=" + userinfoUpdateBy +
-        ", userinfoCreateTime=" + userinfoCreateTime +
-        ", userinfoUpdateTime=" + userinfoUpdateTime +
-        "}";
-    }
 }
