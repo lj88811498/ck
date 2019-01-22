@@ -57,7 +57,17 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         if(dataOsProperties.getIsOpen()){
             registry.addInterceptor(DataOSLogin())
                     //放行特定路径请求;
-                    .excludePathPatterns("/userInfo/login","/userInfo/forgetPwd");
+                    .excludePathPatterns(
+                            "/",
+                            "/swagger-ui.html",
+                            "/userInfo/login",
+                            "/userInfo/forgetPwd",
+                            "/blackboard",
+                            "/swagger-resources",
+                            "/v2/api-docs",
+                            "/configuration/ui",
+                            "/configuration/security"
+                    );
         }
 //                .addPathPatterns("/**"); //拦截特定路径请求
     }

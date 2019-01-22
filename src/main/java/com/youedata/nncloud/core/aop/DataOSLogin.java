@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.youedata.nncloud.config.properties.DataOsProperties;
 import com.youedata.nncloud.core.util.GlobalHashMap;
 import com.youedata.nncloud.core.util.JsonUtil;
+import com.youedata.nncloud.core.util.RecordLogUtil;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -28,7 +29,14 @@ public class DataOSLogin implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
         String token = request.getHeader("accessToken");//从请求头中获取accessToken
-        return GlobalHashMap.isUserOnline(token);
+        boolean userOnline = GlobalHashMap.isUserOnline(token);
+        if (!userOnline) {
+            RecordLogUtil.info(request.getRequestURL().toString());
+            JSONObject js = JsonUtil.createFailJson("no token");
+            response.getWriter().append(js.toString());
+        }
+
+        return userOnline;
     }
 
     @Override

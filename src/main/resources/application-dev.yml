@@ -57,7 +57,7 @@ dataos:
   #dataOS角色ID
   dataOSRoleId: 40
   #蓝鲸token拦截开关
-  isOpen: false
+  isOpen: true
   #默认账号
   accountName: lijiang
   #默认账号密码
