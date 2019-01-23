@@ -24,9 +24,9 @@ public class tokenTimer {
     @Scheduled(cron = "0 0/1 * * * ?")
     public void tokenScheduled(){
         try {
-            RecordLogUtil.info("-------开始清理过期token。。。------------");
+            //RecordLogUtil.info("-------开始清理过期token。。。------------");
             LogManager.me().clearOutTimeToken(LogTaskFactory.clearOutTimeToken());
-            RecordLogUtil.info("--------token清理完毕。。。---------------");
+            //RecordLogUtil.info("--------token清理完毕。。。---------------");
         } catch (Exception e) {
             RecordLogUtil.error("-------token清理失败！--------------------", e);
         }
