@@ -80,4 +80,10 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @return
      */
     List<Map<String,String>> customerService();
+
+    /**
+     * 查询下一个邀请码
+     * @return
+     */
+    String selectNextCode();
 }

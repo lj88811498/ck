@@ -167,11 +167,10 @@ public class UpgradeController extends BaseController {
     @RequestMapping(value = "/historicalOrder", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "历史订单", notes = "历史通过审核的所有订单")
-    public Object historicalOrder(@ApiParam("订单id(必填)") @RequestParam(value = "upgradeId", required = true) String upgradeId) {
+    public Object historicalOrder(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) String userInfoId) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            result.put("page", upgradeService.historicalOrder(upgradeId));
-
+            result.put("page", upgradeService.historicalOrder(userInfoId));
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }

@@ -38,5 +38,5 @@ public interface IUpgradeService extends IService<Upgrade> {
     /**
      * 历史通过订单
      */
-    List<Map<String, String>> historicalOrder(String upgradeId);
+    List<Map<String, String>> historicalOrder(String userInfoId);
 }

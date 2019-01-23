@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.youedata.nncloud.modular.nanning.model.Upgrade;
 import org.springframework.stereotype.Service;
 import com.youedata.nncloud.modular.nanning.service.IUpgradeService;
+import sun.security.util.Length;
 
 import java.util.HashMap;
 import java.util.List;
@@ -99,18 +100,23 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
             Integer lv = Integer.valueOf(userInfo.getUserinfoLv())+1;
             userInfo.setUserinfoLv(lv+"");
             if(lv == 1){
-
+                String num = (Integer.valueOf(userInfoMapper.selectNextCode().substring(2))+1)+"";
+                int len = num.length();
+                for (int i = 0; i < 5-len ; i++) {
+                    num = "0"+num;
+                }
+                userInfo.setUserinfoCode("ck"+num);
             }
             userInfo.updateById();
         }
     }
 
+
     /**
      * 历史通过订单
      */
     @Override
-    public List<Map<String, String>> historicalOrder(String upgradeId) {
-
-        return upgradeMapper.historicalOrder(upgradeId);
+    public List<Map<String, String>> historicalOrder(String userInfoId) {
+        return upgradeMapper.historicalOrder(userInfoId);
     }
 }

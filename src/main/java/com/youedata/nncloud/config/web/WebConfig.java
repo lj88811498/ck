@@ -62,6 +62,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                             "/swagger-ui.html",
                             "/userInfo/login",
                             "/userInfo/forgetPwd",
+                            "/userInfo/logout",
                             "/blackboard",
                             "/swagger-resources",
                             "/v2/api-docs",

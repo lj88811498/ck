@@ -30,8 +30,8 @@ public interface UpgradeMapper extends BaseMapper<Upgrade> {
 
     /**
      * 历史通过订单
-     * @param upgradeId
+     * @param userInfoId
      * @return
      */
-    List<Map<String,String>> historicalOrder(String upgradeId);
+    List<Map<String,String>> historicalOrder(@Param("userInfoId")String userInfoId);
 }
