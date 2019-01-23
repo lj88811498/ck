@@ -38,11 +38,12 @@ public interface IUserInfoService extends IService<UserInfo> {
      * @param oldPassord
      * @param newPassord
      */
-    void changePwd(String userInfoId, String oldPassord, String newPassord) throws Exception;
+    void changePwd(String userInfoId, String oldPassord, String newPassord, String userinfoTel) throws Exception;
 
 
     /**
      * 我的团队
+     *
      * @param userInfoId
      * @return
      */
@@ -50,12 +51,15 @@ public interface IUserInfoService extends IService<UserInfo> {
 
     /**
      * 修改个人信息
+     *
      * @param userInfoId
      * @return
      */
     void update(String userInfoId, String userinfoHead, String userInfoSurname, String userInfoSex, String userinfoTel, String userInfoProvince, String userInfoCity, String userinfoWx, String userinfoNickname);
+
     /**
      * 获取指定等级的推荐用户-五级和九级
+     *
      * @param userInfoTreecode
      * @param userInfoLv
      * @return
@@ -64,12 +68,14 @@ public interface IUserInfoService extends IService<UserInfo> {
 
     /**
      * 获取商家信息
+     *
      * @return
      */
     JSONObject getMerchants(int userInfoId) throws Exception;
 
     /**
      * 忘记密码
+     *
      * @param userinfoTel
      * @param newPassord
      */

@@ -94,9 +94,12 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
      * @param newPassord
      */
     @Override
-    public void changePwd(String userInfoId, String oldPassord, String newPassord) throws Exception {
+    public void changePwd(String userInfoId, String oldPassord, String newPassord,String userinfoTel) throws Exception {
         //查询当前登录用户信息
-        UserInfo userInfo = userInfoMapper.selectById(userInfoId);
+        UserInfo userInfo = userInfoMapper.selectByTel(userinfoTel);
+        if (userInfo == null){
+            throw new Exception("手机号码错误");
+        }
         if (userInfo.getUserinfoPwd().equals(Encrypt.getMd5(oldPassord))) {
             userInfo.setUserinfoPwd(Encrypt.getMd5(newPassord));
             userInfo.updateById();

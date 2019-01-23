@@ -72,7 +72,7 @@ public class UserInfoController extends BaseController {
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户注销", notes = "用户注销")
-    public Object logout(@ApiParam("用户名(必填)") @RequestParam(value = "userInfoName", required = true) String userInfoName,HttpServletRequest request) {
+    public Object logout(@ApiParam("用户名(必填)") @RequestParam(value = "userInfoName", required = true) String userInfoName, HttpServletRequest request) {
         JSONObject result = JsonUtil.createOkJson();
         try {
             String accessToken = request.getHeader("accessToken");
@@ -151,10 +151,11 @@ public class UserInfoController extends BaseController {
     @ApiOperation(value = "修改密码", notes = "修改密码")
     public Object changePwd(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) String userInfoId,
                             @ApiParam("旧密码") @RequestParam(value = "oldPassord", required = true) String oldPassord,
-                            @ApiParam("新密码") @RequestParam(value = "newPassord", required = true) String newPassord) {
+                            @ApiParam("新密码") @RequestParam(value = "newPassord", required = true) String newPassord,
+                            @ApiParam("手机号") @RequestParam(value = "userinfoTel", required = true) String userinfoTel) {
         JSONObject result = JsonUtil.createOkJson();
         try {
-            userInfoService.changePwd(userInfoId, oldPassord, newPassord);
+            userInfoService.changePwd(userInfoId, oldPassord, newPassord, userinfoTel);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
