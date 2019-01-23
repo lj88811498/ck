@@ -117,7 +117,7 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
         Upgrade upgrade = selectById(upgradeId);
         upgradeMapper.auditEscalation(upgradeId, upgradeStatus,userinfoId);
 //        查询是否还有未通过的订单
-        Integer count = upgradeMapper.selectCount(new EntityWrapper<Upgrade>().eq("upgrade_status", "0"));
+        Integer count = upgradeMapper.selectCount(new EntityWrapper<Upgrade>().eq("upgrade_status", "0").or().eq("upgrade_status", "2"));
         if (count == 0) {
             UserInfo userInfo = userInfoMapper.selectById(upgrade.getUpgradeUserinfoId());
             Integer lv = Integer.valueOf(userInfo.getUserinfoLv())+1;
