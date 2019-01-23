@@ -36,8 +36,8 @@ public class CkLogAop {
 
 //    @Autowired
 //    private UserInfoMapper userInfoMapper;
-    private static UserInfoMapper userInfoMapper = Db.getMapper(UserInfoMapper.class);
-    private static UpgradeMapper upgradeMapper = Db.getMapper(UpgradeMapper.class);
+//    private static UserInfoMapper userInfoMapper = Db.getMapper(UserInfoMapper.class);
+//    private static UpgradeMapper upgradeMapper = Db.getMapper(UpgradeMapper.class);
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 

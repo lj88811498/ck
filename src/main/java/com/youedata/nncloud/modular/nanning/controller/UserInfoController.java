@@ -68,7 +68,7 @@ public class UserInfoController extends BaseController {
     /**
      * 用户注销
      */
-    @CkLog(operation = "用户登陆了: ", key = "userInfoName")
+    @CkLog(operation = "用户注销了: ", key = "userInfoName")
     @RequestMapping(value = "/用户注销", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户注销", notes = "用户注销")
