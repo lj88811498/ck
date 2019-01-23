@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 用户信息控制器
  *
@@ -57,6 +59,24 @@ public class UserInfoController extends BaseController {
             page.put("token", token);
             GlobalHashMap.addUserToken(token);
             result.put("page", page);
+        } catch (Exception e) {
+            result = JsonUtil.createFailJson(e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * 用户注销
+     */
+    @CkLog(operation = "用户登陆了: ", key = "userInfoName")
+    @RequestMapping(value = "/用户注销", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "用户注销", notes = "用户注销")
+    public Object logout(@ApiParam("用户名(必填)") @RequestParam(value = "userInfoName", required = true) String userInfoName,HttpServletRequest request) {
+        JSONObject result = JsonUtil.createOkJson();
+        try {
+            String accessToken = request.getHeader("accessToken");
+            GlobalHashMap.removeUserToken(accessToken);
         } catch (Exception e) {
             result = JsonUtil.createFailJson(e.getMessage());
         }
