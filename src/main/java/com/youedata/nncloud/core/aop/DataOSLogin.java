@@ -31,7 +31,7 @@ public class DataOSLogin implements HandlerInterceptor {
         String token = request.getHeader("accessToken");//从请求头中获取accessToken
         boolean userOnline = GlobalHashMap.isUserOnline(token);
         if (!userOnline) {
-            RecordLogUtil.info(request.getRequestURL().toString());
+            RecordLogUtil.info("被过滤的地址： " + request.getRequestURL().toString());
             JSONObject js = JsonUtil.createFailJson("no token");
             response.getWriter().append(js.toString());
         }

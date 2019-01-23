@@ -57,6 +57,19 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
         List list = upgradeMapper.selectByMap(map);
         if (list.size() > 0) {
             throw new Exception("用户还有未审核的申请！");
+        } else{
+            String userinfoLv = userInfo.getUserinfoLv();
+            if ("1".equals(userinfoLv) || "4".equals(userinfoLv)) {
+                String userInfoCode = userInfo.getUserinfoCode();
+                Map map1 = new HashMap<>();
+                map1.put("userInfo_org", userInfoCode);
+                List underLines = userInfoMapper.selectByMap(map1);
+                if (underLines.size() < Math.pow(3, Double.parseDouble(userinfoLv))) {
+                    throw new Exception("如需升级到" + (Integer.parseInt(userinfoLv) + 1) + "星会员，<br/>" +
+                          "要直推一星及以上的" + Math.pow(3, Double.parseDouble(userinfoLv)) +"个会员！");
+                }
+            }
+
         }
 
         JSONObject merchants = userInfoService.getMerchants(userInfoId);
