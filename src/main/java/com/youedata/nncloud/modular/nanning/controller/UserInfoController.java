@@ -190,57 +190,6 @@ public class UserInfoController extends BaseController {
         return result;
     }
 
-    /**
-     * 审核升级-订单列表
-     */
-    @RequestMapping(value = "/orderList", method = RequestMethod.GET)
-    @ResponseBody
-    @ApiOperation(value = "审核升级-订单列表", notes = "审核升级-订单列表")
-    public Object orderList(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) String userInfoId) {
-        JSONObject result = JsonUtil.createOkJson();
-        try {
-            result.put("page", iUpgradeService.orderList(userInfoId));
-        } catch (Exception e) {
-            result = JsonUtil.createFailJson(e.getMessage());
-        }
-        return result;
-    }
-
-    /**
-     * 审核升级
-     */
-    @RequestMapping(value = "/auditEscalation", method = RequestMethod.POST)
-    @ResponseBody
-    @ApiOperation(value = "审核升级", notes = "审核升级")
-    public Object auditEscalation(@ApiParam("订单id(必填)") @RequestParam(value = "upgradeId", required = true) String upgradeId,
-                                  @ApiParam("状态：0未审核1审核通过2审核不通过(必填)") @RequestParam(value = "upgradeStatus", required = true) String upgradeStatus,
-                                  @ApiParam("当前操作用户id(必填)") @RequestParam(value = "userinfoId", required = true) String userinfoId) {
-        JSONObject result = JsonUtil.createOkJson();
-        try {
-            iUpgradeService.auditEscalation(upgradeId, upgradeStatus, userinfoId);
-        } catch (Exception e) {
-            result = JsonUtil.createFailJson(e.getMessage());
-        }
-        return result;
-    }
-
-    /**
-     * 历史订单
-     */
-    @RequestMapping(value = "/historicalOrder", method = RequestMethod.GET)
-    @ResponseBody
-    @ApiOperation(value = "历史订单", notes = "历史通过审核的所有订单")
-    public Object historicalOrder(@ApiParam("订单id(必填)") @RequestParam(value = "upgradeId", required = true) String upgradeId) {
-        JSONObject result = JsonUtil.createOkJson();
-        try {
-            result.put("page", iUpgradeService.historicalOrder(upgradeId));
-
-        } catch (Exception e) {
-            result = JsonUtil.createFailJson(e.getMessage());
-        }
-        return result;
-    }
-
     @RequestMapping(value = "/clearToken", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "清理token", notes = "清理token")

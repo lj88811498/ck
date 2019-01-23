@@ -1,14 +1,9 @@
 package com.youedata.nncloud.modular.nanning.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import com.youedata.nncloud.modular.nanning.model.UserMini;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * 用户信息Service

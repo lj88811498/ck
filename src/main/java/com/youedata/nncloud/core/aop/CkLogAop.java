@@ -1,13 +1,18 @@
 package com.youedata.nncloud.core.aop;
 
 import com.youedata.nncloud.core.common.annotion.CkLog;
+import com.youedata.nncloud.core.db.Db;
 import com.youedata.nncloud.core.log.LogManager;
 import com.youedata.nncloud.core.log.factory.LogTaskFactory;
 import com.youedata.nncloud.core.support.HttpKit;
 import com.youedata.nncloud.core.util.RecordLogUtil;
+import com.youedata.nncloud.modular.nanning.dao.UpgradeMapper;
+import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
+import com.youedata.nncloud.modular.system.dao.LoginLogMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -31,6 +36,8 @@ public class CkLogAop {
 
 //    @Autowired
 //    private UserInfoMapper userInfoMapper;
+    private static UserInfoMapper userInfoMapper = Db.getMapper(UserInfoMapper.class);
+    private static UpgradeMapper upgradeMapper = Db.getMapper(UpgradeMapper.class);
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -38,7 +45,7 @@ public class CkLogAop {
     public void cutService() {
     }
 
-    @Before("cutService()")
+    @After("cutService()")
     public void recordSysLog(JoinPoint point) throws Throwable {
 
         try {
