@@ -26,5 +26,12 @@ public interface UpgradeMapper extends BaseMapper<Upgrade> {
     /**
      * 审核升级
      */
-    void auditEscalation(@Param("upgradeId") String upgradeId, @Param("upgradeStatus")String upgradeStatus);
+    void auditEscalation(@Param("upgradeId") String upgradeId, @Param("upgradeStatus")String upgradeStatus,@Param("userinfoId")String userinfoId);
+
+    /**
+     * 历史通过订单
+     * @param upgradeId
+     * @return
+     */
+    List<Map<String,String>> historicalOrder(String upgradeId);
 }

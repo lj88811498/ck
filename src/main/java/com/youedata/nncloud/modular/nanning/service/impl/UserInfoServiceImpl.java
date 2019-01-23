@@ -42,7 +42,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
     @Override
     public UserMini login(String userInfoName, String userinfoPwd) throws Exception {
         UserInfo userInfo = userInfoMapper.selectByTel(userInfoName);
-        if (userInfo == null ||  !userInfo.getUserinfoPwd().equals(Encrypt.getMd5(userinfoPwd))) {
+        if (userInfo == null || !userInfo.getUserinfoPwd().equals(Encrypt.getMd5(userinfoPwd))) {
             throw new Exception("用户名或密码错误");
         } else {
             return userInfoMapper.selectMiniMessage(userInfoName);
@@ -62,7 +62,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
     @Override
     public void addUser(String userInfoId, String userinfoTel, String userinfoWx, String userinfoNickname, String userinfoPwd) throws Exception {
         UserInfo user = userInfoMapper.selectByTel(userinfoTel);
-        if(user != null){//手机号查重
+        if (user != null) {//手机号查重
             throw new Exception("该手机已注册");
         }
 
@@ -108,13 +108,14 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
 
     /**
      * 忘记密码
+     *
      * @param userinfoTel
      * @param newPassord
      */
     @Override
     public void forgetPwd(String userinfoTel, String newPassord) throws Exception {
         UserInfo userInfo = userInfoMapper.selectByTel(userinfoTel);
-        if(userInfo == null){
+        if (userInfo == null) {
             throw new Exception("用户不存在");
         }
         userInfo.setUserinfoPwd(newPassord);
@@ -123,6 +124,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
 
     /**
      * 我的团队
+     *
      * @param userInfoId
      * @return
      */
@@ -131,16 +133,17 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         JSONObject page = new JSONObject();
         //直系下线查询
         List<UserMini> userList = userInfoMapper.selectImmediateList(userInfoId);
-        page.put("data",userList);
-        page.put("myGroupSum",userList.size());
+        page.put("data", userList);
+        page.put("myGroupSum", userList.size());
         Integer integer = userInfoMapper.selectHeirCount(userInfoId);
-        page.put("sum",integer);
+        page.put("sum", integer);
         return page;
     }
 
 
     /**
      * 修改个人信息
+     *
      * @param userInfoId
      * @return
      */
@@ -159,6 +162,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         userInfo.setUserinfoWx(userinfoWx);
         userInfo.updateById();
     }
+
     /**
      * 获取指定等级的推荐用户-五级和九级
      *
@@ -187,29 +191,29 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         JSONObject js = JsonUtil.createOkJson();
         List<UserMini> list = new ArrayList();
         UserInfo userInfo = userInfoMapper.selectById(userInfoId);
-        if (userInfo != null){
+        if (userInfo != null) {
             userInfoTreecode = userInfo.getUserinfoTreecode();
             userInfoLv = userInfo.getUserinfoLv();
-            targetLv = (Integer.parseInt(userInfoLv) + 1 ) + "";
+            targetLv = (Integer.parseInt(userInfoLv) + 1) + "";
             userInfoOrg = userInfo.getUserinfoOrg();
-        }  else {
+        } else {
             throw new Exception("不存在此用户");
         }
         UserMini mini5 = null;
         UserMini leader = null;
         //如果是0级
         if ("0".equals(userInfoLv)) {
-            mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
+            mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
             leader = userInfoMapper.selectLeader(userInfoOrg);
         }
         //如果是4级
-        else if ("4".equals(userInfoLv)){
-            mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
-            leader =    userInfoMapper.selectHighLvUser(userInfoTreecode, "9", true);
+        else if ("4".equals(userInfoLv)) {
+            mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
+            leader = userInfoMapper.selectHighLvUser(userInfoTreecode, "9", true);
         }
         //其他情况
         else {
-            mini5 =    userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, true);
+            mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, true);
         }
 
         if (mini5 != null) {
@@ -228,7 +232,6 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         return js;
 
     }
-
 
 
 }

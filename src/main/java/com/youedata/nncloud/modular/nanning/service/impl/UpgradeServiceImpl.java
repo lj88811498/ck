@@ -2,6 +2,7 @@ package com.youedata.nncloud.modular.nanning.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.youedata.nncloud.modular.nanning.dao.UpgradeMapper;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
@@ -87,7 +88,26 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
     /**
      * 审核升级
      */
-    public void auditEscalation(String upgradeId, String upgradeStatus) {
-        upgradeMapper.auditEscalation(upgradeId, upgradeStatus);
+    public void auditEscalation(String upgradeId, String upgradeStatus, String userinfoId) {
+//        修改当前订单状态
+        Upgrade upgrade = selectById(upgradeId);
+        upgradeMapper.auditEscalation(upgradeId, upgradeStatus,userinfoId);
+//        查询是否还有未通过的订单
+        Integer count = upgradeMapper.selectCount(new EntityWrapper<Upgrade>().eq("upgrade_status", "0"));
+        if (count == 0) {
+            UserInfo userInfo = userInfoMapper.selectById(upgrade.getUpgradeUserinfoId());
+            Integer lv = Integer.valueOf(userInfo.getUserinfoLv())+1;
+            userInfo.setUserinfoLv(lv+"");
+            userInfo.updateById();
+        }
+    }
+
+    /**
+     * 历史通过订单
+     */
+    @Override
+    public List<Map<String, String>> historicalOrder(String upgradeId) {
+
+        return upgradeMapper.historicalOrder(upgradeId);
     }
 }
