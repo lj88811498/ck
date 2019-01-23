@@ -1,20 +1,16 @@
 package com.youedata.nncloud.core.aop;
 
 import com.youedata.nncloud.core.common.annotion.CkLog;
-import com.youedata.nncloud.core.db.Db;
 import com.youedata.nncloud.core.log.LogManager;
 import com.youedata.nncloud.core.log.factory.LogTaskFactory;
 import com.youedata.nncloud.core.support.HttpKit;
 import com.youedata.nncloud.core.util.RecordLogUtil;
-import com.youedata.nncloud.modular.nanning.dao.UpgradeMapper;
-import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
-import com.youedata.nncloud.modular.system.dao.LoginLogMapper;
+import com.youedata.nncloud.modular.nanning.model.Upgrade;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
@@ -38,6 +34,8 @@ public class CkLogAop {
 //    private UserInfoMapper userInfoMapper;
 //    private static UserInfoMapper userInfoMapper = Db.getMapper(UserInfoMapper.class);
 //    private static UpgradeMapper upgradeMapper = Db.getMapper(UpgradeMapper.class);
+
+    public String modelPath = "com.youedata.nncloud.modular.nanning.model";
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -89,7 +87,7 @@ public class CkLogAop {
             String targetId = annotation.target();
             String desc = annotation.desc();
             String key = annotation.key();
-
+            String clazzName = annotation.className();
 //        StringBuilder sb = new StringBuilder();
 //        for (Object param : params) {
 //            sb.append(param);
@@ -107,6 +105,17 @@ public class CkLogAop {
 
             if (StringUtils.isNotBlank(key)) {
                 msg += parameters.get(key);
+            }
+
+            if (StringUtils.isNotBlank(clazzName)) {
+                Class clazz = Class.forName(modelPath + "." + clazzName);
+                Object obj = clazz.newInstance();
+                if (obj instanceof Upgrade) {
+                    Upgrade up = (Upgrade)obj;
+                    up.setUpgradeId(Integer.parseInt(_targetId));
+                    up = up.selectById();
+                    msg += ",审核结果=" + (up.getUpgradeStatus()=="1"?"审核通过":(up.getUpgradeStatus()=="2"?"审核未通过":"尚未审核"));
+                }
             }
 
             msg = msg.replaceAll("null", "");
