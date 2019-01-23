@@ -65,6 +65,22 @@ public class GlobalHashMap {
         return false;
     }
 
+
+    /**
+     * 删除用户的token信息
+     * @param token
+     * @return
+     */
+    public static synchronized boolean removeUserToken(String token) {
+        if (StringUtils.isNotBlank(token)) {
+            //存时间戳，方便删除
+            map.remove(token);
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * 清楚过期token
      */
@@ -88,8 +104,11 @@ public class GlobalHashMap {
         Thread.sleep(1000);
         System.out.println(isUserOnline("1212312333333123-12312-3-12-3123"));
         Thread.sleep(1000);
-        clear();
+//        clear();
         System.out.println(isUserOnline("1212312333333123-12312-3-12-3123"));
+
+        System.out.println(removeUserToken("1212312333333123-12312-3-12-3123"));
+        System.out.println(map);
     }
 //    static class Model{
 //        Long date;
