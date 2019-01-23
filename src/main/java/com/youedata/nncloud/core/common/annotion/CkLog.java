@@ -2,6 +2,7 @@ package com.youedata.nncloud.core.common.annotion;
 
 import com.youedata.nncloud.core.common.constant.dictmap.base.AbstractDictMap;
 import com.youedata.nncloud.core.common.constant.dictmap.base.SystemDict;
+import org.apache.poi.ss.formula.functions.T;
 
 import java.lang.annotation.*;
 
@@ -44,6 +45,12 @@ public @interface CkLog {
      * @return
      */
     String key() default "";
+
+    /**
+     * 用于反射的类名
+     * @return
+     */
+    String className() default  "";
 
 //    /**
 //     * 被修改的实体的唯一标识,例如:菜单实体的唯一标识为"id"

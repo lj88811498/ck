@@ -145,7 +145,7 @@ public class UpgradeController extends BaseController {
     /**
      * 审核升级
      */
-    @CkLog(userId = "userinfoId", operation = "审核升级了订单", target = "upgradeId")
+    @CkLog(userId = "userinfoId", operation = "审核升级了订单", target = "upgradeId", className = "Upgrade")
     @RequestMapping(value = "/auditEscalation", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "审核升级", notes = "审核升级")
