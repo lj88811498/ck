@@ -66,7 +66,7 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
                 List underLines = userInfoMapper.selectByMap(map1);
                 if (underLines.size() < Math.pow(3, Double.parseDouble(userinfoLv))) {
                     throw new Exception("如需升级到" + (Integer.parseInt(userinfoLv) + 1) + "星会员，<br/>" +
-                          "要直推一星及以上的" + Math.pow(3, Double.parseDouble(userinfoLv)) +"个会员！");
+                          "要直推一星及以上的" + ((int)Math.pow(3, Double.parseDouble(userinfoLv))) +"个会员！");
                 }
             }
 
