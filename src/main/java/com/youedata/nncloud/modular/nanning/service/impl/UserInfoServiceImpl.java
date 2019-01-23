@@ -118,7 +118,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         if (userInfo == null) {
             throw new Exception("用户不存在");
         }
-        userInfo.setUserinfoPwd(newPassord);
+        userInfo.setUserinfoPwd(Encrypt.getMd5(newPassord));
         userInfo.updateById();
     }
 
