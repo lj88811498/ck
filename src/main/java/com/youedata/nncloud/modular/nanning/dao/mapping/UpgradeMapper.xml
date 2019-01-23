@@ -28,7 +28,7 @@
     </update>
 
     <!--历史通过订单-->
-    <select id="orderList" resultType="map">
+    <select id="historicalOrder" resultType="map">
         select userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_wx,upgrade_id
         from `upgrade` up LEFT JOIN userInfo us on up.upgrade_leader_id = us.userInfo_id
         WHERE up.upgrade_leader_id = #{userInfoId}

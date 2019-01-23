@@ -122,6 +122,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         userInfo.updateById();
     }
 
+
     /**
      * 我的团队
      *

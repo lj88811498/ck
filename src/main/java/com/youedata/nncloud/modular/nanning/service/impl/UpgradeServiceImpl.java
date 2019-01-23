@@ -98,6 +98,9 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
             UserInfo userInfo = userInfoMapper.selectById(upgrade.getUpgradeUserinfoId());
             Integer lv = Integer.valueOf(userInfo.getUserinfoLv())+1;
             userInfo.setUserinfoLv(lv+"");
+            if(lv == 1){
+
+            }
             userInfo.updateById();
         }
     }
