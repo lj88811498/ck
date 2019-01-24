@@ -88,7 +88,7 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
     String selectNextCode();
 
     /**
-     * 查询下一个邀请码
+     * 最大用户id
      * @return
      */
     Integer selectMaxId();
