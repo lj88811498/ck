@@ -2,23 +2,20 @@ package com.youedata.nncloud.modular.nanning.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.youedata.nncloud.core.util.Encrypt;
 import com.youedata.nncloud.core.util.JsonUtil;
-import com.youedata.nncloud.core.util.MD5Util;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
-import com.youedata.nncloud.modular.nanning.model.UserMini;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
-import org.springframework.stereotype.Service;
+import com.youedata.nncloud.modular.nanning.model.UserMini;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -89,7 +86,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         newUser.setUserinfoTreecode(userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode()));
         newUser.setUserinfoCreateBy(Integer.valueOf(userInfoId));
         newUser.setUserinfoCreateTime(new Date());
-        newUser.insert();
+        userInfoMapper.insertNewUser(newUser);
 
     }
 

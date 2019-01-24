@@ -127,10 +127,17 @@
     </select>
 
     <!--查询下一个邀请码-->
-    <select id="selectMaxId" resultType="String">
+    <select id="selectMaxId" resultType="Integer">
         select userInfo_id from userInfo
         ORDER BY userInfo_id desc
         limit 1
     </select>
 
+    <!--帮助注册-->
+    <insert id="insertNewUser" parameterType="com.youedata.nncloud.modular.nanning.model.UserInfo">
+        INSERT INTO userInfo(userInfo_id,userInfo_name,userInfo_tel,userInfo_wx,userInfo_nickname,
+        userInfo_pwd,userInfo_lv,userInfo_org,userInfo_status,userInfo_treecode,userInfo_create_by,userInfo_create_time)
+        VALUES (#{userinfoId},#{userinfoName},#{userinfoTel},#{userinfoWx},#{userinfoNickname},#{userinfoPwd},
+        #{userinfoLv},#{userinfoOrg},#{userInfoStatus},#{userinfoTreecode},#{userinfoCreateBy},#{userinfoCreateTime})
+    </insert>
 </mapper>

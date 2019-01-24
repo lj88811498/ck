@@ -92,4 +92,10 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @return
      */
     Integer selectMaxId();
+
+    /**
+     * 帮助注册
+     * @param newUser
+     */
+    void insertNewUser(UserInfo newUser);
 }
