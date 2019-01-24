@@ -45,7 +45,7 @@
         <project.build.version>1.0</project.build.version> <!-- 项目版本-->
         <shiro.cas.version>1.2.3</shiro.cas.version>
         <project.name>ck</project.name>
-        <docker.host>http://172.16.0.181:2375</docker.host>
+        <docker.host>http://47.104.162.57:2375</docker.host>
     </properties>
     <repositories>
         <repository>
