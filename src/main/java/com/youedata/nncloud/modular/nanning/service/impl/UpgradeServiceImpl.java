@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.youedata.nncloud.modular.nanning.model.Upgrade;
 import org.springframework.stereotype.Service;
 import com.youedata.nncloud.modular.nanning.service.IUpgradeService;
-import sun.security.util.Length;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -54,10 +54,20 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
         }
         Map map = new HashMap<>();
         map.put("upgrade_userinfo_id", userInfoId);
+        map.put("upgrade_status", "0");
+        //Integer integer = upgradeMapper.selectCount(new EntityWrapper<Upgrade>().eq("upgrade_userinfo_id", userInfoId).eq("upgrade_status", "0"));
         List list = upgradeMapper.selectByMap(map);
         if (list.size() > 0) {
             throw new Exception("用户还有未审核的申请！");
         } else{
+
+
+            Upgrade upgrade = new Upgrade();
+            upgrade.setUpgradeStatus("3");
+            EntityWrapper<Upgrade> entityWrapper = new EntityWrapper();
+            entityWrapper.eq("upgrade_userinfo_id", userInfoId);
+            upgradeMapper.update(upgrade, entityWrapper);
+
             String userinfoLv = userInfo.getUserinfoLv();
             if ("1".equals(userinfoLv) || "4".equals(userinfoLv)) {
                 String userInfoCode = userInfo.getUserinfoCode();
@@ -66,7 +76,7 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
                 List underLines = userInfoMapper.selectByMap(map1);
                 if (underLines.size() < Math.pow(3, Double.parseDouble(userinfoLv))) {
                     throw new Exception("如需升级到" + (Integer.parseInt(userinfoLv) + 1) + "星会员，<br/>" +
-                          "要直推一星及以上的" + ((int)Math.pow(3, Double.parseDouble(userinfoLv))) +"个会员！");
+                          "要直推一星及以上的" + ((int)Math.pow(3, Double.parseDouble(userinfoLv))) + "个会员！");
                 }
             }
 

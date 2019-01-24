@@ -33,7 +33,8 @@ public class DataOSLogin implements HandlerInterceptor {
         if (!userOnline) {
             RecordLogUtil.info("被过滤的地址： " + request.getRequestURL().toString());
             JSONObject js = JsonUtil.createFailJson("no token");
-            response.getWriter().append(js.toString());
+            js.put("code", "-1");
+            response.getWriter().append(js.toJSONString());
         }
 
         return userOnline;
