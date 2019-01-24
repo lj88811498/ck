@@ -9,6 +9,7 @@ import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import com.youedata.nncloud.modular.nanning.model.UserMini;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -78,6 +79,10 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         if(id != null){
             newUser.setUserinfoId(id+18);
         }
+        String nextTreeCode = userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode());
+        if (StringUtils.isNotBlank(nextTreeCode)) {
+            nextTreeCode = userInfo.getUserinfoTreecode() + "-01";
+        }
         newUser.setUserinfoName(userinfoTel);//用户名就是手机号
         newUser.setUserinfoTel(userinfoTel);
         newUser.setUserinfoWx(userinfoWx);
@@ -86,7 +91,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         newUser.setUserinfoLv("0");
         newUser.setUserinfoOrg(userInfo.getUserinfoCode());
         newUser.setUserInfoStatus("0");
-        newUser.setUserinfoTreecode(userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode()));
+        newUser.setUserinfoTreecode(nextTreeCode);
         newUser.setUserinfoCreateBy(Integer.valueOf(userInfoId));
         newUser.setUserinfoCreateTime(new Date());
         userInfoMapper.insertNewUser(newUser);
