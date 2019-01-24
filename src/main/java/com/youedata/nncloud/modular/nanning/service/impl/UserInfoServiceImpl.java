@@ -44,8 +44,11 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         UserInfo userInfo = userInfoMapper.selectByTel(userInfoName);
         if (userInfo == null || !userInfo.getUserinfoPwd().equals(Encrypt.getMd5(userinfoPwd))) {
             throw new Exception("用户名或密码错误");
-        } else {
+        } else if(userInfo.getUserInfoStatus().equals("1")){
+            throw new Exception("账户已冻结，请联系管理员");
+        }else {
             return userInfoMapper.selectMiniMessage(userInfoName);
+
         }
 
     }
@@ -68,9 +71,13 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
 
         //查询当前登录用户信息（推荐人信息）
         UserInfo userInfo = userInfoMapper.selectById(userInfoId);
-
+        //查询当前最大id
         //新用户信息补全
         UserInfo newUser = new UserInfo();
+        Integer id = userInfoMapper.selectMaxId();
+        if(id != null){
+            newUser.setUserinfoId(id+18);
+        }
         newUser.setUserinfoName(userinfoTel);//用户名就是手机号
         newUser.setUserinfoTel(userinfoTel);
         newUser.setUserinfoWx(userinfoWx);
@@ -78,7 +85,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         newUser.setUserinfoPwd(Encrypt.getMd5(userinfoPwd));
         newUser.setUserinfoLv("0");
         newUser.setUserinfoOrg(userInfo.getUserinfoCode());
-
+        newUser.setUserInfoStatus("0");
         newUser.setUserinfoTreecode(userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode()));
         newUser.setUserinfoCreateBy(Integer.valueOf(userInfoId));
         newUser.setUserinfoCreateTime(new Date());

@@ -126,4 +126,11 @@
         limit 1
     </select>
 
+    <!--查询下一个邀请码-->
+    <select id="selectMaxId" resultType="String">
+        select userInfo_id from userInfo
+        ORDER BY userInfo_id desc
+        limit 1
+    </select>
+
 </mapper>

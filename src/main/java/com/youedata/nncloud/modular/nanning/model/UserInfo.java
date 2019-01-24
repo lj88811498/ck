@@ -102,6 +102,11 @@ public class UserInfo extends Model<UserInfo> {
     @TableField("userInfo_treecode")
     private String userinfoTreecode;
     /**
+     * 账号状态：0、正常；1、冻结；
+     */
+    @TableField("userInfo_status")
+    private String userInfoStatus;
+    /**
      * 创建人
      */
     @TableField("userInfo_create_by")
@@ -121,6 +126,14 @@ public class UserInfo extends Model<UserInfo> {
      */
     @TableField("userInfo_update_time")
     private Date userinfoUpdateTime;
+
+    public String getUserInfoStatus() {
+        return userInfoStatus;
+    }
+
+    public void setUserInfoStatus(String userInfoStatus) {
+        this.userInfoStatus = userInfoStatus;
+    }
 
     public Integer getUserinfoId() {
         return userinfoId;
@@ -301,6 +314,7 @@ public class UserInfo extends Model<UserInfo> {
                 ", userinfoCode='" + userinfoCode + '\'' +
                 ", userinfoOrg='" + userinfoOrg + '\'' +
                 ", userinfoTreecode='" + userinfoTreecode + '\'' +
+                ", userInfo_status='" + userInfoStatus + '\'' +
                 ", userinfoCreateBy=" + userinfoCreateBy +
                 ", userinfoUpdateBy=" + userinfoUpdateBy +
                 ", userinfoCreateTime=" + userinfoCreateTime +
