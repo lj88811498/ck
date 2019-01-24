@@ -126,7 +126,7 @@
         limit 1
     </select>
 
-    <!--查询用户最大id-->
+    <!--最大用户id-->
     <select id="selectMaxId" resultType="Integer">
         select userInfo_id from userInfo
         ORDER BY userInfo_id desc
