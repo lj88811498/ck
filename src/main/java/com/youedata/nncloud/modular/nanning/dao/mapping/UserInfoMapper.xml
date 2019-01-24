@@ -126,6 +126,11 @@
         limit 1
     </select>
 
+
+
+
+
+
     <!--最大用户id-->
     <select id="selectMaxId" resultType="Integer">
         select userInfo_id from userInfo
