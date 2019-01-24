@@ -82,7 +82,7 @@
 
     <!--查询用户子孙节点中所有一星及以上下线总和-->
     <select id="selectHeirCount" resultType="Integer">
-        select COUNT(*)-1
+        select COUNT(*)
         from userInfo
         WHERE userInfo_treecode like CONCAT((select userInfo_treecode from userInfo
         WHERE userInfo_id = #{userInfoId}),'%')
