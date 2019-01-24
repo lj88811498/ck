@@ -4,7 +4,7 @@
 
 ###################  项目启动端口  ###################
 server:
-  port: 8899
+  port: 8888
 
 ##########################################################
 ###################  开发环境的profile  ###################
@@ -12,11 +12,11 @@ server:
 spring:
   profiles: test
   datasource:
-    url: jdbc:mysql://172.16.0.5:3306/nncloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://47.104.162.57:3306/one?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     #url: jdbc:mysql://cdyoue.com.cn:506/nncloud?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
-    password: 1qaz@WSX
-    db-name: nncloud
+    password: root
+    db-name: one
     filters: log4j,wall,mergeStat
 
 guns:
@@ -56,7 +56,7 @@ dataos:
   #dataOS角色ID
   dataOSRoleId: 40
   #蓝鲸token拦截开关
-  isOpen: false
+  isOpen: true
   #默认账号
   accountName: lijiang
   #默认账号密码
@@ -71,3 +71,8 @@ dataos:
   checkAccessToken: yyzhzx/api/v1/session
   #注册
   register: yyzhzx/api/v1/accounts
+
+
+
+token:
+  swith: on
