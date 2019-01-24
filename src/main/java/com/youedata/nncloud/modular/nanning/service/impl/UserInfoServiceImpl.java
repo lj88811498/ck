@@ -139,8 +139,11 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         List<UserMini> userList = userInfoMapper.selectImmediateList(userInfoId);
         page.put("data", userList);
         page.put("myGroupSum", userList.size());
-        Integer integer = userInfoMapper.selectHeirCount(userInfoId);
-        page.put("sum", integer);
+        Integer sum = userInfoMapper.selectHeirCount(userInfoId);
+        if(sum >0){
+            sum--;
+        }
+        page.put("sum", sum);
         return page;
     }
 
