@@ -218,6 +218,10 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
             if (mini5 == null) {
                 mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", false);
             }
+            int temp = Integer.parseInt(targetLv);
+            while (mini5 == null  && temp < 10) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
+            }
             leader = userInfoMapper.selectLeader(userInfoOrg);
         }
         //如果是4级
@@ -225,6 +229,10 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
             if (mini5 == null) {
                 mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", false);
+            }
+            int temp = Integer.parseInt(targetLv);
+            while (mini5 == null  && temp < 10) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
             }
             leader = userInfoMapper.selectHighLvUser(userInfoTreecode, "9", true);
             if (leader == null) {
@@ -236,6 +244,10 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, true);
             if (mini5 == null) {
                 mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, false);
+            }
+            int temp = Integer.parseInt(targetLv);
+            while (mini5 == null  && temp < 10) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
             }
         }
 
@@ -249,6 +261,10 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
 
         if (list.size() == 0 || list.isEmpty()) {
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, false);
+            int temp = Integer.parseInt(targetLv);
+            while (mini5 == null && temp < 10) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
+            }
             list.add(mini5);
         }
 
