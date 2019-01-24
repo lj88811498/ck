@@ -120,13 +120,13 @@
     </select>
 
     <!--查询下一个邀请码-->
-    <select id="getTreeCodeNext" resultType="String">
+    <select id="selectNextCode" resultType="String">
         select userInfo_code from userInfo
         ORDER BY userInfo_code desc
         limit 1
     </select>
 
-    <!--查询下一个邀请码-->
+    <!--查询用户最大id-->
     <select id="selectMaxId" resultType="Integer">
         select userInfo_id from userInfo
         ORDER BY userInfo_id desc
