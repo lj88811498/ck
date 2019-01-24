@@ -211,21 +211,34 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         //如果是0级
         if ("0".equals(userInfoLv)) {
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
+            if (mini5 == null) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", false);
+            }
             leader = userInfoMapper.selectLeader(userInfoOrg);
         }
         //如果是4级
         else if ("4".equals(userInfoLv)) {
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
+            if (mini5 == null) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", false);
+            }
             leader = userInfoMapper.selectHighLvUser(userInfoTreecode, "9", true);
+            if (leader == null) {
+                leader = userInfoMapper.selectHighLvUser(userInfoTreecode, "9", false);
+            }
         }
         //其他情况
         else {
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, true);
+            if (mini5 == null) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, false);
+            }
         }
 
         if (mini5 != null) {
             list.add(mini5);
         }
+
         if (leader != null) {
             list.add(leader);
         }
