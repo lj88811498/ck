@@ -39,11 +39,14 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
     @Override
     public UserMini login(String userInfoName, String userinfoPwd) throws Exception {
         UserInfo userInfo = userInfoMapper.selectByTel(userInfoName);
+        if (userInfo != null) {
+            if("1".equals(userInfo.getUserInfoStatus())){
+                throw new Exception("账户已冻结，请联系管理员");
+            }
+        }
         if (userInfo == null || !userInfo.getUserinfoPwd().equals(Encrypt.getMd5(userinfoPwd))) {
             throw new Exception("用户名或密码错误");
-        } else if(userInfo.getUserInfoStatus().equals("1")){
-            throw new Exception("账户已冻结，请联系管理员");
-        }else {
+        } else {
             return userInfoMapper.selectMiniMessage(userInfoName);
 
         }
