@@ -129,8 +129,6 @@
 
 
 
-
-
     <!--最大用户id-->
     <select id="selectMaxId" resultType="Integer">
         select userInfo_id from userInfo
