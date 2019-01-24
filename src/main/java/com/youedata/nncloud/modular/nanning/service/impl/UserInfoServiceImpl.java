@@ -80,7 +80,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
             newUser.setUserinfoId(id+18);
         }
         String nextTreeCode = userInfoMapper.getTreeCodeNext(userInfo.getUserinfoTreecode());
-        if (StringUtils.isNotBlank(nextTreeCode)) {
+        if (StringUtils.isBlank(nextTreeCode)) {
             nextTreeCode = userInfo.getUserinfoTreecode() + "-01";
         }
         newUser.setUserinfoName(userinfoTel);//用户名就是手机号
