@@ -40,5 +40,5 @@ public interface UpgradeMapper extends BaseMapper<Upgrade> {
      * @param userInfoId
      * @return
      */
-    int selectCount(@Param("userInfoId")String userInfoId);
+    int selectCount(@Param("userInfoId")Integer userInfoId);
 }
