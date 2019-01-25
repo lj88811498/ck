@@ -34,4 +34,11 @@ public interface UpgradeMapper extends BaseMapper<Upgrade> {
      * @return
      */
     List<Map<String,String>> historicalOrder(@Param("userInfoId")String userInfoId);
+
+    /**
+     * 查询用户未审核和审核失败的记录数
+     * @param userInfoId
+     * @return
+     */
+    int selectCount(@Param("userInfoId")String userInfoId);
 }

@@ -23,7 +23,7 @@
     <!--历史通过订单-->
     <select id="historicalOrder" resultType="map">
         select userInfo_id,userInfo_nickname,userInfo_tel,userInfo_lv,userInfo_wx,upgrade_id
-        from `upgrade` up LEFT JOIN userInfo us on up.upgrade_leader_id = us.userInfo_id
+        from `upgrade` up LEFT JOIN userInfo us on up.upgrade_userinfo_id = us.userInfo_id
         WHERE up.upgrade_leader_id = #{userInfoId}
         AND up.upgrade_status = 1
     </select>
@@ -34,6 +34,11 @@
         WHERE upgrade_id = #{upgradeId}
         AND upgrade_leader_id = #{userinfoId}
     </update>
+
+    <!-- 查询是否还有未通过的订单 -->
+    <select id="selectCount" resultType="int">
+        SELECT COUNT(1) FROM upgrade WHERE upgrade_userinfo_id = #{userInfoId} AND (upgrade_status = 0 OR upgrade_status = 2)
+    </select>
 
 
 </mapper>

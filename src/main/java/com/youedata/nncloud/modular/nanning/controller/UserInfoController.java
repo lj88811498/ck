@@ -46,6 +46,29 @@ public class UserInfoController extends BaseController {
      * 用户登录
      */
     @CkLog(operation = "用户登陆了: ", key = "userInfoName")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "用户登录", notes = "用户登录")
+    public Object loginForGet(@ApiParam("用户名(必填)") @RequestParam(value = "userInfoName", required = true) String userInfoName,
+                        @ApiParam("密码(必填)") @RequestParam(value = "userinfoPwd", required = true) String userinfoPwd) {
+        JSONObject result = JsonUtil.createOkJson();
+        try {
+            JSONObject page = new JSONObject();
+            page.put("data", userInfoService.login(userInfoName, userinfoPwd));
+            String token = ToolUtil.getRandomString(18);
+            page.put("token", token);
+            GlobalHashMap.addUserToken(token);
+            result.put("page", page);
+        } catch (Exception e) {
+            result = JsonUtil.createFailJson(e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * 用户登录
+     */
+    @CkLog(operation = "用户登陆了: ", key = "userInfoName")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户登录", notes = "用户登录")

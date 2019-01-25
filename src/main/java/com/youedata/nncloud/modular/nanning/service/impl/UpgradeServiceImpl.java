@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.youedata.nncloud.core.util.RecordLogUtil;
 import com.youedata.nncloud.modular.nanning.dao.UpgradeMapper;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
@@ -117,9 +118,11 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
     public void auditEscalation(String upgradeId, String upgradeStatus, String userinfoId) {
 //        修改当前订单状态
         Upgrade upgrade = selectById(upgradeId);
-        upgradeMapper.auditEscalation(upgradeId, upgradeStatus,userinfoId);
+        upgradeMapper.auditEscalation(upgradeId, upgradeStatus, userinfoId);
 //        查询是否还有未通过的订单
-        Integer count = upgradeMapper.selectCount(new EntityWrapper<Upgrade>().eq("upgrade_status", "0").or().eq("upgrade_status", "2"));
+//        Integer count = upgradeMapper.selectCount(new EntityWrapper<Upgrade>().eq("upgrade_userinfo_id", userinfoId).eq("upgrade_status", "0").or().eq("upgrade_status", "2"));
+        int count = upgradeMapper.selectCount(userinfoId);
+        RecordLogUtil.info(" 查询用户" + userinfoId + "还有未通过的订单:" + count);
         if (count == 0) {
             UserInfo userInfo = userInfoMapper.selectById(upgrade.getUpgradeUserinfoId());
             Integer lv = Integer.valueOf(userInfo.getUserinfoLv())+1;
