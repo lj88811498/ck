@@ -114,7 +114,18 @@ public class CkLogAop {
                     Upgrade up = (Upgrade)obj;
                     up.setUpgradeId(Integer.parseInt(_targetId));
                     up = up.selectById();
-                    msg += ",审核结果=" + (up.getUpgradeStatus()=="1"?"审核通过":(up.getUpgradeStatus()=="2"?"审核未通过":"尚未审核"));
+                    String s1 = up.getUpgradeStatus();
+                    String msg1 = null;
+                    if ("1".equals(s1)) {
+                        msg1 = "审核通过";
+                    } else  if ("2".equals(s1)) {
+                        msg1 = "审核未通过";
+                    } else  if ("3".equals(s1)) {
+                        msg1 = "已归档";
+                    } else {
+                        msg1 = "尚未审核";
+                    }
+                    msg += ",审核结果=" + msg1 ;
                 }
             }
 
