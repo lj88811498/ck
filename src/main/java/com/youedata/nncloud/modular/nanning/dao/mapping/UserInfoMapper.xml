@@ -107,6 +107,7 @@
             and instr(#{userInfoTreecode}, userInfo_treecode) > 0
         </if>
         and #{userInfoTreecode} != userInfo_treecode
+        and length(#{userInfoTreecode}) > length(userInfo_treecode)
         and userInfo_lv = #{userInfoLv}
         order by userInfo_treecode desc
         limit 1
