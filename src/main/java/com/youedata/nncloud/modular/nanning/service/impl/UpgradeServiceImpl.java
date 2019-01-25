@@ -73,6 +73,7 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
                 String userInfoCode = userInfo.getUserinfoCode();
                 Map map1 = new HashMap<>();
                 map1.put("userInfo_org", userInfoCode);
+                map1.put("userInfo_lv", userinfoLv);
                 List underLines = userInfoMapper.selectByMap(map1);
                 if (underLines.size() < Math.pow(3, Double.parseDouble(userinfoLv))) {
                     throw new Exception("如需升级到" + (Integer.parseInt(userinfoLv) + 1) + "星会员，<br/>" +
