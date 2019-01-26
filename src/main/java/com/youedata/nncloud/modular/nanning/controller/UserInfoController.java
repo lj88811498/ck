@@ -193,13 +193,14 @@ public class UserInfoController extends BaseController {
     @ApiOperation(value = "忘记密码", notes = "忘记密码")
     public Object forgetPwd(@ApiParam("手机号(必填)") @RequestParam(value = "userinfoTel", required = true) String userinfoTel,
                             @ApiParam("新密码") @RequestParam(value = "newPassord", required = true) String newPassord) {
-        JSONObject result = JsonUtil.createOkJson();
-        try {
-            userInfoService.forgetPwd(userinfoTel, newPassord);
-        } catch (Exception e) {
-            result = JsonUtil.createFailJson(e.getMessage());
-        }
-        return result;
+//        JSONObject result = JsonUtil.createOkJson();
+//        try {
+//            userInfoService.forgetPwd(userinfoTel, newPassord);
+//        } catch (Exception e) {
+//            result = JsonUtil.createFailJson(e.getMessage());
+//        }
+//        return result;
+        return JsonUtil.createFailJson("目前功能暂未开放！");
     }
 
     /**
