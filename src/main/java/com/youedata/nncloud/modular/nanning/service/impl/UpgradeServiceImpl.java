@@ -172,8 +172,11 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
 
     @Override
     public Page<Upgrade> auditorTotal(int userInfoId, int pageSize, int curPage) {
+        if (curPage < 1) {
+            curPage = 1;
+        }
         Page page = new PageFactory().defaultPage2(pageSize, curPage);
-        List<Object> list = upgradeMapper.auditorTotal(userInfoId);
+        List<Object> list = upgradeMapper.auditorTotal(page, userInfoId);
         page.setRecords(list);
         return page;
     }

@@ -1,5 +1,6 @@
 package com.youedata.nncloud.modular.nanning.dao;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.youedata.nncloud.modular.nanning.model.Upgrade;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -46,5 +47,5 @@ public interface UpgradeMapper extends BaseMapper<Upgrade> {
      * 审核统计
      * @return
      */
-    List<Object> auditorTotal(@Param("userInfoId")Integer userInfoId);
+    List<Object> auditorTotal(@Param("page") Page page, @Param("userInfoId")Integer userInfoId);
 }
