@@ -180,7 +180,7 @@ public class UpgradeController extends BaseController {
     /**
      * 审核统计
      */
-    @RequestMapping(value = "/historicalOrder", method = RequestMethod.GET)
+    @RequestMapping(value = "/auditorTotal", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "审核统计", notes = "审核统计")
     public Object auditorTotal(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) int userInfoId,
