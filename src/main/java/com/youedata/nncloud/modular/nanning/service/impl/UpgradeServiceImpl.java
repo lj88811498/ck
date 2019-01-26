@@ -3,7 +3,9 @@ package com.youedata.nncloud.modular.nanning.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.youedata.nncloud.core.common.constant.factory.PageFactory;
 import com.youedata.nncloud.core.util.RecordLogUtil;
 import com.youedata.nncloud.modular.nanning.dao.UpgradeMapper;
 import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
@@ -166,5 +168,12 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
     @Override
     public List<Map<String, String>> historicalOrder(String userInfoId) {
         return upgradeMapper.historicalOrder(userInfoId);
+    }
+
+    @Override
+    public Page<Upgrade> auditorTotal(int userInfoId, int pageSize, int curPage) {
+        Page page = new PageFactory().defaultPage2(pageSize, curPage);
+
+        return page;
     }
 }

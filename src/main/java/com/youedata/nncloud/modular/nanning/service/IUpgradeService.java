@@ -1,5 +1,6 @@
 package com.youedata.nncloud.modular.nanning.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.youedata.nncloud.modular.nanning.model.Upgrade;
 
@@ -39,4 +40,13 @@ public interface IUpgradeService extends IService<Upgrade> {
      * 历史通过订单
      */
     List<Map<String, String>> historicalOrder(String userInfoId);
+
+    /**
+     * 审核统计
+     * @param userInfoId
+     * @param pageSize
+     * @param curPage
+     * @return
+     */
+    Page<Upgrade> auditorTotal(int userInfoId, int pageSize, int curPage);
 }

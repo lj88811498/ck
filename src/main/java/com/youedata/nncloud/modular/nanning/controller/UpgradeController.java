@@ -176,4 +176,22 @@ public class UpgradeController extends BaseController {
         }
         return result;
     }
+
+    /**
+     * 审核统计
+     */
+    @RequestMapping(value = "/historicalOrder", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "审核统计", notes = "审核统计")
+    public Object auditorTotal(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true) int userInfoId,
+                               @ApiParam("当前用户id(必填)") @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                               @ApiParam("当前用户id(必填)") @RequestParam(value = "curPage", required = true, defaultValue = "1") int curPage) {
+        JSONObject js = JsonUtil.createOkJson();
+        try {
+            js.put("page", upgradeService.auditorTotal(userInfoId, size, curPage));
+        } catch (Exception e) {
+            js = JsonUtil.createFailJson(e.getMessage());
+        }
+        return js;
+    }
 }
