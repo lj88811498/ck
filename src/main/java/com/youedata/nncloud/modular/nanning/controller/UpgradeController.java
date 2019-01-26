@@ -172,7 +172,7 @@ public class UpgradeController extends BaseController {
         try {
             result.put("page", upgradeService.historicalOrder(userInfoId));
         } catch (Exception e) {
-            result = JsonUtil.createFailJson(e.getMessage());
+            result = JsonUtil.createFailJson();
         }
         return result;
     }
@@ -190,7 +190,7 @@ public class UpgradeController extends BaseController {
         try {
             js.put("page", upgradeService.auditorTotal(userInfoId, size, curPage));
         } catch (Exception e) {
-            js = JsonUtil.createFailJson(e.getMessage());
+            js = JsonUtil.createFailJson();
         }
         return js;
     }

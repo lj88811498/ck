@@ -41,4 +41,10 @@ public interface UpgradeMapper extends BaseMapper<Upgrade> {
      * @return
      */
     int selectCount(@Param("userInfoId")Integer userInfoId);
+
+    /**
+     * 审核统计
+     * @return
+     */
+    List<Object> auditorTotal(@Param("userInfoId")Integer userInfoId);
 }

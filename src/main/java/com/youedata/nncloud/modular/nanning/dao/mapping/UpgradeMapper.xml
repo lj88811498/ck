@@ -42,4 +42,23 @@
     </select>
 
 
+    <!-- 审计统计 -->
+    <select id="auditorTotal" resultType="map">
+        <![CDATA[
+        SELECT
+            a.userinfo_id,
+            a.userInfo_nickname,
+            a.userInfo_tel,
+            a.userInfo_lv,
+          (select count(1) from upgrade where upgrade_leader_id = a.userinfo_id and upgrade_status = 1) count
+        FROM
+            userInfo a,
+            userInfo b
+        WHERE
+        b.userInfo_id = #{userInfoId}
+        and a.userInfo_lv >= 5
+        AND a.userInfo_treecode LIKE concat(b.userInfo_treecode, '%')
+        ]]>
+    </select>
+
 </mapper>
