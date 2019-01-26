@@ -223,10 +223,16 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         //如果是0级
         if ("0".equals(userInfoLv)) {
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
-            if (mini5 == null) {
-                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", false);
+//            if (mini5 == null) {
+//                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", false);
+//            }
+            //先找直系的
+            int temp = 5;
+            while (mini5 == null  && temp < 10) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", true);
             }
-            int temp = Integer.parseInt(targetLv);
+            //找不到就找不是直系的
+            temp = 5;
             while (mini5 == null  && temp < 10) {
                 mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
             }
@@ -235,10 +241,15 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         //如果是4级
         else if ("4".equals(userInfoLv)) {
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
-            if (mini5 == null) {
-                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", false);
+//            if (mini5 == null) {
+//                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", false);
+//            }
+            int temp = 5;
+            while (mini5 == null  && temp < 10) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", true);
             }
-            int temp = Integer.parseInt(targetLv);
+            //找不到就找不是直系的
+            temp = 5;
             while (mini5 == null  && temp < 10) {
                 mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
             }
@@ -250,10 +261,14 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         //其他情况
         else {
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, true);
-            if (mini5 == null) {
-                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, false);
-            }
+//            if (mini5 == null) {
+//                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, false);
+//            }
             int temp = Integer.parseInt(targetLv);
+            while (mini5 == null  && temp < 10) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", true);
+            }
+            temp = Integer.parseInt(targetLv);
             while (mini5 == null  && temp < 10) {
                 mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
             }
@@ -270,6 +285,10 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         if (list.size() == 0 || list.isEmpty()) {
             mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, targetLv, false);
             int temp = Integer.parseInt(targetLv);
+            while (mini5 == null && temp < 10) {
+                mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", true);
+            }
+            temp = Integer.parseInt(targetLv);
             while (mini5 == null && temp < 10) {
                 mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
             }
