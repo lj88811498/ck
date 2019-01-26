@@ -43,6 +43,10 @@ public class Upgrade extends Model<Upgrade> {
      */
     private Date upgradeUpdateTime;
 
+    /**
+     * 随机码
+     */
+    private String upgradeCode;
 
     public Integer getUpgradeId() {
         return upgradeId;
@@ -92,6 +96,14 @@ public class Upgrade extends Model<Upgrade> {
         this.upgradeUpdateTime = upgradeUpdateTime;
     }
 
+    public String getUpgradeCode() {
+        return upgradeCode;
+    }
+
+    public void setUpgradeCode(String upgradeCode) {
+        this.upgradeCode = upgradeCode;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.upgradeId;
@@ -104,6 +116,7 @@ public class Upgrade extends Model<Upgrade> {
         ", upgradeUserinfoId=" + upgradeUserinfoId +
         ", upgradeLeaderId=" + upgradeLeaderId +
         ", upgradeStatus=" + upgradeStatus +
+        ", upgradeCode=" + upgradeCode +
         ", upgradeCreateTime=" + upgradeCreateTime +
         ", upgradeUpdateTime=" + upgradeUpdateTime +
         "}";

@@ -7,6 +7,7 @@
         <id column="upgrade_id" property="upgradeId"/>
         <result column="upgrade_userinfo_id" property="upgradeUserinfoId"/>
         <result column="upgrade_leader_id" property="upgradeLeaderId"/>
+        <result column="upgrade_code" property="upgradeCode"/>
         <result column="upgrade_status" property="upgradeStatus"/>
         <result column="upgrade_create_time" property="upgradeCreateTime"/>
         <result column="upgrade_update_time" property="upgradeUpdateTime"/>

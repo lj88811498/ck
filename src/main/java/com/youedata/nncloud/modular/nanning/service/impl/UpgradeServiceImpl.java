@@ -10,6 +10,7 @@ import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import com.youedata.nncloud.modular.nanning.model.UserMini;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import com.youedata.nncloud.modular.nanning.model.Upgrade;
@@ -63,11 +64,11 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
         } else{
 
 
-            Upgrade upgrade = new Upgrade();
-            upgrade.setUpgradeStatus("3");
-            EntityWrapper<Upgrade> entityWrapper = new EntityWrapper();
-            entityWrapper.eq("upgrade_userinfo_id", userInfoId);
-            upgradeMapper.update(upgrade, entityWrapper);
+//            Upgrade upgrade = new Upgrade();
+//            upgrade.setUpgradeStatus("3");
+//            EntityWrapper<Upgrade> entityWrapper = new EntityWrapper();
+//            entityWrapper.eq("upgrade_userinfo_id", userInfoId);
+//            upgradeMapper.update(upgrade, entityWrapper);
 
             String userinfoLv = userInfo.getUserinfoLv();
             if ("1".equals(userinfoLv) || "4".equals(userinfoLv)) {
@@ -88,6 +89,7 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
         JSONObject merchants = userInfoService.getMerchants(userInfoId);
         if (merchants != null) {
             List<UserMini> users = (List) merchants.get("page");
+            Long uuid = System.currentTimeMillis();
             for (UserMini user : users) {
                 if (user == null) {
                     continue;
@@ -95,7 +97,25 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
                 Upgrade upgrade = new Upgrade();
                 upgrade.setUpgradeLeaderId(user.getUserinfoId());
                 upgrade.setUpgradeUserinfoId(userInfoId);
+                upgrade.setUpgradeCode(uuid + "");
                 upgrade.insert();
+            }
+            if (users.size() > 0) {
+                //删除0-1， 4-5出现审核不通过的订单
+                Map map1 = new HashMap<>();
+                map1.put("upgrade_userinfo_id", userInfoId);
+                map1.put("upgrade_status", "2");
+                //Integer integer = upgradeMapper.selectCount(new EntityWrapper<Upgrade>().eq("upgrade_userinfo_id", userInfoId).eq("upgrade_status", "0"));
+                List<Upgrade> list1 = upgradeMapper.selectByMap(map1);
+                for (Upgrade upgrade : list1) {
+                    if (StringUtils.isBlank(upgrade.getUpgradeCode())) {
+                        continue;
+                    }
+                    Map m2 = new HashMap();
+                    m2.put("upgrade_code", upgrade.getUpgradeCode());
+                    upgradeMapper.deleteByMap(m2);
+                }
+
             }
         }
         return true;
