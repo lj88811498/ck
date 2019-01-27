@@ -68,7 +68,7 @@ public class UserInfoController extends BaseController {
     /**
      * 用户登录
      */
-    @CkLog(operation = "用户登陆了: ", key = "userInfoName")
+    @CkLog(operation = "用户登陆了  ", key = "userInfoName")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户登录", notes = "用户登录")
@@ -91,7 +91,7 @@ public class UserInfoController extends BaseController {
     /**
      * 用户注销
      */
-    @CkLog(operation = "用户注销了: ", key = "userInfoName")
+    @CkLog(operation = "用户注销了  ", key = "userInfoName")
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "用户注销", notes = "用户注销")
@@ -109,6 +109,7 @@ public class UserInfoController extends BaseController {
     /**
      * 帮助注册
      */
+    @CkLog(userId = "userInfoId", operation = " 注册了 ", target = "userinfoTel")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "帮助注册", notes = "帮助注册")
