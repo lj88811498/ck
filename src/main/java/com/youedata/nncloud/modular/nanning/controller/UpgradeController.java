@@ -194,4 +194,19 @@ public class UpgradeController extends BaseController {
         }
         return js;
     }
+
+    @RequestMapping(value = "/total", method = RequestMethod.GET)
+    @ResponseBody
+//    @ApiOperation(value = "审核统计", notes = "审核统计")
+    public Object total(@ApiParam("当前用户id(必填)") @RequestParam(value = "userInfoId", required = true, defaultValue = "20001") int userInfoId,
+                               @ApiParam("当前用户id(必填)") @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                               @ApiParam("当前用户id(必填)") @RequestParam(value = "curPage", required = true, defaultValue = "1") int curPage) {
+        JSONObject js = JsonUtil.createOkJson();
+        try {
+            js.put("page", upgradeService.auditorTotal(userInfoId, size, curPage));
+        } catch (Exception e) {
+            js = JsonUtil.createFailJson();
+        }
+        return js;
+    }
 }

@@ -59,6 +59,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                     //放行特定路径请求;
                     .excludePathPatterns(
                             "/",
+                            "/upgrade/total",
                             "/swagger-ui.html",
                             "/userInfo/login",
                             "/userInfo/forgetPwd",
@@ -68,6 +69,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                             "/v2/api-docs",
                             "/configuration/ui",
                             "/configuration/security"
+
                     );
         }
 //                .addPathPatterns("/**"); //拦截特定路径请求

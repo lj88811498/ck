@@ -50,6 +50,7 @@
             a.userInfo_nickname,
             a.userInfo_tel,
             a.userInfo_lv,
+            a.userInfo_wx,
           (select count(1) from upgrade where upgrade_leader_id = a.userinfo_id and upgrade_status = 1) count
         FROM
             userInfo a,

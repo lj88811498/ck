@@ -113,9 +113,15 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
                     if (StringUtils.isBlank(upgrade.getUpgradeCode())) {
                         continue;
                     }
-                    Map m2 = new HashMap();
-                    m2.put("upgrade_code", upgrade.getUpgradeCode());
-                    upgradeMapper.deleteByMap(m2);
+//                    Map m2 = new HashMap();
+//                    m2.put("upgrade_code", upgrade.getUpgradeCode());
+//                    upgradeMapper.deleteByMap(m2);
+
+                    Upgrade upgrade2 = new Upgrade();
+                    upgrade2.setUpgradeStatus("3");
+                    EntityWrapper<Upgrade> entityWrapper = new EntityWrapper();
+                    entityWrapper.eq("upgrade_code", upgrade.getUpgradeCode());
+                    upgradeMapper.update(upgrade2, entityWrapper);
                 }
 
             }
