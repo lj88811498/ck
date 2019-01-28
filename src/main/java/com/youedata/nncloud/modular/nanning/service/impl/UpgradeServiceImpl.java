@@ -87,8 +87,8 @@ public class UpgradeServiceImpl extends ServiceImpl<BaseMapper<Upgrade>, Upgrade
             }
 
         }
-
-        JSONObject merchants = userInfoService.getMerchants(userInfoId);
+        //使用新版规则获取商家信息
+        JSONObject merchants = userInfoService.getMerchants2(userInfoId);
         if (merchants != null) {
             List<UserMini> users = (List) merchants.get("page");
             Long uuid = System.currentTimeMillis();

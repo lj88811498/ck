@@ -270,10 +270,11 @@ public class UserInfoController extends BaseController {
 
         JSONObject js = JsonUtil.createOkJson();
         try {
-            js = userInfoService.getMerchants(userInfoId);
+//            js = userInfoService.getMerchants(userInfoId);
+            js = userInfoService.getMerchants2(userInfoId);
         } catch (Exception e) {
-            RecordLogUtil.error(e.getMessage());
-            js = JsonUtil.createFailJson(e.getMessage());
+            RecordLogUtil.error("用户信息错误！" + e.getMessage());
+            js = JsonUtil.createFailJson("用户信息错误！");
         }
         return js;
     }

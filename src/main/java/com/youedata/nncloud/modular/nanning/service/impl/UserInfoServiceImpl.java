@@ -2,6 +2,7 @@ package com.youedata.nncloud.modular.nanning.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.youedata.nncloud.core.util.Encrypt;
 import com.youedata.nncloud.core.util.JsonUtil;
@@ -9,7 +10,9 @@ import com.youedata.nncloud.modular.nanning.dao.UserInfoMapper;
 import com.youedata.nncloud.modular.nanning.model.UserInfo;
 import com.youedata.nncloud.modular.nanning.model.UserMini;
 import com.youedata.nncloud.modular.nanning.service.IUserInfoService;
+import com.youedata.nncloud.modular.system.model.User;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -236,6 +239,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
             while (mini5 == null  && temp < 10) {
                 mini5 = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
             }
+            //0星的时候，升级1星是查询直系1代
             leader = userInfoMapper.selectLeader(userInfoOrg);
         }
         //如果是4级
@@ -298,6 +302,122 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         js.put("page", list);
         return js;
 
+    }
+
+    /**
+     * 获取商家信息第二版
+     * @param userInfoId
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public JSONObject getMerchants2(int userInfoId) throws Exception {
+        String userInfoTreecode;
+        String userInfoLv;
+        String targetLv;
+        String userInfoOrg;
+        JSONObject js = JsonUtil.createOkJson();
+        List<UserMini> list = new ArrayList();
+        UserInfo userInfo = userInfoMapper.selectById(userInfoId);
+        if (userInfo != null) {
+            userInfoTreecode = userInfo.getUserinfoTreecode();
+            userInfoLv = userInfo.getUserinfoLv();
+            targetLv = (Integer.parseInt(userInfoLv) + 1) + "";
+            userInfoOrg = userInfo.getUserinfoOrg();
+        } else {
+            throw new Exception("不存在此用户");
+        }
+        UserMini boss = null;
+        UserMini leader = null;
+
+
+        //准备升一级
+        if ("0".equals(userInfoLv)) {
+            boss = userInfoMapper.selectHighLvUser(userInfoTreecode, "5", true);
+            int temp = 5;
+            while (boss == null  && temp < 10) {
+                boss = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", true);
+            }
+            temp = 5;
+            while (boss == null  && temp < 10) {
+                boss = userInfoMapper.selectHighLvUser(userInfoTreecode, ++temp  + "", false);
+            }
+        }
+        //准备升五级
+        else if ("4".equals(userInfoLv)) {
+            boss = userInfoMapper.selectHighLvUser(userInfoTreecode, "9", true);
+            if (boss == null) {
+                boss = userInfoMapper.selectHighLvUser(userInfoTreecode, "9", false);
+            }
+        }
+        //查询自己的N代领导
+        //升几级就是几代
+        //判断treecode “-”可以得到有几代
+        String treecode = userInfo.getUserinfoTreecode();
+
+        int length1 = treecode.length();
+        int length2 = treecode.replaceAll("-", "").length();
+        int dissLv = length1 - length2;
+        int nextLv = Integer.parseInt(userInfoLv) + 1;
+        //之差等于有没有对应的几代领导，如果有，则得到对应那代的treecode
+        if (dissLv < nextLv) {
+            String temp1 = treecode;
+            temp1 = temp1.substring(0, temp1.indexOf("-"));
+            String code[] = treecode.split("-");
+            for (int i = 0; i < code.length; i ++) {
+                if (i > 0) {
+                    temp1 += "-" + code[i];
+                }
+                UserInfo tempUser = new UserInfo();
+                tempUser = tempUser.selectOne(new EntityWrapper().eq("userInfo_treecode", temp1));
+                if (tempUser != null ){
+                    //目前的逻辑，肯定会有人选择，最高则为treecode=ck01的用户
+                    if (Integer.parseInt(tempUser.getUserinfoLv()) >= Integer.parseInt(targetLv)) {
+                        leader = new UserMini();
+                        BeanUtils.copyProperties(tempUser, leader);
+                    }
+                }
+            }
+        }
+
+        while (leader == null) {
+            if (dissLv >= nextLv) {
+                int i = nextLv++;
+                String temp = treecode;
+                while (i-- > 0) {
+                    temp = temp.substring(0, temp.lastIndexOf("-"));
+                }
+                UserInfo tempUser = new UserInfo();
+//            UserInfo leader2 = userInfoMapper.selectOne(new EntityWrapper<UserInfo>());
+//            if (leader2.getUserinfoLv() >= Integer.parseInt(userInfoLv) + 1) {
+//
+//            }
+                tempUser = tempUser.selectOne(new EntityWrapper().eq("userInfo_treecode", temp));
+                if (tempUser != null ){
+                    if (Integer.parseInt(tempUser.getUserinfoLv()) >= Integer.parseInt(targetLv)) {
+                        leader = new UserMini();
+                        BeanUtils.copyProperties(tempUser, leader);
+                    } else {
+                         continue;
+                    }
+                }
+            }
+            else {
+                break;
+            }
+        //用户对应的那代领导不存在
+
+        }
+        if (boss != null) {
+            list.add(boss);
+        }
+
+        if (leader != null) {
+            list.add(leader);
+        }
+
+        js.put("page", list);
+        return js;
     }
 
 

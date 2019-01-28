@@ -73,6 +73,14 @@ public interface IUserInfoService extends IService<UserInfo> {
      */
     JSONObject getMerchants(int userInfoId) throws Exception;
 
+
+    /**
+     * 获取商家信息第二版
+     *
+     * @return
+     */
+    JSONObject getMerchants2(int userInfoId) throws Exception;
+
     /**
      * 忘记密码
      *
