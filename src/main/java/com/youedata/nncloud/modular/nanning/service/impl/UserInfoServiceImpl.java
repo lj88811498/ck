@@ -362,7 +362,9 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
         //之差等于有没有对应的几代领导，如果有，则得到对应那代的treecode
         if (dissLv < nextLv) {
             String temp1 = treecode;
-            temp1 = temp1.substring(0, temp1.indexOf("-"));
+            if (temp1.contains("-")) {
+                temp1 = temp1.substring(0, temp1.indexOf("-"));
+            }
             String code[] = treecode.split("-");
             for (int i = 0; i < code.length; i ++) {
                 if (i > 0) {
@@ -375,6 +377,7 @@ public class UserInfoServiceImpl extends ServiceImpl<BaseMapper<UserInfo>, UserI
                     if (Integer.parseInt(tempUser.getUserinfoLv()) >= Integer.parseInt(targetLv)) {
                         leader = new UserMini();
                         BeanUtils.copyProperties(tempUser, leader);
+                        break;
                     }
                 }
             }
