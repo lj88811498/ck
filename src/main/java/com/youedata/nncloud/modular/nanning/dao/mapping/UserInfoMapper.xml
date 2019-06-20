@@ -144,4 +144,11 @@
         VALUES (#{userinfoId},#{userinfoName},#{userinfoTel},#{userinfoWx},#{userinfoNickname},#{userinfoPwd},
         #{userinfoLv},#{userinfoOrg},#{userInfoStatus},#{userinfoTreecode},#{userinfoCreateBy},#{userinfoCreateTime})
     </insert>
+    
+        <!--根据treeCode查询下线0级以上的个数-->
+    <select id="selectNumCount" resultType="Integer">
+        SELECT COUNT(*) FROM `userInfo`
+        WHERE userInfo_treecode like #{userinfoTreecode}
+        and userInfo_lv >0
+    </select>
 </mapper>
