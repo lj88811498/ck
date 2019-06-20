@@ -98,4 +98,12 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @param newUser
      */
     void insertNewUser(UserInfo newUser);
+    
+        /**
+     * 根据treeCode查询下线0级以上的个数
+     * @param userinfoTreecode
+     * @return
+     */
+    Integer selectNumCount(@Param("userinfoTreecode")String userinfoTreecode);
+    
 }
