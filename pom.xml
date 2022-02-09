@@ -43,7 +43,7 @@
         <thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.1.0</thymeleaf-layout-dialect.version>
         <project.build.version>1.0</project.build.version> <!-- 项目版本-->
-        <shiro.cas.version>1.2.3</shiro.cas.version>
+        <shiro.cas.version>1.7.1</shiro.cas.version>
         <project.name>ck</project.name>
         <docker.host>http://47.104.162.57:2375</docker.host>
     </properties>
